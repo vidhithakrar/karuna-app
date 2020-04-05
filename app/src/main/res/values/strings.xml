@@ -11,5 +11,24 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
-    <string name="home_second">Home Second</string>
+    <string name="address_and_location">Address &amp; Location</string>
+    <string name="family_details">Family Details</string>
+
+    <string name="address">Address</string>
+    <string name="area">Area/Landmark</string>
+    <string name="pin">PIN</string>
+    <string name="family_header">Families</string>
+    <string name="no_of_families">Number of Families</string>
+    <string name="save">Save</string>
+    <string name="family_leader">Family Leader</string>
+    <string name="contact_number">Contact Number<sup>*</sup></string>
+    <string name="no_of_members">Number of Family Members</string>
+    <string name="kit_type_prompt">Kit Type</string>
+    <string name="kit_details">Kit Details</string>
+    <string name="description">Kit Description</string>
+
+    <string-array name="kit_types">
+        <item>Dry Ration</item>
+        <item>Cooked Food</item>
+    </string-array>
 </resources>

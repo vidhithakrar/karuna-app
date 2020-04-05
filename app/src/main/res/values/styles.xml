@@ -17,4 +17,24 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/edit_text</item>
+        <item name="android:textColorHint">@color/edit_text_hint</item>
+        <item name="android:backgroundTint">@color/edit_text_bg_tint</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@color/button_bg</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/button_text</item>
+    </style>
+
+    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Spinner" />
 </resources>
