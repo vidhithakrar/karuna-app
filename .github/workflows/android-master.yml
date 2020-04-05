@@ -20,7 +20,7 @@ jobs:
     - name: Decrypt google-services.json
       run: ./.github/scripts/decrypt_google_services_json.sh
       env:
-        $GOOGLE_SERVICES_JSON_PASSPHRASE: ${{ secrets.$DEBUG_GOOGLE_SERVICES_JSON_PASSPHRASE }}
+        GOOGLE_SERVICES_JSON_PASSPHRASE: ${{ secrets.$DEBUG_GOOGLE_SERVICES_JSON_PASSPHRASE }}
     - name: Run unit tests with Gradle
       run: ./gradlew test --stacktrace
     - name: Build with Gradle
