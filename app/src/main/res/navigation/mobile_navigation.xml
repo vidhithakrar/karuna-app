@@ -41,7 +41,7 @@
 
     <fragment
         android:id="@+id/nav_add_family"
-        android:name="com.pragati.karuna.ui.family.AddFamiyFragment"
+        android:name="com.pragati.karuna.ui.family.AddFamilyFragment"
         android:label="@string/family_details"
         tools:layout="@layout/fragment_add_family">
 

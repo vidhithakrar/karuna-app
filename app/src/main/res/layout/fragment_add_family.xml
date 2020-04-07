@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    tools:context=".ui.location.AddKitFragment">
+    tools:context=".ui.family.AddFamilyFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_family_leader"
@@ -26,9 +26,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_contact_number"
+        style="@style/AppTheme.InputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/AppTheme.InputLayout"
         app:layout_constraintTop_toBottomOf="@+id/input_layout_family_leader">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,9 +42,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_no_of_members"
+        style="@style/AppTheme.InputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/AppTheme.InputLayout"
         app:layout_constraintTop_toBottomOf="@+id/input_layout_contact_number">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -5,7 +5,7 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 
 @Keep
-class Kit(var type: String, var description: String?) : Parcelable {
+class Kit(var type: String = "", var description: String? = null) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()

@@ -5,11 +5,17 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 
 @Keep
-class Family(var familyLeader: String?, var contact: String, var noOfMembers: Int = 0) :
+class Family(
+    var familyLeader: String?,
+    var contact: String,
+    var noOfMembers: Int = 0,
+    var noOfKits: Int = 0
+) :
     Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString()!!,
+        parcel.readInt(),
         parcel.readInt()
     ) {
     }
@@ -18,6 +24,7 @@ class Family(var familyLeader: String?, var contact: String, var noOfMembers: In
         parcel.writeString(familyLeader)
         parcel.writeString(contact)
         parcel.writeInt(noOfMembers)
+        parcel.writeInt(noOfKits)
     }
 
     override fun describeContents(): Int {
