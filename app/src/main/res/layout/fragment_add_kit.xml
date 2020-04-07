@@ -22,7 +22,7 @@
         android:id="@+id/input_layout_kit_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        style="@style/AppTheme.InputLayout"
         app:layout_constraintTop_toBottomOf="@+id/sp_kit_type">
 
         <com.google.android.material.textfield.TextInputEditText

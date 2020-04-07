@@ -1,17 +1,22 @@
-package com.pragati.karuna.ui.location
+package com.pragati.karuna.ui.kit
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.phelat.navigationresult.BundleFragment
+import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
-import kotlinx.android.synthetic.main.fragment_add_location.*
+import com.pragati.karuna.models.Kit
+import kotlinx.android.synthetic.main.fragment_add_kit.*
+import kotlinx.android.synthetic.main.fragment_add_location.btn_next
 
-class AddKitFragment : Fragment() {
+class AddKitFragment : BundleFragment() {
 
     private lateinit var kitViewModel: KitViewModel
 
@@ -23,7 +28,7 @@ class AddKitFragment : Fragment() {
         kitViewModel =
             ViewModelProviders.of(this).get(KitViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_add_kit, container, false)
-        kitViewModel.location.observe(viewLifecycleOwner, Observer {
+        kitViewModel.kit.observe(viewLifecycleOwner, Observer {
 
         })
 
@@ -34,7 +39,9 @@ class AddKitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_next.setOnClickListener(View.OnClickListener {
-            findNavController().navigate(R.id.action_home)
+            var kit = Kit(sp_kit_type.selectedItem.toString(), et_kit_description.text.toString())
+            var bundle = bundleOf("kit" to kit)
+            navigateUp(2, bundle)
         })
     }
 }
