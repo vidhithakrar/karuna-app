@@ -39,7 +39,8 @@ class AddFamilyFragment : BundleFragment() {
             var family = Family(
                 et_family_leader.text.toString(),
                 et_contact_number.text.toString(),
-                if (!et_no_of_members.text.toString().isEmpty()) et_no_of_members.text.toString().toInt() else 0
+                if (!et_no_of_members.text.toString().isEmpty()) et_no_of_members.text.toString().toInt() else 0,
+                if (!et_no_of_kits.text.toString().isEmpty()) et_no_of_kits.text.toString().toInt() else 0
             )
 
             var bundle = bundleOf("family" to family)

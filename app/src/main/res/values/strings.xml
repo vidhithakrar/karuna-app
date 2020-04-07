@@ -23,6 +23,7 @@
     <string name="family_leader">Family Leader</string>
     <string name="contact_number">Contact Number</string>
     <string name="no_of_members">Number of Family Members</string>
+    <string name="no_of_kits">Number of Food Kits</string>
     <string name="kit_type_prompt">Kit Type</string>
     <string name="kit_details">Kit Details</string>
     <string name="description">Kit Description</string>

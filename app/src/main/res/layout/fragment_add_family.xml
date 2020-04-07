@@ -57,6 +57,23 @@
             app:layout_constraintTop_toBottomOf="@+id/et_contact_number" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_no_of_kits"
+        style="@style/AppTheme.InputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_no_of_members">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_no_of_kits"
+            style="@style/AppTheme.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/no_of_kits"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@+id/et_contact_number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/btn_next"
         style="@style/AppTheme.Button"
@@ -65,5 +82,5 @@
         android:layout_marginTop="22dp"
         android:text="@string/save"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_no_of_members" />
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_no_of_kits" />
 </androidx.constraintlayout.widget.ConstraintLayout>
