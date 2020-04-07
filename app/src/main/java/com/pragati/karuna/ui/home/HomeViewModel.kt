@@ -7,7 +7,13 @@ import com.pragati.karuna.models.Kit
 import com.pragati.karuna.models.Location
 
 class HomeViewModel : ViewModel() {
-    var location = MutableLiveData<Location>()
-    var families = MutableLiveData<MutableList<Family>>()
     var kit = MutableLiveData<Kit>()
+    var families = MutableLiveData<MutableList<Family>>()
+    var location = MutableLiveData<Location>()
+
+    init {
+        kit.value = Kit()
+        families.value = mutableListOf()
+        location.value = Location()
+    }
 }

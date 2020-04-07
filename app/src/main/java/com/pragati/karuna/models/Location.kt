@@ -4,7 +4,14 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.annotation.Keep
 
-@Keep class Location(var address: String?, var landmark: String, var pin: String?, var contactName:String?, var phone: String) : Parcelable {
+@Keep
+class Location(
+    var address: String? = null,
+    var landmark: String = "",
+    var pin: String? = null,
+    var contactName: String? = null,
+    var phone: String = ""
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString()!!,

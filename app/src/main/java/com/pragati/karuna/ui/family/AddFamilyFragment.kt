@@ -14,7 +14,7 @@ import com.pragati.karuna.models.Family
 import kotlinx.android.synthetic.main.fragment_add_family.*
 import kotlinx.android.synthetic.main.fragment_add_location.btn_next
 
-class AddFamiyFragment : BundleFragment() {
+class AddFamilyFragment : BundleFragment() {
 
     private lateinit var familyViewModel: FamilyViewModel
 

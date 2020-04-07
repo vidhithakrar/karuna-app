@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    tools:context=".ui.location.AddKitFragment">
+    tools:context=".ui.location.AddLocationFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_address"
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/local_contact_number"
-            android:inputType="textPersonName|textCapWords"
+            android:inputType="phone"
             app:layout_constraintTop_toBottomOf="@+id/et_pin" />
     </com.google.android.material.textfield.TextInputLayout>
 
