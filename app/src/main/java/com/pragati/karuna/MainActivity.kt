@@ -2,7 +2,6 @@ package com.pragati.karuna
 
 import android.os.Bundle
 import android.view.Menu
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -12,10 +11,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.phelat.navigationresult.FragmentResultActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentResultActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    override fun getNavHostFragmentId(): Int = R.id.nav_host_fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

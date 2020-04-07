@@ -15,17 +15,19 @@
     <string name="family_details">Family Details</string>
 
     <string name="address">Address</string>
-    <string name="area">Area/Landmark</string>
-    <string name="pin">PIN</string>
+    <string name="area">Area/Landmark<sup>*</sup></string>
+    <string name="pin">PIN Code</string>
     <string name="family_header">Families</string>
     <string name="no_of_families">Number of Families</string>
     <string name="save">Save</string>
     <string name="family_leader">Family Leader</string>
-    <string name="contact_number">Contact Number<sup>*</sup></string>
+    <string name="contact_number">Contact Number</string>
     <string name="no_of_members">Number of Family Members</string>
     <string name="kit_type_prompt">Kit Type</string>
     <string name="kit_details">Kit Details</string>
     <string name="description">Kit Description</string>
+    <string name="contact_name">Local Contact Name</string>
+    <string name="local_contact_number">Local Contact Phone<sup>*</sup></string>
 
     <string-array name="kit_types">
         <item>Dry Ration</item>

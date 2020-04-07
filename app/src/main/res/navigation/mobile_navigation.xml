@@ -14,47 +14,45 @@
         <action
             android:id="@+id/action_add_location"
             app:destination="@id/nav_add_location" />
+        <argument
+            android:name="location"
+            app:argType="com.pragati.karuna.models.Location" />
 
         <action
             android:id="@+id/action_add_family"
             app:destination="@id/nav_add_family" />
+        <argument
+            android:name="family"
+            app:argType="com.pragati.karuna.models.Family" />
 
         <action
             android:id="@+id/action_add_kit"
             app:destination="@id/nav_add_kit" />
+        <argument
+            android:name="kit"
+            app:argType="com.pragati.karuna.models.Kit" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_add_location"
         android:name="com.pragati.karuna.ui.location.AddLocationFragment"
         android:label="@string/address_and_location"
-        tools:layout="@layout/fragment_add_location">
-
-        <action
-            android:id="@+id/action_home"
-            app:destination="@id/nav_home" />
-    </fragment>
+        tools:layout="@layout/fragment_add_location"></fragment>
 
     <fragment
         android:id="@+id/nav_add_family"
-        android:name="com.pragati.karuna.ui.location.AddFamiyFragment"
+        android:name="com.pragati.karuna.ui.family.AddFamiyFragment"
         android:label="@string/family_details"
         tools:layout="@layout/fragment_add_family">
 
-        <action
-            android:id="@+id/action_home"
-            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_add_kit"
-        android:name="com.pragati.karuna.ui.location.AddKitFragment"
+        android:name="com.pragati.karuna.ui.kit.AddKitFragment"
         android:label="@string/kit_details"
         tools:layout="@layout/fragment_add_kit">
 
-        <action
-            android:id="@+id/action_home"
-            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment

@@ -1,18 +1,20 @@
-package com.pragati.karuna.ui.location
+package com.pragati.karuna.ui.family
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
+import com.phelat.navigationresult.BundleFragment
+import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
-import kotlinx.android.synthetic.main.fragment_add_location.*
+import com.pragati.karuna.models.Family
+import kotlinx.android.synthetic.main.fragment_add_family.*
+import kotlinx.android.synthetic.main.fragment_add_location.btn_next
 
-class AddFamiyFragment : Fragment() {
+class AddFamiyFragment : BundleFragment() {
 
     private lateinit var familyViewModel: FamilyViewModel
 
@@ -24,8 +26,8 @@ class AddFamiyFragment : Fragment() {
         familyViewModel =
             ViewModelProviders.of(this).get(FamilyViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_add_family, container, false)
-        familyViewModel.families.observe(viewLifecycleOwner, Observer {
-            Log.d("Add data", "Data")
+        familyViewModel.family.observe(viewLifecycleOwner, Observer {
+
         })
 
         return root
@@ -34,7 +36,14 @@ class AddFamiyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_next.setOnClickListener(View.OnClickListener {
-            findNavController().navigate(R.id.nav_home)
+            var family = Family(
+                et_family_leader.text.toString(),
+                et_contact_number.text.toString(),
+                if (!et_no_of_members.text.toString().isEmpty()) et_no_of_members.text.toString().toInt() else 0
+            )
+
+            var bundle = bundleOf("family" to family)
+            navigateUp(1, bundle)
         })
     }
 }

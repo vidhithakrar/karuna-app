@@ -1,10 +1,9 @@
-package com.pragati.karuna.ui.location
+    package com.pragati.karuna.ui.family
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+    import androidx.lifecycle.MutableLiveData
+    import androidx.lifecycle.ViewModel
+    import com.pragati.karuna.models.Family
 
-class FamilyViewModel : ViewModel() {
-    private val _families = MutableLiveData<List<Family>>()
-    var families: LiveData<List<Family>> = _families
-}
+    class FamilyViewModel : ViewModel() {
+        val family = MutableLiveData<Family>()
+    }

@@ -28,7 +28,7 @@
         android:id="@+id/input_layout_contact_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        style="@style/AppTheme.InputLayout"
         app:layout_constraintTop_toBottomOf="@+id/input_layout_family_leader">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -44,7 +44,7 @@
         android:id="@+id/input_layout_no_of_members"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        style="@style/AppTheme.InputLayout"
         app:layout_constraintTop_toBottomOf="@+id/input_layout_contact_number">
 
         <com.google.android.material.textfield.TextInputEditText

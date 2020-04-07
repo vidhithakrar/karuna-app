@@ -1,10 +1,10 @@
-package com.pragati.karuna.ui.location
+package com.pragati.karuna.ui.kit
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.pragati.karuna.models.Kit
 
 class KitViewModel : ViewModel() {
-    private val _kit = MutableLiveData<Kit>()
-    var location: LiveData<Kit> = _kit
+    val kit = MutableLiveData<Kit>()
 }
+
