@@ -38,7 +38,7 @@
             app:destination="@id/nav_add_suppliers" />
         <argument
             android:name="suppliers"
-            app:argType="com.pragati.karuna.models.Suppliers" />
+            app:argType="com.pragati.karuna.models.Supplier" />
     </fragment>
 
     <fragment

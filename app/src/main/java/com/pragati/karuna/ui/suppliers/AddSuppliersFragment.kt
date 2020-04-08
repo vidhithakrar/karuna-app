@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
+import com.pragati.karuna.viewmodel.SuppliersViewModel
+import kotlinx.android.synthetic.main.fragment_add_suppliers.*
 
 class AddSuppliersFragment : BundleFragment() {
 
@@ -18,16 +21,19 @@ class AddSuppliersFragment : BundleFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        supperliers_list_container.layoutManager = LinearLayoutManager(context);
-//        supperliers_list_container.adapter = SupplierAdaptor
-
         suppliersViewModel =
             ViewModelProviders.of(this).get(SuppliersViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_add_suppliers, container, false)
         suppliersViewModel.suppliers.observe(viewLifecycleOwner, Observer {
 
         })
-
         return root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        suppliers_list_container.layoutManager = LinearLayoutManager(context)
+        val list = listOf("ketan", "someone", "someotherone")
+        suppliers_list_container.adapter = SupplierAdapter(list)
     }
 }

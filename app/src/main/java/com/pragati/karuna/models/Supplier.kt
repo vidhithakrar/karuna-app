@@ -5,7 +5,7 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 
 @Keep
-class Suppliers(var name: String, var address: String?, var phone: String) : Parcelable {
+class Supplier(var name: String = "Test", var address: String? = "Test", var phone: String = "Test") : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString(),
