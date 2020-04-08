@@ -13,21 +13,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Decrypt google-services.json
-      run: ./.github/scripts/decrypt_google_services_json.sh
-      env:
-        GOOGLE_SERVICES_JSON_PASSPHRASE: ${{ secrets.DEBUG_GOOGLE_SERVICES_JSON_PASSPHRASE }}
-    - name: Run unit tests with Gradle
-      run: ./gradlew test --stacktrace
-    - name: Build with Gradle
-      run: ./gradlew assembleDebug --stacktrace
-    - name: Upload APK
-      uses: actions/upload-artifact@v1
-      with:
-        name: karuna-debug-app
-        path: app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Decrypt google-services.json
+        run: ./.github/scripts/decrypt_google_services_json.sh
+        env:
+          GOOGLE_SERVICES_JSON_PASSPHRASE: ${{ secrets.DEBUG_GOOGLE_SERVICES_JSON_PASSPHRASE }}
+      - name: Run unit tests with Gradle
+        run: ./gradlew test --stacktrace
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug --stacktrace
+      - name: Upload APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: karuna-debug-app
+          path: app/build/outputs/apk/debug/app-debug.apk

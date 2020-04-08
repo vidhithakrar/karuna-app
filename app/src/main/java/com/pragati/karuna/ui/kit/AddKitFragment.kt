@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.models.Kit
+import com.pragati.karuna.viewmodel.KitViewModel
 import kotlinx.android.synthetic.main.fragment_add_kit.*
 import kotlinx.android.synthetic.main.fragment_add_location.btn_next
 

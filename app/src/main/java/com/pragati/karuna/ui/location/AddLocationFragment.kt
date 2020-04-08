@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.models.Location
+import com.pragati.karuna.viewmodel.LocationViewModel
 import kotlinx.android.synthetic.main.fragment_add_location.*
 
 class AddLocationFragment : BundleFragment() {

@@ -1,4 +1,4 @@
-package com.pragati.karuna.ui.kit
+package com.pragati.karuna.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
