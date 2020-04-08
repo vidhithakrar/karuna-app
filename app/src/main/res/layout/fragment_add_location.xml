@@ -95,7 +95,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/btn_save"
         style="@style/AppTheme.Button"
         android:layout_width="89dp"
         android:layout_height="36dp"

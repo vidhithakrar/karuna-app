@@ -8,7 +8,8 @@ import androidx.annotation.Keep
 class Family(
     var familyLeader: String?,
     var contact: String,
-    var noOfMembers: Int = 0,
+    var noOfAdults: Int = 0,
+    var noOfChildren: Int = 0,
     var noOfKits: Int = 0
 ) :
     Parcelable {
@@ -23,7 +24,8 @@ class Family(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(familyLeader)
         parcel.writeString(contact)
-        parcel.writeInt(noOfMembers)
+        parcel.writeInt(noOfAdults)
+        parcel.writeInt(noOfChildren)
         parcel.writeInt(noOfKits)
     }
 
