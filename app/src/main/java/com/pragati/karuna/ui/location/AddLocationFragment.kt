@@ -14,9 +14,7 @@ import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.models.Location
 import com.pragati.karuna.viewmodel.LocationViewModel
-import kotlinx.android.synthetic.main.fragment_add_family.*
 import kotlinx.android.synthetic.main.fragment_add_location.*
-import kotlinx.android.synthetic.main.fragment_add_location.btn_save
 
 class AddLocationFragment : BundleFragment() {
 
@@ -42,7 +40,6 @@ class AddLocationFragment : BundleFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_save.isEnabled = false
         et_address.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 var contactNumber = s.toString()

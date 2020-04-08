@@ -37,7 +37,6 @@ class AddFamilyFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_save.isEnabled = false
         et_contact_number.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 var contactNumber = s.toString()

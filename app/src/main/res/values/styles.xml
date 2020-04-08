@@ -31,9 +31,9 @@
         <item name="android:padding">10dp</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:background">@color/button_bg</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/button_text</item>
+        <item name="android:background">@drawable/selector_button</item>
     </style>
 
     <style name="AppTheme.Spinner" parent="Widget.AppCompat.Spinner" />
