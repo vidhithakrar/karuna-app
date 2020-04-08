@@ -35,7 +35,6 @@ class AddKitFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         btn_save.setOnClickListener(View.OnClickListener {
             var kit = Kit(sp_kit_type.selectedItem.toString(), et_kit_description.text.toString())
             var bundle = bundleOf("kit" to kit)
