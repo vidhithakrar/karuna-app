@@ -15,7 +15,6 @@ import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Location
 import com.pragati.karuna.request.viewmodel.LocationViewModel
 import kotlinx.android.synthetic.main.fragment_add_location.*
-import kotlinx.android.synthetic.main.fragment_add_location.btn_save
 
 class AddLocationFragment : BundleFragment() {
 
