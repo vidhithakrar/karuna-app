@@ -9,5 +9,6 @@
     <color name="edit_text">#DE000000</color>
     <color name="edit_text_bg_tint">#1F000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="yellow">#FFEA31</color>
+    <color name="dark_edit_text_bg">#B3000000</color>
+    <color name="light_edit_text_color">#D6D6D6</color>
 </resources>
