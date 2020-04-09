@@ -1,4 +1,4 @@
-package com.pragati.karuna.ui.kit
+package com.pragati.karuna.request.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
-import com.pragati.karuna.models.Kit
-import com.pragati.karuna.viewmodel.KitViewModel
+import com.pragati.karuna.request.model.Kit
+import com.pragati.karuna.request.viewmodel.KitViewModel
 import kotlinx.android.synthetic.main.fragment_add_kit.*
 
 class AddKitFragment : BundleFragment() {

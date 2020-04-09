@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    tools:context=".ui.location.AddLocationFragment">
+    tools:context=".request.ui.AddLocationFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_address"

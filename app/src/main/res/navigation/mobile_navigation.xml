@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.pragati.karuna.ui.home.HomeFragment"
+        android:name="com.pragati.karuna.home.ui.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
@@ -16,32 +16,32 @@
             app:destination="@id/nav_add_location" />
         <argument
             android:name="location"
-            app:argType="com.pragati.karuna.models.Location" />
+            app:argType="com.pragati.karuna.request.model.Location" />
 
         <action
             android:id="@+id/action_add_family"
             app:destination="@id/nav_add_family" />
         <argument
             android:name="family"
-            app:argType="com.pragati.karuna.models.Family" />
+            app:argType="com.pragati.karuna.request.model.Family" />
 
         <action
             android:id="@+id/action_add_kit"
             app:destination="@id/nav_add_kit" />
         <argument
             android:name="kit"
-            app:argType="com.pragati.karuna.models.Kit" />
+            app:argType="com.pragati.karuna.request.model.Kit" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_add_location"
-        android:name="com.pragati.karuna.ui.location.AddLocationFragment"
+        android:name="com.pragati.karuna.request.ui.AddLocationFragment"
         android:label="@string/address_and_location"
         tools:layout="@layout/fragment_add_location"></fragment>
 
     <fragment
         android:id="@+id/nav_add_family"
-        android:name="com.pragati.karuna.ui.family.AddFamilyFragment"
+        android:name="com.pragati.karuna.request.ui.AddFamilyFragment"
         android:label="@string/family_details"
         tools:layout="@layout/fragment_add_family">
 
@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/nav_add_kit"
-        android:name="com.pragati.karuna.ui.kit.AddKitFragment"
+        android:name="com.pragati.karuna.request.ui.AddKitFragment"
         android:label="@string/kit_details"
         tools:layout="@layout/fragment_add_kit">
 
@@ -57,13 +57,13 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.pragati.karuna.ui.gallery.GalleryFragment"
+        android:name="com.pragati.karuna.home.ui.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.pragati.karuna.ui.slideshow.SlideshowFragment"
+        android:name="com.pragati.karuna.home.ui.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.pragati.karuna.models
+package com.pragati.karuna.request.model
 
 import android.os.Parcel
 import android.os.Parcelable

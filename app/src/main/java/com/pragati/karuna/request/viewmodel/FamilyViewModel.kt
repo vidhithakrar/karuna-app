@@ -1,8 +1,8 @@
-package com.pragati.karuna.viewmodel
+package com.pragati.karuna.request.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pragati.karuna.models.Family
+import com.pragati.karuna.request.model.Family
 
 class FamilyViewModel : ViewModel() {
     val family = MutableLiveData<Family>()

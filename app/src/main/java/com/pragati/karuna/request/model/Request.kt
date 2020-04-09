@@ -1,4 +1,4 @@
-package com.pragati.karuna.models
+package com.pragati.karuna.request.model
 
 data class Request(
     var location: Location = Location(),

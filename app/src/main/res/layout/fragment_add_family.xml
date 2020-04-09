@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    tools:context=".ui.family.AddFamilyFragment">
+    tools:context=".request.ui.AddFamilyFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_family_leader"

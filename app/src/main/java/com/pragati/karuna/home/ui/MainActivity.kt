@@ -1,4 +1,4 @@
-package com.pragati.karuna
+package com.pragati.karuna.home.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -12,11 +12,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.phelat.navigationresult.FragmentResultActivity
+import com.pragati.karuna.R
 
 class MainActivity : FragmentResultActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    override fun getNavHostFragmentId(): Int = R.id.nav_host_fragment
+    override fun getNavHostFragmentId(): Int =
+        R.id.nav_host_fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +36,9 @@ class MainActivity : FragmentResultActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home,
+                R.id.nav_gallery,
+                R.id.nav_slideshow
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

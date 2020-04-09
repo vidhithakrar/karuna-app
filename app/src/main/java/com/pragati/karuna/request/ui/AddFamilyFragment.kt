@@ -1,4 +1,4 @@
-package com.pragati.karuna.ui.family
+package com.pragati.karuna.request.ui
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
-import com.pragati.karuna.models.Family
-import com.pragati.karuna.viewmodel.FamilyViewModel
+import com.pragati.karuna.request.model.Family
+import com.pragati.karuna.request.viewmodel.FamilyViewModel
 import kotlinx.android.synthetic.main.fragment_add_family.*
 
 class AddFamilyFragment : BundleFragment() {
