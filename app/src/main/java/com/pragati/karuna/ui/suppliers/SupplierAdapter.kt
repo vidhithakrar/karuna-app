@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
+import com.pragati.karuna.viewmodel.SuppliersViewModel
 
-class SupplierAdapter(private val suppliers: List<String>) : RecyclerView.Adapter<SupplierAdapter.SupplierCell>() {
+class SupplierAdapter(private val viewModel: SuppliersViewModel) : RecyclerView.Adapter<SupplierAdapter.SupplierCell>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SupplierCell {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.supplier_details_cell, parent, false)
@@ -15,12 +16,12 @@ class SupplierAdapter(private val suppliers: List<String>) : RecyclerView.Adapte
     }
 
     override fun getItemCount(): Int {
-        return suppliers.count()
+        return viewModel.suppliers.count()
     }
 
     override fun onBindViewHolder(holder: SupplierCell, position: Int) {
-        holder.name.text = suppliers[position]
-        holder.address.text = "address - $suppliers[position]"
+        holder.name.text = viewModel.suppliers[position].name
+        holder.address.text = viewModel.suppliers[position].getAddress()
     }
 
      companion object class SupplierCell(itemView: View) : RecyclerView.ViewHolder(itemView) {

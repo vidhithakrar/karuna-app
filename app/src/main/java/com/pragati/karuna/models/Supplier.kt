@@ -5,31 +5,60 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 
 @Keep
-class Supplier(var name: String = "Test", var address: String? = "Test", var phone: String = "Test") : Parcelable {
+class Supplier(
+    var name: String,
+    var locality: String,
+    var street_name: String,
+    var landmark: String,
+    var city: String,
+    var state: String,
+    var pincode: String,
+    var mobile_number: String,
+    var bank_account: String,
+    var ifsc: String
+): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
-        parcel.readString(),
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
         parcel.readString()!!
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeString(address)
-        parcel.writeString(phone)
+        parcel.writeString(locality)
+        parcel.writeString(street_name)
+        parcel.writeString(landmark)
+        parcel.writeString(city)
+        parcel.writeString(state)
+        parcel.writeString(pincode)
+        parcel.writeString(mobile_number)
+        parcel.writeString(bank_account)
+        parcel.writeString(ifsc)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Location> {
-        override fun createFromParcel(parcel: Parcel): Location {
-            return Location(parcel)
+    companion object CREATOR : Parcelable.Creator<Supplier> {
+        override fun createFromParcel(parcel: Parcel): Supplier {
+            return Supplier(parcel)
         }
 
-        override fun newArray(size: Int): Array<Location?> {
+        override fun newArray(size: Int): Array<Supplier?> {
             return arrayOfNulls(size)
         }
+    }
+
+    fun getAddress(): String {
+        return locality + street_name + landmark + city + state + pincode
     }
 }
