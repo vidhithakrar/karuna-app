@@ -21,7 +21,6 @@ class AddSuppliersFragment : BundleFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // make a network call to fetch suppliers
         suppliersViewModel = ViewModelProviders.of(this).get(SuppliersViewModel::class.java)
         return inflater.inflate(R.layout.fragment_add_suppliers, container, false)
     }
@@ -30,7 +29,9 @@ class AddSuppliersFragment : BundleFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         suppliers_list_container?.layoutManager = LinearLayoutManager(context)
-        suppliers_list_container?.adapter =
-            SupplierAdapter(suppliersViewModel)
+        suppliers_list_container?.adapter = SupplierAdapter(suppliersViewModel)
+
+        suppliersViewModel.fetchSuppliers()
+        // pass callback to refresh the collection view
     }
 }
