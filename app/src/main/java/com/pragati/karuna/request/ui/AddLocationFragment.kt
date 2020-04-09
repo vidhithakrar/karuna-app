@@ -1,4 +1,4 @@
-package com.pragati.karuna.ui.location
+package com.pragati.karuna.request.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
-import com.pragati.karuna.models.Location
-import com.pragati.karuna.viewmodel.LocationViewModel
+import com.pragati.karuna.request.model.Location
+import com.pragati.karuna.request.viewmodel.LocationViewModel
 import kotlinx.android.synthetic.main.fragment_add_location.*
 
 class AddLocationFragment : BundleFragment() {

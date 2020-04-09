@@ -1,4 +1,4 @@
-package com.pragati.karuna.ui.home
+package com.pragati.karuna.home.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
-import com.pragati.karuna.models.Family
-import com.pragati.karuna.models.Kit
-import com.pragati.karuna.models.Location
-import com.pragati.karuna.viewmodel.HomeViewModel
+import com.pragati.karuna.request.model.Family
+import com.pragati.karuna.request.model.Kit
+import com.pragati.karuna.request.model.Location
+import com.pragati.karuna.home.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BundleFragment() {

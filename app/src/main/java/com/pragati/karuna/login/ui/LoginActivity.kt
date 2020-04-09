@@ -11,7 +11,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.pragati.karuna.MainActivity
+import com.pragati.karuna.home.ui.MainActivity
 import com.pragati.karuna.R
 import com.pragati.karuna.login.model.LoggedInUser
 import com.pragati.karuna.login.viewmodel.LoginViewModel

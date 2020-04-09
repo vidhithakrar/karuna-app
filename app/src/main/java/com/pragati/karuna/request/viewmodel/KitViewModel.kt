@@ -1,8 +1,8 @@
-package com.pragati.karuna.viewmodel
+package com.pragati.karuna.request.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pragati.karuna.models.Kit
+import com.pragati.karuna.request.model.Kit
 
 class KitViewModel : ViewModel() {
     val kit = MutableLiveData<Kit>()

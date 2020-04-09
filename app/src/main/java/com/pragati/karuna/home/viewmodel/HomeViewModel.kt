@@ -1,12 +1,12 @@
-package com.pragati.karuna.viewmodel
+package com.pragati.karuna.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pragati.karuna.models.Family
-import com.pragati.karuna.models.Kit
-import com.pragati.karuna.models.Location
-import com.pragati.karuna.models.Request
-import com.pragati.karuna.repository.RequestRepository
+import com.pragati.karuna.request.model.Family
+import com.pragati.karuna.request.model.Kit
+import com.pragati.karuna.request.model.Location
+import com.pragati.karuna.request.model.Request
+import com.pragati.karuna.request.repository.RequestRepository
 
 class HomeViewModel : ViewModel() {
     private var repository: RequestRepository
