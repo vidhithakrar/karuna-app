@@ -8,4 +8,6 @@
     <color name="edit_text_hint">#61000000</color>
     <color name="edit_text">#DE000000</color>
     <color name="edit_text_bg_tint">#1F000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFEA31</color>
 </resources>
