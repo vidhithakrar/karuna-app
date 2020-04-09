@@ -1,8 +1,7 @@
-package com.pragati.karuna.viewmodel
+package com.pragati.karuna.request.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pragati.karuna.models.Supplier
+import com.pragati.karuna.request.model.Supplier
 
 class SuppliersViewModel : ViewModel() {
     val suppliers = listOf<Supplier>()

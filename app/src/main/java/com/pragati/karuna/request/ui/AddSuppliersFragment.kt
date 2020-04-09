@@ -1,4 +1,4 @@
-package com.pragati.karuna.ui.suppliers
+package com.pragati.karuna.request.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
-import com.pragati.karuna.viewmodel.SuppliersViewModel
+import com.pragati.karuna.request.adapter.SupplierAdapter
+import com.pragati.karuna.request.viewmodel.SuppliersViewModel
 import kotlinx.android.synthetic.main.fragment_add_suppliers.*
 
 class AddSuppliersFragment : BundleFragment() {
@@ -29,6 +30,7 @@ class AddSuppliersFragment : BundleFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         suppliers_list_container?.layoutManager = LinearLayoutManager(context)
-        suppliers_list_container?.adapter = SupplierAdapter(suppliersViewModel)
+        suppliers_list_container?.adapter =
+            SupplierAdapter(suppliersViewModel)
     }
 }

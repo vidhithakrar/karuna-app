@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/nav_add_suppliers"
-        android:name="com.pragati.karuna.ui.suppliers.AddSuppliersFragment"
+        android:name="com.pragati.karuna.request.ui.AddSuppliersFragment"
         android:label="Service Provider"
         tools:layout="@layout/fragment_add_suppliers" />
 
