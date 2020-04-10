@@ -1,10 +1,9 @@
-package com.pragati.karuna.ui.landingpage
+package com.pragati.karuna
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.pragati.karuna.R
 import com.pragati.karuna.login.ui.LoginActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
