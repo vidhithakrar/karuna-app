@@ -38,6 +38,11 @@
     <string name="description">Kit Description</string>
     <string name="contact_name">Local Contact Name</string>
     <string name="local_contact_number">Local Contact Phone<sup>*</sup></string>
+    <string name="welcome_message">Welcome to</string>
+    <string name="karuna_relief">Karuna Relief</string>
+    <string name="secondary_line">Secondary line text to give some kind of info to the user. It should be some multiline text</string>
+    <string name="get_started">Let\'s Get Started</string>
+    <string name="is_first_time_installation">IS_FIRST_TIME_INSTALLATION</string>
 
     <string-array name="kit_types">
         <item>Dry Ration</item>
