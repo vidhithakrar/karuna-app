@@ -10,6 +10,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_family_leader"
+        style="@style/AppTheme.InputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -17,7 +18,6 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_family_leader"
-            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/family_owner_name"
@@ -33,7 +33,6 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_contact_number"
-            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/contact_number"
@@ -49,7 +48,6 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_no_of_adults"
-            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/no_of_adults"
@@ -65,7 +63,6 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_no_of_children"
-            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/no_of_children"
@@ -81,7 +78,6 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_no_of_kits"
-            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/no_of_kits"
@@ -90,7 +86,6 @@
 
     <Button
         android:id="@+id/btn_save"
-        style="@style/AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="22dp"
