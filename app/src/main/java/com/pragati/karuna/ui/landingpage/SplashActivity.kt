@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         val sharedPreference =
             getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
         val isFirstTimeInstallation =
-            sharedPreference.getBoolean(getString(R.string.isFirstTimeInstallation), true)
+            sharedPreference.getBoolean(getString(R.string.is_first_time_installation), true)
 
         if (!isFirstTimeInstallation)
             navigateToLoginActivity()
@@ -25,15 +25,13 @@ class SplashActivity : AppCompatActivity() {
         getStartedButton.setOnClickListener {
             if (isFirstTimeInstallation)
                 sharedPreference.edit()
-                    .putBoolean(getString(R.string.isFirstTimeInstallation), false)
+                    .putBoolean(getString(R.string.is_first_time_installation), false)
                     .apply()
             navigateToLoginActivity()
         }
     }
 
     private fun navigateToLoginActivity() {
-        // Go to Log in Activity
-        // For now, we are directly passing it to MainActivity
         startActivity(Intent(this, LoginActivity::class.java))
     }
 }
