@@ -14,7 +14,6 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Supplier
-import com.pragati.karuna.request.viewmodel.SuppliersViewModel
 import kotlinx.android.synthetic.main.supplier_details_cell.view.*
 
 class SupplierAdapter(val context: Context) : RecyclerView.Adapter<SupplierAdapter.SupplierCell>() {
@@ -64,9 +63,7 @@ class SupplierAdapter(val context: Context) : RecyclerView.Adapter<SupplierAdapt
             val tappedPosition = holder.makePhoneCall.tag as Int
             val phoneNumber = suppliers[tappedPosition].mobile_number
             val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse(phoneNumber)
-//            launch phone screen on tap of phone icon
-
+            intent.data = Uri.parse("tel:$phoneNumber")
             startActivity(context, intent, bundleOf())
         }
     }

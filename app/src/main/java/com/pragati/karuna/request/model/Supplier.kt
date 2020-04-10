@@ -66,4 +66,8 @@ class Supplier(
             return arrayOfNulls(size)
         }
     }
+
+    fun getAddress(): String {
+        return "$locality, $city, $state."
+    }
 }

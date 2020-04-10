@@ -8,8 +8,6 @@ import com.pragati.karuna.request.repository.SuppliersRepository
 
 class SuppliersViewModel : ViewModel() {
     var suppliers = MutableLiveData<List<Supplier>>()
-    var taggedSuppliers = mutableListOf<Supplier>()
-
 
      fun fetchSuppliers() {
         SuppliersRepository().fetchSuppliers(object :
