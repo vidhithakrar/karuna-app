@@ -54,6 +54,9 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginCredentialState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
+            if (!loginState.isDataValid)
+                loading.visibility = View.GONE
+
             if (loginState.usernameError != null) {
                 username.error = getString(loginState.usernameError)
             }

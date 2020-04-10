@@ -65,6 +65,10 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     private fun isPasswordValid(password: String): Boolean {
-        return !password.isBlank()
+        return !password.isBlank() && password.length > MaxPasswordLength
+    }
+
+    companion object {
+        const val MaxPasswordLength = 6
     }
 }
