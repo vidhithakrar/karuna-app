@@ -91,9 +91,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun goToHomeActivity(model: LoggedInUser) {
         val intent = Intent(this, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
-        finish()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
