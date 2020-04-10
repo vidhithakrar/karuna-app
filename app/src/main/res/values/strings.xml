@@ -43,6 +43,11 @@
     <string name="secondary_line">Secondary line text to give some kind of info to the user. It should be some multiline text</string>
     <string name="get_started">Let\'s Get Started</string>
     <string name="is_first_time_installation">IS_FIRST_TIME_INSTALLATION</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_about_us">About us</string>
+    <string name="action_about_us_title">Karuna</string>
+    <string name="about_us_description">This app is designed to help the people in need during the pandemic or edpidemic. We believe in helping and supporting one another.</string>
+    <string name="about_us_heading">About NGO</string>
 
     <string-array name="kit_types">
         <item>Dry Ration</item>

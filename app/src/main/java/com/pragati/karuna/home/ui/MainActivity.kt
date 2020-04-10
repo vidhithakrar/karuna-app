@@ -1,7 +1,9 @@
 package com.pragati.karuna.home.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -13,6 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.phelat.navigationresult.FragmentResultActivity
 import com.pragati.karuna.R
+import com.pragati.karuna.login.ui.LoginActivity
+import com.pragati.karuna.request.ui.AboutUsActivity
 
 class MainActivity : FragmentResultActivity() {
 
@@ -54,5 +58,24 @@ class MainActivity : FragmentResultActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.action_about_us -> {
+                Intent(this, AboutUsActivity::class.java).also {
+                  startActivity(it)
+                }
+            }
+            R.id.action_logout -> {
+                Intent(this, LoginActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    .also {
+                        startActivity(it)
+                        finish()
+                    }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
