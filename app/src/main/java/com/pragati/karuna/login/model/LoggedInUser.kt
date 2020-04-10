@@ -5,5 +5,5 @@ package com.pragati.karuna.login.model
  */
 data class LoggedInUser(
     val userId: String,
-    val displayName: String?
+    val email: String?
 )

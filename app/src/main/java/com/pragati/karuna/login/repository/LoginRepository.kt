@@ -7,17 +7,15 @@ class LoginRepository(private val auth: FirebaseAuth) {
 
     fun login(username: String, password: String, completionListener: LoginCompletionListener) {
         auth.signInWithEmailAndPassword(username, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    completionListener.onComplete(auth.currentUser?.let {
-                        LoggedInUser(
-                            it.uid,
-                            it.email
-                        )
-                    })
-                } else {
-                    completionListener.onComplete(null)
-                }
+            .addOnSuccessListener { result ->
+                completionListener.onComplete(result.user?.let {
+                    LoggedInUser(
+                        it.uid,
+                        it.email
+                    )
+                })
+            }.addOnFailureListener {
+                completionListener.onComplete(null)
             }
     }
 }
