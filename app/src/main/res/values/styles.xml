@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/AppTheme.Button</item>
+        <item name="android:editTextStyle">@style/AppTheme.EditText</item>
+        <item name="android:spinnerStyle">@style/AppTheme.Spinner</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -29,11 +32,9 @@
 
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
         <item name="android:padding">10dp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:background">@color/button_bg</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/button_text</item>
+        <item name="android:background">@drawable/selector_button</item>
     </style>
 
     <style name="AppTheme.Spinner" parent="Widget.AppCompat.Spinner" />

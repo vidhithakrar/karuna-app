@@ -10,7 +10,6 @@
 
     <Spinner
         android:id="@+id/sp_kit_type"
-        style="@style/AppTheme.Spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -27,7 +26,6 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_kit_description"
-            style="@style/AppTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/description"
@@ -36,10 +34,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_next"
-        style="@style/AppTheme.Button"
+        android:id="@+id/btn_save"
         android:layout_width="89dp"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:layout_marginTop="22dp"
         android:text="@string/save"
         app:layout_constraintRight_toRightOf="parent"
