@@ -11,11 +11,12 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.pragati.karuna.home.ui.MainActivity
 import com.pragati.karuna.R
+import com.pragati.karuna.home.ui.MainActivity
 import com.pragati.karuna.login.model.LoggedInUser
 import com.pragati.karuna.login.viewmodel.LoginViewModel
 import com.pragati.karuna.login.viewmodel.LoginViewModelFactory
+import com.pragati.karuna.util.KeyboardUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -45,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
-            loading.visibility = View.VISIBLE
             login(username, password)
         }
     }
@@ -81,6 +81,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(username: EditText, password: EditText) {
+        KeyboardUtil.hideKeyboard(this)
+        loading.visibility = View.VISIBLE
         loginViewModel.login(
             username.text.toString(),
             password.text.toString()
@@ -95,7 +97,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+        login_error.visibility = View.VISIBLE
+        username.text.clear()
+        password.text.clear()
+        username.requestFocus()
     }
 }
 

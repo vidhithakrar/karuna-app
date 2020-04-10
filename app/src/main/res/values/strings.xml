@@ -13,7 +13,7 @@
     <string name="action_login">Login</string>
     <string name="invalid_email">Invalid Username</string>
     <string name="invalid_password">Password must be greater than 6 characters</string>
-    <string name="login_failed">Login failed</string>
+    <string name="login_failed">Invalid credentials</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
