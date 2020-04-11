@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="request_item_view">
+        <attr name="expandedActionDrawable" format="integer" />
+        <attr name="expendedActionName" format="string" />
+        <attr name="expandedName" format="string" />
+        <attr name="collapsedName" format="string" />
+        <attr name="contentVisible" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
@@ -26,18 +25,14 @@ class HomeFragment : BundleFragment() {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
 
         homeViewModel.families.observe(viewLifecycleOwner, Observer { families ->
-            textView.text = "${families.size} Families"
         })
 
         homeViewModel.location.observe(viewLifecycleOwner, Observer { location ->
-            tv_1.text = location.address
         })
 
         homeViewModel.kit.observe(viewLifecycleOwner, Observer { kit ->
-            tv_2.text = kit.description
         })
 
         return root
@@ -68,16 +63,12 @@ class HomeFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn1.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_location, 0) })
+        locationDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_location, 0) })
 
-        btn2.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_family, 1) })
+        familiesView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_family, 1) })
 
-        btn3.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_kit, 2) })
+        kitDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_kit, 2) })
 
-        btn4.setOnClickListener(View.OnClickListener {
-            homeViewModel.addRequest()
-        })
-
-        btn5.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_suppliers, 3) })
+        familiesView.setOnClickListener(View.OnClickListener { familiesView.bindExpandedState() })
     }
 }
