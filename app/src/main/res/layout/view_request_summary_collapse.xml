@@ -8,15 +8,15 @@
     android:layout_marginTop="4dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
     app:cardBackgroundColor="@color/text_view_white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="24dp"
         android:paddingTop="24dp"
+        android:paddingStart="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="24dp">
 
@@ -31,9 +31,9 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Location Details" />
 
-        <Button
+        <TextView
             android:id="@+id/login"
-            style="@style/AppTheme.Button"
+            style="@style/AppTheme.TextButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/action_add"

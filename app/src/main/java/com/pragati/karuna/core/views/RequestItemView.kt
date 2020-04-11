@@ -4,8 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.pragati.karuna.R
+import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.setLeftDrawable
+import com.pragati.karuna.util.visible
 import com.pragati.karuna.util.visibleIf
+import kotlinx.android.synthetic.main.view_request_summary.view.*
 import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
 import kotlinx.android.synthetic.main.view_request_summary_expand.view.*
 
@@ -24,7 +27,17 @@ class RequestItemView(context: Context, attrs: AttributeSet) : LinearLayout(cont
         actionButton.text = expandedActionName.orEmpty()
         actionButton.setLeftDrawable(actionDrawable)
         contentGroup.visibleIf(isContentVisible)
+        bindCollapsedState()
         attributes.recycle()
     }
 
+    fun bindExpandedState() {
+        collapsedLayoutState.gone()
+        expandLayoutState.visible()
+    }
+
+    fun bindCollapsedState() {
+        collapsedLayoutState.visible()
+        expandLayoutState.gone()
+    }
 }

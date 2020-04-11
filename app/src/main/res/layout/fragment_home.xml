@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp">
 
         <com.pragati.karuna.core.views.RequestItemView
             android:id="@+id/locationDetailView"
@@ -44,6 +45,7 @@
             app:expendedActionName="Modify"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:contentVisible="false"
             app:layout_constraintTop_toBottomOf="@id/kitDetailView" />
 
         <com.pragati.karuna.core.views.RequestItemView
@@ -55,6 +57,7 @@
             app:expandedName="Supplier Details"
             app:expendedActionName="Edit Details"
             app:layout_constraintEnd_toEndOf="parent"
+            app:contentVisible="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/familiesView" />
 
@@ -68,6 +71,7 @@
             app:expandedName="Volunteers"
             app:expendedActionName="Edit Details"
             app:layout_constraintEnd_toEndOf="parent"
+            app:contentVisible="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/suppliersView" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,5 +69,7 @@ class HomeFragment : BundleFragment() {
         familiesView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_family, 1) })
 
         kitDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_kit, 2) })
+
+        familiesView.setOnClickListener(View.OnClickListener { familiesView.bindExpandedState() })
     }
 }
