@@ -35,14 +35,13 @@ class AddSuppliersFragment : BundleFragment() {
         suppliers_list_container?.adapter = SupplierAdapter(context!!)
 
         confirm_suppliers_button?.setOnClickListener(View.OnClickListener {
-            var taggedSuppliers = (suppliers_list_container?.adapter as SupplierAdapter).getTaggedSuppliers()
-            val bundle = bundleOf()
-            navigateUp(2, bundle)
+            val taggedSupplier = (suppliers_list_container?.adapter as SupplierAdapter).getTaggedSuppliers()[0]
+            val bundle = bundleOf("supplier" to taggedSupplier)
+            navigateUp(3, bundle)
         })
 
         suppliersViewModel.suppliers.observe(viewLifecycleOwner, Observer {
             (suppliers_list_container?.adapter as SupplierAdapter).setSuppliers(suppliersViewModel.suppliers.value!!)
-            (suppliers_list_container?.adapter as SupplierAdapter).notifyDataSetChanged()
         })
 
         suppliersViewModel.fetchSuppliers()
