@@ -174,6 +174,14 @@ class HomeFragment : BundleFragment() {
         suppliersView.actionButton.setOnClickListener {
             navigateToSupplierDetails()
         }
+
+        volunteersView.addDetails.setOnClickListener {
+            navigateToVolunteersView()
+        }
+
+        volunteersView.actionButton.setOnClickListener {
+            navigateToVolunteersView()
+        }
     }
 
     private fun displayConfirmationDialog(action: () -> Unit) {
@@ -194,6 +202,13 @@ class HomeFragment : BundleFragment() {
         navigate(
             R.id.action_add_suppliers,
             3
+        )
+    }
+
+    private fun navigateToVolunteersView() {
+        navigate(
+            R.id.action_add_volunteers,
+            4
         )
     }
 

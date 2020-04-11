@@ -49,6 +49,13 @@
         <argument
             android:name="suppliers"
             app:argType="com.pragati.karuna.request.model.Supplier" />
+
+        <action
+            android:id="@+id/action_add_volunteers"
+            app:destination="@id/nav_add_volunteers" />
+        <argument
+            android:name="volunteers"
+            app:argType="com.pragati.karuna.request.model.Volunteer" />
     </fragment>
 
     <fragment
@@ -76,6 +83,12 @@
         android:name="com.pragati.karuna.request.ui.AddSuppliersFragment"
         android:label="Service Provider"
         tools:layout="@layout/fragment_add_suppliers" />
+
+    <fragment
+        android:id="@+id/nav_add_volunteers"
+        android:name="com.pragati.karuna.request.ui.AddVolunteerFragment"
+        android:label="Volunteer"
+        tools:layout="@layout/fragment_add_volunteer" />
 
     <fragment
         android:id="@+id/nav_gallery"
