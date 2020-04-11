@@ -3,7 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_my_requests">
+
+    <fragment
+        android:id="@+id/nav_my_requests"
+        android:name="com.pragati.karuna.myrequests.ui.MyRequestsFragment"
+        android:label="@string/my_requests"
+        tools:layout="@layout/fragment_my_requests"
+        app:startDestination="@id/action_home">
+        <action
+            android:id="@+id/action_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_home"
@@ -32,21 +43,12 @@
             android:name="kit"
             app:argType="com.pragati.karuna.request.model.Kit" />
 
-
         <action
             android:id="@+id/action_add_suppliers"
             app:destination="@id/nav_add_suppliers" />
         <argument
             android:name="suppliers"
             app:argType="com.pragati.karuna.request.model.Supplier" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_my_requests"
-        android:name="com.pragati.karuna.myrequests.ui.MyRequestsFragment"
-        android:label="@string/my_requests"
-        tools:layout="@layout/fragment_my_requests">
-
     </fragment>
 
     <fragment

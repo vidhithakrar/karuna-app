@@ -36,6 +36,10 @@ class MyRequestsFragment : BundleFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRequestAdapter()
+
+        fab.setOnClickListener {
+            navigate(R.id.action_home, 4)
+        }
     }
 
     private fun setRequestsObserver() {
