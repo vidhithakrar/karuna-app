@@ -14,9 +14,13 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Supplier
+import com.pragati.karuna.request.ui.AddSuppliersFragment
 import kotlinx.android.synthetic.main.supplier_details_cell.view.*
 
-class SupplierAdapter(val context: Context) : RecyclerView.Adapter<SupplierAdapter.SupplierCell>() {
+class SupplierAdapter(
+    val context: Context,
+    val supplierSelectedListener: AddSuppliersFragment.OnSupplierSelected
+) : RecyclerView.Adapter<SupplierAdapter.SupplierCell>() {
 
     private var suppliers: List<Supplier> = listOf()
     private var taggedSuppliers: MutableList<Supplier> = mutableListOf()
@@ -35,6 +39,10 @@ class SupplierAdapter(val context: Context) : RecyclerView.Adapter<SupplierAdapt
         val holder =  SupplierCell(view)
         holder.checkBox.setOnClickListener {
             val checkedPosition = holder.adapterPosition
+
+            if(taggedSuppliers.isEmpty()) {
+                supplierSelectedListener.onSelected()
+            }
 
             taggedSuppliers.clear()
             taggedSuppliers.add(suppliers[checkedPosition])
