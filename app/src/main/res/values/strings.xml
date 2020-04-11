@@ -11,6 +11,9 @@
     <string name="prompt_username">Username <font fgcolor="#FF0000">*</font></string>
     <string name="prompt_password">Password <font fgcolor="#FF0000">*</font></string>
     <string name="action_login">Login</string>
+    <string name="action_create_request">Create Request</string>
+    <string name="action_close_request">Close Request</string>
+    <string name="action_add">Add</string>
     <string name="invalid_email">Invalid Username</string>
     <string name="invalid_password">Password must be greater than 6 characters</string>
     <string name="login_failed">Invalid credentials</string>
@@ -62,4 +65,12 @@
     <string name="my_requests">My Requests</string>
     <string name="no_requests">There are no food \nrequests at the moment</string>
     <string name="create_new_request">Click on \"+\" to create a new request</string>
+
+    <string name="request_location_details">Location Details</string>
+    <string name="action_edit">Edit Details</string>
+    <string name="request_kill_details">Kit Details</string>
+    <string name="request_families">Families</string>
+    <string name="action_modify">Modify</string>
+    <string name="request_supplier_details">Supplier Details</string>
+    <string name="request_volunteers">Volunteers</string>
 </resources>
