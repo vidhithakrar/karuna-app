@@ -12,6 +12,8 @@ import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.core.models.RequestItem
 import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.request.model.*
+import com.pragati.karuna.util.gone
+import com.pragati.karuna.util.visible
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
 import kotlinx.android.synthetic.main.view_request_summary_expand.view.*
@@ -47,6 +49,10 @@ class HomeFragment : BundleFragment() {
 
         homeViewModel.supplier.observe(viewLifecycleOwner, Observer { supplier ->
             suppliersView.bindExpandedState(RequestItem.SupplierItem(supplier = supplier))
+        })
+
+        homeViewModel.requestState.observe(viewLifecycleOwner, Observer { request ->
+            loading.gone()
         })
 
         return root
@@ -105,6 +111,11 @@ class HomeFragment : BundleFragment() {
             homeViewModel.addRequest()
         }
 
+        closeRequestButton.setOnClickListener {
+            loading.visible()
+            homeViewModel.closeRequest()
+        }
+
         locationDetailView.addDetails.setOnClickListener {
             navigateToLocationDetails()
         }
@@ -132,7 +143,7 @@ class HomeFragment : BundleFragment() {
         suppliersView.addDetails.setOnClickListener {
             navigateToSupplierDetails()
         }
-
+        
         suppliersView.actionButton.setOnClickListener {
             navigateToSupplierDetails()
         }

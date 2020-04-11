@@ -74,4 +74,10 @@
     <string name="action_modify">Modify</string>
     <string name="request_supplier_details">Supplier Details</string>
     <string name="request_volunteers">Volunteers</string>
+
+    <string name="request_close_failure">There is an error occurred while closing the request.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="confirm">Confirm</string>
+
 </resources>

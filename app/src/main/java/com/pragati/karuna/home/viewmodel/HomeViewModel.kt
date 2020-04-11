@@ -2,14 +2,16 @@ package com.pragati.karuna.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.pragati.karuna.R
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.repository.RequestRepository
 
 class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
-    var kit = MutableLiveData<Kit>()
-    var families = MutableLiveData<MutableList<Family>>()
-    var location = MutableLiveData<Location>()
-    var supplier = MutableLiveData<Supplier>()
+    val kit = MutableLiveData<Kit>()
+    val families = MutableLiveData<MutableList<Family>>()
+    val location = MutableLiveData<Location>()
+    val supplier = MutableLiveData<Supplier>()
+    val requestState = MutableLiveData<RequestState>()
 
     init {
         families.value = mutableListOf();
@@ -37,8 +39,20 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
             location = location.value!!,
             families = families.value!!,
             kit = kit.value!!,
-            supplierId = supplier?.value?.id ?: ""
+            supplierId = supplier.value?.id ?: ""
         )
         repository.addRequest(request)
+    }
+
+    fun closeRequest() {
+        repository.closeRequest(
+            id = "",
+            onClosed = {
+                requestState.value = RequestState(closed = true)
+            },
+            onFailure = {
+                requestState.value = RequestState(failure = R.string.request_close_failure)
+            }
+        )
     }
 }
