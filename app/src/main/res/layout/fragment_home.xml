@@ -1,78 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/createRequestButton"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp">
+
+            <com.pragati.karuna.core.views.RequestItemView
+                android:id="@+id/locationDetailView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedName="@string/request_location_details"
+                app:expandedActionDrawable="@drawable/ic_edit"
+                app:expandedName="@string/request_location_details"
+                app:expendedActionName="@string/action_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.pragati.karuna.core.views.RequestItemView
+                android:id="@+id/kitDetailView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedName="@string/request_kill_details"
+                app:expandedActionDrawable="@drawable/ic_edit"
+                app:expandedName="@string/request_kill_details"
+                app:expendedActionName="@string/action_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/locationDetailView" />
+
+            <com.pragati.karuna.core.views.RequestItemView
+                android:id="@+id/familiesView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedName="@string/request_families"
+                app:contentVisible="false"
+                app:expandedActionDrawable="@drawable/ic_add_circle"
+                app:expandedName="@string/request_families"
+                app:expendedActionName="@string/action_modify"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/kitDetailView" />
+
+            <com.pragati.karuna.core.views.RequestItemView
+                android:id="@+id/suppliersView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedName="@string/request_supplier_details"
+                app:contentVisible="false"
+                app:expandedActionDrawable="@drawable/ic_edit"
+                app:expandedName="@string/request_supplier_details"
+                app:expendedActionName="@string/action_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/familiesView" />
+
+
+            <com.pragati.karuna.core.views.RequestItemView
+                android:id="@+id/volunteersView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedName="@string/request_volunteers"
+                app:contentVisible="false"
+                app:expandedActionDrawable="@drawable/ic_edit"
+                app:expandedName="@string/request_volunteers"
+                app:expendedActionName="@string/action_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/suppliersView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/createRequestButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:text="@string/action_create_request"
+        android:layout_margin="8dp"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/AppTheme.Button"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.pragati.karuna.core.views.RequestItemView
-            android:id="@+id/locationDetailView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:collapsedName="@string/request_location_details"
-            app:expandedActionDrawable="@drawable/ic_edit"
-            app:expandedName="@string/request_location_details"
-            app:expendedActionName="@string/action_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.pragati.karuna.core.views.RequestItemView
-            android:id="@+id/kitDetailView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:collapsedName="@string/request_kill_details"
-            app:expandedActionDrawable="@drawable/ic_edit"
-            app:expandedName="@string/request_kill_details"
-            app:expendedActionName="@string/action_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/locationDetailView" />
-
-        <com.pragati.karuna.core.views.RequestItemView
-            android:id="@+id/familiesView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:collapsedName="@string/request_families"
-            app:expandedActionDrawable="@drawable/ic_add_circle"
-            app:expandedName="@string/request_families"
-            app:expendedActionName="@string/action_modify"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:contentVisible="false"
-            app:layout_constraintTop_toBottomOf="@id/kitDetailView" />
-
-        <com.pragati.karuna.core.views.RequestItemView
-            android:id="@+id/suppliersView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:collapsedName="@string/request_supplier_details"
-            app:expandedActionDrawable="@drawable/ic_edit"
-            app:expandedName="@string/request_supplier_details"
-            app:expendedActionName="@string/action_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:contentVisible="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/familiesView" />
-
-
-        <com.pragati.karuna.core.views.RequestItemView
-            android:id="@+id/volunteersView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:collapsedName="@string/request_volunteers"
-            app:expandedActionDrawable="@drawable/ic_edit"
-            app:expandedName="@string/request_volunteers"
-            app:expendedActionName="@string/action_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:contentVisible="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/suppliersView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
