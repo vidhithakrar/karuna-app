@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/collapsedLayoutState"
+        layout="@layout/view_request_summary_collapse" />
+
+    <include
+        android:id="@+id/expandLayoutState"
+        layout="@layout/view_request_summary_expand"
+        android:visibility="gone"/>
+</FrameLayout>
