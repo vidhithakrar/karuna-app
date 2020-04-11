@@ -64,6 +64,11 @@ class HomeFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        createRequestButton.setOnClickListener {
+            homeViewModel.addRequest()
+        }
+
         locationDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_location, 0) })
 
         familiesView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_family, 1) })
