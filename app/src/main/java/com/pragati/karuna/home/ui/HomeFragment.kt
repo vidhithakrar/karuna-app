@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
+import com.pragati.karuna.core.models.RequestItem
 import com.pragati.karuna.request.model.Family
 import com.pragati.karuna.request.model.Kit
 import com.pragati.karuna.request.model.Location
@@ -69,6 +70,6 @@ class HomeFragment : BundleFragment() {
 
         kitDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_kit, 2) })
 
-        familiesView.setOnClickListener(View.OnClickListener { familiesView.bindExpandedState() })
+        familiesView.setOnClickListener(View.OnClickListener {  })
     }
 }
