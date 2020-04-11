@@ -25,22 +25,21 @@
                 android:layout_height="wrap_content" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/supplier_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Supplier Name" />
 
                 <TextView
                     android:id="@+id/supplier_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Supplier address" />
 
             </LinearLayout>
@@ -49,9 +48,8 @@
                 android:id="@+id/supplier_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/edit_text"
-                android:src="@android:drawable/stat_sys_phone_call" />
+                android:backgroundTint="#00000000"
+                android:src="@drawable/ic_call_black_24dp" />
 
         </LinearLayout>
 

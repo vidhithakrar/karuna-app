@@ -2,7 +2,6 @@ package com.pragati.karuna.request.repository
 
 import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.pragati.karuna.request.model.Supplier
 
@@ -11,6 +10,8 @@ class SuppliersRepository {
     private val TAG = "SuppliersRepository - "
 
     fun fetchSuppliers(completionListener: SuppliersCompletionListener) {
+        // Todo: Needs to add 2 filters - fetch docs by supplier type and by city/pincode
+
         db.collection("suppliers").get().addOnSuccessListener { document ->
             val suppliers = mutableListOf<Supplier>()
             if (document != null) {
@@ -21,13 +22,17 @@ class SuppliersRepository {
 //                        suppliers.add(supplier)
 //                    }
 
-                    // locality, city, state and mobileNumber fields are missing in DB for few records This needs to be removed
+                    // to be removed once DB gets fix
                     val name = data["name"] as String
                     val id = data["id"] as String
                     val supplierType = data["supplier_type"] as String
+                    val locality = data["locality"] as String
+                    val city = data["city"] as String
+                    val state = data["state"] as String
+                    val mobileNumber = data["mobile_number"] as Long
 
-                    val hardCodedSupplier = Supplier(name, id, "locality", "city", "state", supplierType, "9123456780")
-                    suppliers.add(hardCodedSupplier)
+                    val parsedSupplier = Supplier(name, id, locality, city, state, supplierType, mobileNumber)
+                    suppliers.add(parsedSupplier)
                 }
                 completionListener.onComplete(suppliers)
             } else {
