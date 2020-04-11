@@ -4,6 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.pragati.karuna.R
+import com.pragati.karuna.core.models.RequestItem
+import com.pragati.karuna.request.model.Family
+import com.pragati.karuna.request.model.Kit
+import com.pragati.karuna.request.model.Location
+import com.pragati.karuna.request.model.Supplier
 import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.setLeftDrawable
 import com.pragati.karuna.util.visible
@@ -31,9 +36,33 @@ class RequestItemView(context: Context, attrs: AttributeSet) : LinearLayout(cont
         attributes.recycle()
     }
 
-    fun bindExpandedState() {
+    fun bindExpandedState(requestItem: RequestItem) {
         collapsedLayoutState.gone()
         expandLayoutState.visible()
+        when(requestItem) {
+             is RequestItem.LocationItem -> { bindLocationDetails(requestItem.location)}
+             is RequestItem.KitItem -> { bindKitDetails(requestItem.kitItem) }
+             is RequestItem.FamilyItem -> { bindFamilyDetails(requestItem.family) }
+             is RequestItem.SupplierItem -> { bindSupplierDetails(requestItem.supplier) }
+        }
+    }
+
+    private fun bindSupplierDetails(supplier: Supplier) {
+        nameExpandState.text = "${supplier.name}"
+    }
+
+    private fun bindFamilyDetails(family: Family) {
+        nameExpandState.text = "${family.noOfAdults} Families"
+    }
+
+    private fun bindKitDetails(kit: Kit) {
+        content1.text = kit.type
+        content2.text = kit.description
+    }
+
+    private fun bindLocationDetails(location: Location) {
+        content1.text = location.address
+        content2.text = location.pin
     }
 
     fun bindCollapsedState() {
