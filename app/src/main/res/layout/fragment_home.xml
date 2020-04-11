@@ -61,7 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:collapsedName="@string/request_supplier_details"
-                app:contentVisible="false"
                 app:expandedActionDrawable="@drawable/ic_edit"
                 app:expandedName="@string/request_supplier_details"
                 app:expendedActionName="@string/action_edit"

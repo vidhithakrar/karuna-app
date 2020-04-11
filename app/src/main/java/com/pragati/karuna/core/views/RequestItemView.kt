@@ -48,7 +48,8 @@ class RequestItemView(context: Context, attrs: AttributeSet) : LinearLayout(cont
     }
 
     private fun bindSupplierDetails(supplier: Supplier) {
-        nameExpandState.text = "${supplier.name}"
+        content1.text = supplier.name
+        content2.text = "${supplier.locality} ${supplier.city}"
     }
 
     private fun bindFamilyDetails(families: List<Family>) {
