@@ -13,7 +13,6 @@ import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Kit
 import com.pragati.karuna.request.viewmodel.KitViewModel
 import kotlinx.android.synthetic.main.fragment_add_kit.*
-import kotlinx.android.synthetic.main.fragment_add_location.btn_next
 
 class AddKitFragment : BundleFragment() {
 
@@ -36,12 +35,8 @@ class AddKitFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        btn_next.setOnClickListener(View.OnClickListener {
-            var kit = Kit(
-                sp_kit_type.selectedItem.toString(),
-                et_kit_description.text.toString()
-            )
+        btn_save.setOnClickListener(View.OnClickListener {
+            var kit = Kit(sp_kit_type.selectedItem.toString(), et_kit_description.text.toString())
             var bundle = bundleOf("kit" to kit)
             navigateUp(2, bundle)
         })

@@ -5,8 +5,8 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
+    <!--Login-->
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_username">Username <font fgcolor="#FF0000">*</font></string>
     <string name="prompt_password">Password <font fgcolor="#FF0000">*</font></string>
@@ -15,28 +15,31 @@
     <string name="invalid_password">Password must be greater than 6 characters</string>
     <string name="login_failed">Invalid credentials</string>
 
+    <!--Navigation Drawer-->
+    <string name="action_settings">Settings</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
+    <!--Location-->
     <string name="address_and_location">Address &amp; Location</string>
-    <string name="family_details">Family Details</string>
-
-    <string name="address">Address</string>
+    <string name="address">Address<sup>*</sup></string>
     <string name="area">Area/Landmark<sup>*</sup></string>
     <string name="pin">PIN Code</string>
-    <string name="family_header">Families</string>
+    <string name="address_error">Address is mandatory</string>
+    <string name="landmark_error">Landmark is mandatory</string>
+
+    <!--Family-->
+    <string name="family_details">Family Details</string>
     <string name="no_of_families">Number of Families</string>
-    <string name="save">Save</string>
-    <string name="family_leader">Family Leader</string>
-    <string name="contact_number">Contact Number</string>
-    <string name="no_of_members">Number of Family Members</string>
+    <string name="family_owner_name">Family Owner Name</string>
+    <string name="contact_number">Contact Number<sup>*</sup></string>
     <string name="no_of_kits">Number of Food Kits</string>
-    <string name="kit_type_prompt">Kit Type</string>
-    <string name="kit_details">Kit Details</string>
-    <string name="description">Kit Description</string>
     <string name="contact_name">Local Contact Name</string>
-    <string name="local_contact_number">Local Contact Phone<sup>*</sup></string>
+    <string name="local_contact_number">Local Contact Phone</string>
+    <string name="no_of_children">Number of Children</string>
+    <string name="no_of_adults">Number of Adults</string>
+
     <string name="welcome_message">Welcome to</string>
     <string name="karuna_relief">Karuna Relief</string>
     <string name="login_message">Karuna Relief Login</string>
@@ -78,8 +81,14 @@
     <string name="about_us_donation_request">Your kind donation will be exempted from Tax under section 80G of the IT Act. We will provide you with relevant references and receipts.</string>
     <string name="about_us_app_description">Karuna app is designed to help distribute the FOOD KITS to the people in need.</string>
 
+    <!--Kit-->
+    <string name="kit_type_prompt">Kit Type<sup>*</sup></string>
+    <string name="kit_details">Kit Details</string>
+    <string name="description">Kit Description</string>
     <string-array name="kit_types">
         <item>Dry Ration</item>
         <item>Cooked Food</item>
     </string-array>
+
+    <string name="save">Save</string>
 </resources>

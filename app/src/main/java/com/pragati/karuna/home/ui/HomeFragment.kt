@@ -77,5 +77,7 @@ class HomeFragment : BundleFragment() {
         btn4.setOnClickListener(View.OnClickListener {
             homeViewModel.addRequest()
         })
+
+        btn5.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_suppliers, 3) })
     }
 }
