@@ -11,13 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
-import com.pragati.karuna.request.adapter.SupplierAdapter
-import com.pragati.karuna.request.model.Volunteer
-import com.pragati.karuna.request.viewmodel.SuppliersViewModel
+import com.pragati.karuna.request.adapter.VolunteersAdapter
 import com.pragati.karuna.request.viewmodel.VolunteerViewModel
 import com.pragati.karuna.util.disable
 import com.pragati.karuna.util.enable
-import kotlinx.android.synthetic.main.fragment_add_suppliers.*
+import kotlinx.android.synthetic.main.fragment_add_volunteer.*
 
 class AddVolunteerFragment : BundleFragment() {
 
@@ -29,35 +27,32 @@ class AddVolunteerFragment : BundleFragment() {
         savedInstanceState: Bundle?
     ): View? {
         volunteerViewModel = ViewModelProviders.of(this).get(VolunteerViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_add_suppliers, container, false)
+        return inflater.inflate(R.layout.fragment_add_volunteer, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        confirm_suppliers_button?.disable()
-        suppliers_list_container?.layoutManager = LinearLayoutManager(context)
-//        suppliers_list_container?.adapter = SupplierAdapter(context!!, object: OnSupplierSelected {
-//            override fun onSelected() {
-//                confirm_suppliers_button.enable()
-//            }
+        confirm_volunteers_button?.disable()
+        volunteers_list_container?.layoutManager = LinearLayoutManager(context)
+        volunteers_list_container?.adapter = VolunteersAdapter(context!!, object:
+            AddSuppliersFragment.OnSupplierSelected {
+            override fun onSelected() {
+                confirm_volunteers_button.enable()
+            }
+        })
 
-//        })
+        confirm_volunteers_button?.setOnClickListener(View.OnClickListener {
+            val taggedVolunteer = (volunteers_list_container?.adapter as VolunteersAdapter).getTaggedVolunteers()[0]
+            val bundle = bundleOf("volunteer" to taggedVolunteer)
+            navigateUp(4, bundle)
+        })
 
-//        confirm_suppliers_button?.setOnClickListener(View.OnClickListener {
-//            val taggedSupplier = (suppliers_list_container?.adapter as SupplierAdapter).getTaggedSuppliers()[0]
-//            val bundle = bundleOf("supplier" to taggedSupplier)
-//            navigateUp(3, bundle)
-//        })
-//
-//        volunteerViewModel.volunteers.observe(viewLifecycleOwner, Observer {
-////            (suppliers_list_container?.adapter as SupplierAdapter).setSuppliers(volunteerViewModel.volunteers.value!!)
-//        })
-//
-//        volunteerViewModel.fetchSuppliers()
+        volunteerViewModel.volunteers.observe(viewLifecycleOwner, Observer {
+            (volunteers_list_container?.adapter as VolunteersAdapter).setVolunteers(volunteerViewModel.volunteers.value!!)
+        })
+
+        volunteerViewModel.fetchSuppliers()
     }
 
-    interface OnSupplierSelected {
-        fun onSelected()
-    }
 }

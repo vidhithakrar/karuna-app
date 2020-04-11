@@ -26,12 +26,12 @@ class VolunteerRepository {
                     // to be removed once DB gets fix
                     val name = data["name"] as String
                     val id = data["id"] as String
-                    val locality = data["locality"] as String?
-                    val city = data["city"] as String?
-                    val state = data["state"] as String?
-                    val mobileNumber = data["mobile_number"] as Long
+//                    val locality = data["locality"] as String?
+//                    val city = data["city"] as String?
+//                    val state = data["state"] as String?
+//                    val mobileNumber = data["mobile_number"] as Long
 
-                    val parsedVolunteer = Volunteer(name, id, locality, city, state, mobileNumber)
+                    val parsedVolunteer = Volunteer(name, id, "locality", "city", "state", 8786446677)
                     volunteers.add(parsedVolunteer)
                 }
                 completionListener.onComplete(volunteers)
