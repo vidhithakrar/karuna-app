@@ -1,9 +1,11 @@
 package com.pragati.karuna.home.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
@@ -112,8 +114,10 @@ class HomeFragment : BundleFragment() {
         }
 
         closeRequestButton.setOnClickListener {
-            loading.visible()
-            homeViewModel.closeRequest()
+            displayConfirmationDialog {
+                loading.visible()
+                homeViewModel.closeRequest()
+            }
         }
 
         locationDetailView.addDetails.setOnClickListener {
@@ -143,10 +147,24 @@ class HomeFragment : BundleFragment() {
         suppliersView.addDetails.setOnClickListener {
             navigateToSupplierDetails()
         }
-        
+
         suppliersView.actionButton.setOnClickListener {
             navigateToSupplierDetails()
         }
+    }
+
+    private fun displayConfirmationDialog(action: () -> Unit) {
+        AlertDialog.Builder(activity as Context, R.style.alertDialog)
+            .setTitle(R.string.confirm)
+            .setMessage(R.string.request_close_confirmation_message)
+            .setPositiveButton(
+                R.string.yes
+            ) { d, _ ->
+                d.dismiss()
+                action()
+            }
+            .setNegativeButton(R.string.no) { d, _ -> d.dismiss() }
+            .show()
     }
 
     private fun navigateToSupplierDetails() {

@@ -79,5 +79,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="confirm">Confirm</string>
+    <string name="request_close_confirmation_message">Are you sure you want to close this request?</string>
 
 </resources>

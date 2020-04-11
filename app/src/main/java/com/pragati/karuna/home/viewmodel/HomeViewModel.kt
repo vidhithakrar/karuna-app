@@ -46,6 +46,7 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
 
     fun closeRequest() {
         repository.closeRequest(
+            //FIXME
             id = "",
             onClosed = {
                 requestState.value = RequestState(closed = true)
