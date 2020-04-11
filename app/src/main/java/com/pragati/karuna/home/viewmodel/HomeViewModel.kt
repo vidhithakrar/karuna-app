@@ -8,8 +8,7 @@ import com.pragati.karuna.request.model.Location
 import com.pragati.karuna.request.model.Request
 import com.pragati.karuna.request.repository.RequestRepository
 
-class HomeViewModel : ViewModel() {
-    private var repository: RequestRepository
+class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
     var kit = MutableLiveData<Kit>()
     var families = MutableLiveData<MutableList<Family>>()
     var location = MutableLiveData<Location>()
@@ -18,7 +17,6 @@ class HomeViewModel : ViewModel() {
         kit.value = Kit()
         families.value = mutableListOf()
         location.value = Location()
-        repository = RequestRepository()
     }
 
     fun addLocation(location: Location) {
@@ -35,7 +33,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun addRequest() {
-        var request = Request(
+        val request = Request(
             location.value!!,
             families.value!!,
             kit.value!!

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -15,7 +14,7 @@ import com.pragati.karuna.R
 import com.pragati.karuna.home.ui.MainActivity
 import com.pragati.karuna.login.model.LoggedInUser
 import com.pragati.karuna.login.viewmodel.LoginViewModel
-import com.pragati.karuna.login.viewmodel.LoginViewModelFactory
+import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.util.KeyboardUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -28,7 +27,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         loginViewModel =
-            ViewModelProviders.of(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
+            ViewModelProviders.of(this,
+                ViewModelFactory()
+            ).get(LoginViewModel::class.java)
 
         observeLoginCredentialState(username, password)
         observeLoginState(loading)

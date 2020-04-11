@@ -9,7 +9,7 @@ import com.pragati.karuna.login.repository.LoginCompletionListener
 import com.pragati.karuna.login.repository.LoginRepository
 import com.pragati.karuna.login.model.LoggedInUser
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginCredentialState>()
     val loginCredentialState: LiveData<LoginCredentialState> = _loginForm
@@ -25,7 +25,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     private fun doLogin(username: String, password: String) {
-        loginRepository.login(username, password, object :
+        repository.login(username, password, object :
             LoginCompletionListener {
             override fun onComplete(user: LoggedInUser?) {
                 if (user != null)

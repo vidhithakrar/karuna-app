@@ -8,11 +8,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
-import com.pragati.karuna.core.models.RequestItem
+import com.pragati.karuna.ViewModelFactory
+import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.request.model.Family
 import com.pragati.karuna.request.model.Kit
 import com.pragati.karuna.request.model.Location
-import com.pragati.karuna.home.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BundleFragment() {
@@ -24,7 +24,7 @@ class HomeFragment : BundleFragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+            ViewModelProviders.of(this, ViewModelFactory()).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.families.observe(viewLifecycleOwner, Observer { families ->
