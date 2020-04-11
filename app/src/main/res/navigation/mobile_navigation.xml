@@ -31,29 +31,39 @@
         <argument
             android:name="kit"
             app:argType="com.pragati.karuna.request.model.Kit" />
+
+
+        <action
+            android:id="@+id/action_add_suppliers"
+            app:destination="@id/nav_add_suppliers" />
+        <argument
+            android:name="suppliers"
+            app:argType="com.pragati.karuna.request.model.Supplier" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_add_location"
         android:name="com.pragati.karuna.request.ui.AddLocationFragment"
         android:label="@string/address_and_location"
-        tools:layout="@layout/fragment_add_location"></fragment>
+        tools:layout="@layout/fragment_add_location" />
 
     <fragment
         android:id="@+id/nav_add_family"
         android:name="com.pragati.karuna.request.ui.AddFamilyFragment"
         android:label="@string/family_details"
-        tools:layout="@layout/fragment_add_family">
-
-    </fragment>
+        tools:layout="@layout/fragment_add_family" />
 
     <fragment
         android:id="@+id/nav_add_kit"
         android:name="com.pragati.karuna.request.ui.AddKitFragment"
         android:label="@string/kit_details"
-        tools:layout="@layout/fragment_add_kit">
+        tools:layout="@layout/fragment_add_kit" />
 
-    </fragment>
+    <fragment
+        android:id="@+id/nav_add_suppliers"
+        android:name="com.pragati.karuna.request.ui.AddSuppliersFragment"
+        android:label="Service Provider"
+        tools:layout="@layout/fragment_add_suppliers" />
 
     <fragment
         android:id="@+id/nav_gallery"
