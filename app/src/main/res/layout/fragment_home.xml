@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/buttonContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/createRequestButton"
-        android:fillViewport="true">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -60,7 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:collapsedName="@string/request_supplier_details"
-                app:contentVisible="false"
                 app:expandedActionDrawable="@drawable/ic_edit"
                 app:expandedName="@string/request_supplier_details"
                 app:expendedActionName="@string/action_edit"
@@ -84,18 +84,56 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <Button
-        android:id="@+id/createRequestButton"
+    <LinearLayout
+        android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/action_create_request"
-        android:layout_margin="8dp"
-        android:textAllCaps="false"
-        android:enabled="false"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.2">
+
+        <Button
+            android:id="@+id/createRequestButton"
+            style="@style/AppTheme.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="8dp"
+            android:enabled="false"
+            android:text="@string/action_create_request"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/closeRequestButton"
+            style="@style/AppTheme.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="8dp"
+            android:text="@string/action_close_request"
+            android:textAllCaps="false"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/container"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

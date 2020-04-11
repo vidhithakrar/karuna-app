@@ -2,6 +2,7 @@ package com.pragati.karuna.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.pragati.karuna.R
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.repository.RequestRepository
 
@@ -11,6 +12,7 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
     var families = MutableLiveData<MutableList<Family>>()
     var location = MutableLiveData<Location>()
     var supplier = MutableLiveData<Supplier>()
+    val requestState = MutableLiveData<RequestState>()
 
     init {
         families.value = mutableListOf();
@@ -39,12 +41,38 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
             location = location.value!!,
             families = families.value!!,
             kit = kit.value!!,
-            supplierId = supplier?.value?.id ?: ""
+            supplierId = supplier.value?.id ?: ""
         )
         if (request.requestId.isNullOrEmpty()) {
-            repository.addRequest(request)
+            repository.addRequest(request, {
+                requestState.value =
+                    RequestState(RequestState.CREATED, R.string.request_create_success)
+            }, { error ->
+                requestState.value =
+                    RequestState(RequestState.FAILED, R.string.request_create_failure)
+            })
         } else {
-            repository.updateRequest(request)
+            repository.updateRequest(request, {
+                requestState.value =
+                    RequestState(RequestState.UPDATED, R.string.request_update_success)
+            }, {
+                requestState.value =
+                    RequestState(RequestState.FAILED, R.string.request_update_failure)
+            })
         }
+    }
+
+    fun closeRequest() {
+        repository.closeRequest(
+            id = requestId.value!!,
+            onClosed = {
+                requestState.value =
+                    RequestState(RequestState.CLOSED, R.string.request_close_success)
+            },
+            onFailure = {
+                requestState.value =
+                    RequestState(RequestState.FAILED, R.string.request_close_failure)
+            }
+        )
     }
 }

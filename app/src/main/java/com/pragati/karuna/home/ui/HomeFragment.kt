@@ -1,17 +1,25 @@
 package com.pragati.karuna.home.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.phelat.navigationresult.BundleFragment
+import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.core.models.RequestItem
 import com.pragati.karuna.home.viewmodel.HomeViewModel
+import com.pragati.karuna.home.viewmodel.RequestState
 import com.pragati.karuna.request.model.*
+import com.pragati.karuna.util.gone
+import com.pragati.karuna.util.visible
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
 import kotlinx.android.synthetic.main.view_request_summary_expand.view.*
@@ -29,8 +37,11 @@ class HomeFragment : BundleFragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.requestId.observe(viewLifecycleOwner, Observer { id ->
-            createRequestButton.text =
-                getString(if (id.isNullOrEmpty()) R.string.create_new_request else R.string.update_request)
+            id.isNullOrEmpty().also { isNull ->
+                createRequestButton.text =
+                    getString(if (isNull) R.string.create_new_request else R.string.update_request)
+                closeRequestButton.visibility = if (isNull) View.GONE else View.VISIBLE
+            }
         })
 
         homeViewModel.families.observe(viewLifecycleOwner, Observer { families ->
@@ -52,6 +63,17 @@ class HomeFragment : BundleFragment() {
 
         homeViewModel.supplier.observe(viewLifecycleOwner, Observer { supplier ->
             suppliersView.bindExpandedState(RequestItem.SupplierItem(supplier = supplier))
+        })
+
+        homeViewModel.requestState.observe(viewLifecycleOwner, Observer { request ->
+            loading.gone()
+            Toast.makeText(activity, getString(request.message), Toast.LENGTH_SHORT).show()
+            when (request.state) {
+                RequestState.CREATED, RequestState.UPDATED, RequestState.CLOSED -> {
+                    var bundle = bundleOf("requestId" to homeViewModel.requestId.value)
+                    navigateUp(R.id.action_home, bundle)
+                }
+            }
         })
 
         return root
@@ -110,6 +132,13 @@ class HomeFragment : BundleFragment() {
             homeViewModel.addOrUpdateRequest()
         }
 
+        closeRequestButton.setOnClickListener {
+            displayConfirmationDialog {
+                loading.visible()
+                homeViewModel.closeRequest()
+            }
+        }
+
         locationDetailView.addDetails.setOnClickListener {
             navigateToLocationDetails()
         }
@@ -141,6 +170,20 @@ class HomeFragment : BundleFragment() {
         suppliersView.actionButton.setOnClickListener {
             navigateToSupplierDetails()
         }
+    }
+
+    private fun displayConfirmationDialog(action: () -> Unit) {
+        AlertDialog.Builder(activity as Context, R.style.alertDialog)
+            .setTitle(R.string.confirm)
+            .setMessage(R.string.request_close_confirmation_message)
+            .setPositiveButton(
+                R.string.yes
+            ) { d, _ ->
+                d.dismiss()
+                action()
+            }
+            .setNegativeButton(R.string.no) { d, _ -> d.dismiss() }
+            .show()
     }
 
     private fun navigateToSupplierDetails() {
