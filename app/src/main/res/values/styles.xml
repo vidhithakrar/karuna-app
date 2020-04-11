@@ -79,5 +79,4 @@
         <item name="android:textColorHint">@color/light_edit_text_color</item>
         <item name="android:selectAllOnFocus">true</item>
     </style>
-
 </resources>

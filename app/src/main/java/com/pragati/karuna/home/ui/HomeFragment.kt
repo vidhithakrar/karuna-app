@@ -28,6 +28,11 @@ class HomeFragment : BundleFragment() {
             ViewModelProviders.of(this, ViewModelFactory()).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
+        homeViewModel.requestId.observe(viewLifecycleOwner, Observer { id ->
+            createRequestButton.text =
+                getString(if (id.isNullOrEmpty()) R.string.create_new_request else R.string.update_request)
+        })
+
         homeViewModel.families.observe(viewLifecycleOwner, Observer { families ->
             if (families.size > 0) {
                 familiesView.bindExpandedState(RequestItem.FamilyItem(families = families))
@@ -53,7 +58,7 @@ class HomeFragment : BundleFragment() {
     }
 
     private fun setRequestData(request: Request) {
-        createRequestButton.setText(getString(R.string.update_request))
+        homeViewModel.requestId.value = request.requestId
         homeViewModel.families.value = request.families
         homeViewModel.location.value = request.location
         homeViewModel.kit.value = request.kit
@@ -102,7 +107,7 @@ class HomeFragment : BundleFragment() {
         }
 
         createRequestButton.setOnClickListener {
-            homeViewModel.addRequest()
+            homeViewModel.addOrUpdateRequest()
         }
 
         locationDetailView.addDetails.setOnClickListener {

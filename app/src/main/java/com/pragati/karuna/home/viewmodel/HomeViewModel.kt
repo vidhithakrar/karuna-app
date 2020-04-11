@@ -6,6 +6,7 @@ import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.repository.RequestRepository
 
 class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
+    var requestId = MutableLiveData<String?>()
     var kit = MutableLiveData<Kit>()
     var families = MutableLiveData<MutableList<Family>>()
     var location = MutableLiveData<Location>()
@@ -32,13 +33,18 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
         this.supplier.value = supplier
     }
 
-    fun addRequest() {
+    fun addOrUpdateRequest() {
         val request = Request(
+            requestId = requestId.value,
             location = location.value!!,
             families = families.value!!,
             kit = kit.value!!,
             supplierId = supplier?.value?.id ?: ""
         )
-        repository.addRequest(request)
+        if (request.requestId.isNullOrEmpty()) {
+            repository.addRequest(request)
+        } else {
+            repository.updateRequest(request)
+        }
     }
 }

@@ -20,13 +20,27 @@ class RequestRepository(private val auth: FirebaseAuth, private val db: Firebase
         }
     }
 
+    fun updateRequest(request: Request) {
+        val requestDao = request.transform(auth.currentUser!!.uid)
+        db.collection("requests").document(request.requestId!!).set(requestDao)
+            .addOnSuccessListener {
+                Log.d(Tag, "Request with id updated : ${request.requestId!!}")
+            }.addOnFailureListener { error ->
+            Log.e(Tag, "Request failed with exception: $error")
+        }
+    }
+
     fun loadRequests(loadRequestsListener: LoadRequestsListener) {
         var requests = mutableListOf<Request>()
-        db.collection("requests").whereEqualTo("uid", auth.currentUser!!.uid).whereEqualTo("status", Status.CREATED).get()
+        db.collection("requests").whereEqualTo("uid", auth.currentUser!!.uid)
+            .whereEqualTo("status", Status.CREATED).get()
             .addOnSuccessListener { result ->
                 result.forEach { document ->
                     Log.d("Request", "${document.data}")
-                    requests.add(document.toObject<Request>())
+                    document.toObject<Request>().also { request ->
+                        request.requestId = document.id
+                        requests.add(request)
+                    }
                 }
                 loadRequestsListener.onComplete(requests)
             }.addOnFailureListener { error ->
