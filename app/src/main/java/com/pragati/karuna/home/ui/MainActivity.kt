@@ -61,10 +61,10 @@ class MainActivity : FragmentResultActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.action_about_us -> {
                 Intent(this, AboutUsActivity::class.java).also {
-                  startActivity(it)
+                    startActivity(it)
                 }
             }
             R.id.action_logout -> {
