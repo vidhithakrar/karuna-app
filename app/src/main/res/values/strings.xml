@@ -60,4 +60,6 @@
 
     <!--My Requests-->
     <string name="my_requests">My Requests</string>
+    <string name="no_requests">There are no food \nrequests at the moment</string>
+    <string name="create_new_request">Click on \"+\" to create a new request</string>
 </resources>
