@@ -31,18 +31,28 @@ class HomeFragment : BundleFragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.families.observe(viewLifecycleOwner, Observer { families ->
-            familiesView.bindExpandedState(RequestItem.FamilyItem(families = families))
+            if (families.size > 0) {
+                familiesView.bindExpandedState(RequestItem.FamilyItem(families = families))
+                validateRequestData()
+            }
         })
 
         homeViewModel.location.observe(viewLifecycleOwner, Observer { location ->
             locationDetailView.bindExpandedState(RequestItem.LocationItem(location = location))
+            validateRequestData()
         })
 
         homeViewModel.kit.observe(viewLifecycleOwner, Observer { kit ->
             kitDetailView.bindExpandedState(RequestItem.KitItem(kit = kit))
+            validateRequestData()
         })
 
         return root
+    }
+
+    fun validateRequestData() {
+        createRequestButton.isEnabled =
+            homeViewModel.families.value?.isNotEmpty()!! && homeViewModel.location.value != null && homeViewModel.kit.value != null
     }
 
     override fun onFragmentResult(requestCode: Int, bundle: Bundle) {
@@ -104,7 +114,7 @@ class HomeFragment : BundleFragment() {
         suppliersView.addDetails.setOnClickListener {
             navigateToSupplierDetails()
         }
-        
+
         suppliersView.actionButton.setOnClickListener {
             navigateToSupplierDetails()
         }

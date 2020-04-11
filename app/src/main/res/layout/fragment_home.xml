@@ -92,10 +92,10 @@
         android:text="@string/action_create_request"
         android:layout_margin="8dp"
         android:textAllCaps="false"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        style="@style/AppTheme.Button"/>
+        app:layout_constraintVertical_bias="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

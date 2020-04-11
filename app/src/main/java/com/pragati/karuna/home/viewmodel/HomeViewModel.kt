@@ -13,6 +13,10 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
     var families = MutableLiveData<MutableList<Family>>()
     var location = MutableLiveData<Location>()
 
+    init {
+        families.value = mutableListOf();
+    }
+
     fun addLocation(location: Location) {
         this.location.value = location
     }

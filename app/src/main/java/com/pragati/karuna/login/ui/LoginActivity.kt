@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.pragati.karuna.R
+import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.home.ui.MainActivity
 import com.pragati.karuna.login.model.LoggedInUser
 import com.pragati.karuna.login.viewmodel.LoginViewModel
-import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.util.KeyboardUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -27,7 +27,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         loginViewModel =
-            ViewModelProviders.of(this,
+            ViewModelProviders.of(
+                this,
                 ViewModelFactory()
             ).get(LoginViewModel::class.java)
 
