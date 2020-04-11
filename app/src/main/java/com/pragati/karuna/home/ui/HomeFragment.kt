@@ -70,6 +70,6 @@ class HomeFragment : BundleFragment() {
 
         kitDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_kit, 2) })
 
-        familiesView.setOnClickListener(View.OnClickListener {  })
+        suppliersView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_suppliers, 3) })
     }
 }
