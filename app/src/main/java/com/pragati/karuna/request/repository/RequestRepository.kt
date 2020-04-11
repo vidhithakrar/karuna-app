@@ -65,4 +65,3 @@ private fun currentTime(): Long {
     val instance = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
     return instance.timeInMillis
 }
-

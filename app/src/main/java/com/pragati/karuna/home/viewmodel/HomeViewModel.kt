@@ -32,9 +32,9 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
 
     fun addRequest() {
         val request = Request(
-            location.value!!,
-            families.value!!,
-            kit.value!!
+            location = location.value!!,
+            families = families.value!!,
+            kit = kit.value!!
         )
         repository.addRequest(request)
     }

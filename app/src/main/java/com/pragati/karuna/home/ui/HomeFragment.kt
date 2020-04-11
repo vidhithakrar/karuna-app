@@ -14,6 +14,7 @@ import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.request.model.Family
 import com.pragati.karuna.request.model.Kit
 import com.pragati.karuna.request.model.Location
+import com.pragati.karuna.request.model.Request
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
 import kotlinx.android.synthetic.main.view_request_summary_expand.view.*
@@ -50,7 +51,14 @@ class HomeFragment : BundleFragment() {
         return root
     }
 
-    fun validateRequestData() {
+    private fun setRequestData(request: Request) {
+        createRequestButton.setText(getString(R.string.update_request))
+        homeViewModel.families.value = request.families
+        homeViewModel.location.value = request.location
+        homeViewModel.kit.value = request.kit
+    }
+
+    private fun validateRequestData() {
         createRequestButton.isEnabled =
             homeViewModel.families.value?.isNotEmpty()!! && homeViewModel.location.value != null && homeViewModel.kit.value != null
     }
@@ -82,6 +90,10 @@ class HomeFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.get("request")?.let { request ->
+            setRequestData(request as Request)
+        }
 
         createRequestButton.setOnClickListener {
             homeViewModel.addRequest()

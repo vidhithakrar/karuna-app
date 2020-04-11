@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Keep
 @Parcelize
 data class Request(
+    var requestId: String? = null,
     var location: Location = Location(),
     var families: MutableList<Family> = mutableListOf(),
     var kit: Kit = Kit()
