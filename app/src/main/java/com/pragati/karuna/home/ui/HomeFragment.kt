@@ -14,6 +14,8 @@ import com.pragati.karuna.request.model.Family
 import com.pragati.karuna.request.model.Kit
 import com.pragati.karuna.request.model.Location
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
+import kotlinx.android.synthetic.main.view_request_summary_expand.view.*
 
 class HomeFragment : BundleFragment() {
 
@@ -28,12 +30,15 @@ class HomeFragment : BundleFragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.families.observe(viewLifecycleOwner, Observer { families ->
+            familiesView.bindExpandedState(RequestItem.FamilyItem(families = families))
         })
 
         homeViewModel.location.observe(viewLifecycleOwner, Observer { location ->
+            locationDetailView.bindExpandedState(RequestItem.LocationItem(location = location))
         })
 
         homeViewModel.kit.observe(viewLifecycleOwner, Observer { kit ->
+            kitDetailView.bindExpandedState(RequestItem.KitItem(kit = kit))
         })
 
         return root
@@ -44,19 +49,21 @@ class HomeFragment : BundleFragment() {
 
         when (requestCode) {
             0 -> {
-                var location = bundle?.get("location") as Location?
-                location?.let { homeViewModel.addLocation(it) }
+                val location = bundle?.get("location") as Location?
+                location?.let {
+                    homeViewModel.addLocation(it)
+                }
             }
 
             1 -> {
-                var family = bundle?.get("family") as Family?
+                val family = bundle?.get("family") as Family?
                 family?.let {
                     homeViewModel.addFamily(it)
                 }
             }
 
             2 -> {
-                var kit = bundle?.get("kit") as Kit?
+                val kit = bundle?.get("kit") as Kit?
                 kit?.let { homeViewModel.addKit(it) }
             }
         }
@@ -69,12 +76,61 @@ class HomeFragment : BundleFragment() {
             homeViewModel.addRequest()
         }
 
-        locationDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_location, 0) })
+        locationDetailView.addDetails.setOnClickListener {
+            navigateToLocationDetails()
+        }
 
-        familiesView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_family, 1) })
+        locationDetailView.actionButton.setOnClickListener {
+            navigateToLocationDetails()
+        }
 
-        kitDetailView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_kit, 2) })
+        familiesView.addDetails.setOnClickListener {
+            navigateToFamilyDetails()
+        }
 
-        suppliersView.setOnClickListener(View.OnClickListener { navigate(R.id.action_add_suppliers, 3) })
+        familiesView.actionButton.setOnClickListener {
+            navigateToFamilyDetails()
+        }
+
+        kitDetailView.addDetails.setOnClickListener {
+            navigateToKitDetails()
+        }
+
+        kitDetailView.actionButton.setOnClickListener {
+            navigateToKitDetails()
+        }
+
+        suppliersView.addDetails.setOnClickListener {
+            navigateToSupplierDetails()
+        }
+        
+        suppliersView.actionButton.setOnClickListener {
+            navigateToSupplierDetails()
+        }
+    }
+
+    private fun navigateToSupplierDetails() {
+        navigate(
+            R.id.action_add_suppliers,
+            3
+        )
+    }
+
+    private fun navigateToKitDetails() {
+        navigate(R.id.action_add_kit, 2)
+    }
+
+    private fun navigateToFamilyDetails() {
+        navigate(
+            R.id.action_add_family,
+            1
+        )
+    }
+
+    private fun navigateToLocationDetails() {
+        navigate(
+            R.id.action_add_location,
+            0
+        )
     }
 }

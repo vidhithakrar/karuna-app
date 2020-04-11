@@ -41,8 +41,8 @@ class RequestItemView(context: Context, attrs: AttributeSet) : LinearLayout(cont
         expandLayoutState.visible()
         when(requestItem) {
              is RequestItem.LocationItem -> { bindLocationDetails(requestItem.location)}
-             is RequestItem.KitItem -> { bindKitDetails(requestItem.kitItem) }
-             is RequestItem.FamilyItem -> { bindFamilyDetails(requestItem.family) }
+             is RequestItem.KitItem -> { bindKitDetails(requestItem.kit) }
+             is RequestItem.FamilyItem -> { bindFamilyDetails(requestItem.families) }
              is RequestItem.SupplierItem -> { bindSupplierDetails(requestItem.supplier) }
         }
     }
@@ -51,8 +51,8 @@ class RequestItemView(context: Context, attrs: AttributeSet) : LinearLayout(cont
         nameExpandState.text = "${supplier.name}"
     }
 
-    private fun bindFamilyDetails(family: Family) {
-        nameExpandState.text = "${family.noOfAdults} Families"
+    private fun bindFamilyDetails(families: List<Family>) {
+        nameExpandState.text = "${families.size} Families"
     }
 
     private fun bindKitDetails(kit: Kit) {

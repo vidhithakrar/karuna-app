@@ -26,13 +26,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/login"
+            app:layout_constraintEnd_toStartOf="@id/addDetails"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Location Details" />
 
         <TextView
-            android:id="@+id/login"
+            android:id="@+id/addDetails"
             style="@style/AppTheme.TextButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
