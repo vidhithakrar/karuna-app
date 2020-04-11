@@ -86,4 +86,9 @@
     <string name="confirm">Confirm</string>
     <string name="request_close_confirmation_message">Are you sure you want to close this request?</string>
 
+    <plurals name="no_of_families">
+        <item quantity="one">%d Family</item>
+        <item quantity="other">%d Families</item>
+    </plurals>
+
 </resources>

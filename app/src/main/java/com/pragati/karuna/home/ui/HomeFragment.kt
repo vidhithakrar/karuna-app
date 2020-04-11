@@ -37,10 +37,14 @@ class HomeFragment : BundleFragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.requestId.observe(viewLifecycleOwner, Observer { id ->
-            id.isNullOrEmpty().also { isNull ->
-                createRequestButton.text =
-                    getString(if (isNull) R.string.create_new_request else R.string.update_request)
-                closeRequestButton.visibility = if (isNull) View.GONE else View.VISIBLE
+            if (id.isNullOrEmpty()) {
+                closeRequestButton.gone()
+                guideline.setGuidelinePercent(1.0f)
+                createRequestButton.text = getString(R.string.create_new_request)
+            } else {
+                closeRequestButton.visible()
+                guideline.setGuidelinePercent(0.5f)
+                createRequestButton.text = getString(R.string.update_request)
             }
         })
 

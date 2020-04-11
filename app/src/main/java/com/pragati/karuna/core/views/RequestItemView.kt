@@ -53,7 +53,7 @@ class RequestItemView(context: Context, attrs: AttributeSet) : LinearLayout(cont
     }
 
     private fun bindFamilyDetails(families: List<Family>) {
-        nameExpandState.text = "${families.size} Families"
+        nameExpandState.text = context.resources.getQuantityString(R.plurals.no_of_families, families.size, families.size)
     }
 
     private fun bindKitDetails(kit: Kit) {

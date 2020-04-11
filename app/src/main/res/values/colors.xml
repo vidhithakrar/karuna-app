@@ -5,7 +5,6 @@
     <color name="colorPrimary">#2F1345</color>
     <color name="colorPrimaryDark">#2F1345</color>
     <color name="colorAccent">#FFEA31</color>
-    <color name="button_text">#2F1345</color>
     <color name="button_bg">#FFEA31</color>
     <color name="text_color">#FFEA31</color>
     <color name="button_bg_pressed">#D7C422</color>
@@ -18,4 +17,5 @@
     <color name="light_edit_text_color">#D6D6D6</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
+    <color name="sub_title">#828282</color>
 </resources>

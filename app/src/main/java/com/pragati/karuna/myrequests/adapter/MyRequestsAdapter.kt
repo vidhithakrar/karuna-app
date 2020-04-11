@@ -7,6 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Request
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class MyRequestsAdapter(var myRequests: List<Request>, var itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<MyRequestsAdapter.MyRequestsViewHolder>() {
@@ -23,12 +26,22 @@ class MyRequestsAdapter(var myRequests: List<Request>, var itemClickListener: On
     override fun onBindViewHolder(holder: MyRequestsViewHolder, position: Int) {
         holder.title.text = myRequests.get(position).location.address
         holder.subTitle.text = myRequests.get(position).location.landmark
-        holder.accessory.text = "${myRequests.get(position).families.count()} Families"
-        holder.subAccessory.text = myRequests.get(position).kit.type
+        holder.accessory.text = holder.itemView.context.resources.getQuantityString(
+            R.plurals.no_of_families,
+            myRequests.get(position).families.count(), myRequests.get(position).families.count()
+        )
+        holder.subAccessory.text = dateFromTimeStamp(myRequests.get(position).createdTimestamp)
         holder.itemView.setOnClickListener {
             itemClickListener.onItemClick(position)
         }
     }
+
+    private fun dateFromTimeStamp(timeStamp: Long): String {
+        val dateFormat = SimpleDateFormat("dd MMM yyyy '|' HH:mm")
+        dateFormat.setTimeZone(TimeZone.getDefault())
+        return dateFormat.format(timeStamp)
+    }
+
 
     companion object
     class MyRequestsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

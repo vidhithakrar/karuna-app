@@ -11,5 +11,7 @@ data class Request(
     var location: Location = Location(),
     var families: MutableList<Family> = mutableListOf(),
     var kit: Kit = Kit(),
-    var supplierId: String = ""
+    var supplierId: String = "",
+    val createdTimestamp: Long = 0,
+    val modifiedTimestamp: Long = 0
 ) : Parcelable

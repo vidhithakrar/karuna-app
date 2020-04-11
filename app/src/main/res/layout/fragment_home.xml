@@ -9,7 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/buttonContainer"
+        app:layout_constraintBottom_toTopOf="@id/createRequestButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -84,39 +84,44 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:id="@+id/buttonContainer"
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/createRequestButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        android:text="@string/action_create_request"
+        android:textAllCaps="false"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.2">
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/createRequestButton"
-            style="@style/AppTheme.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_margin="8dp"
-            android:enabled="false"
-            android:text="@string/action_create_request"
-            android:textAllCaps="false" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="1.0" />
 
-        <Button
-            android:id="@+id/closeRequestButton"
-            style="@style/AppTheme.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_margin="8dp"
-            android:text="@string/action_close_request"
-            android:textAllCaps="false"
-            android:visibility="gone" />
+    <Button
+        android:id="@+id/closeRequestButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:text="@string/action_close_request"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline" />
 
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/loading"
@@ -133,7 +138,6 @@
         app:layout_constraintStart_toStartOf="@id/container"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
