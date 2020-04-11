@@ -8,6 +8,7 @@ import com.google.firebase.ktx.Firebase
 import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.login.repository.LoginRepository
 import com.pragati.karuna.login.viewmodel.LoginViewModel
+import com.pragati.karuna.myrequests.viewmodel.MyRequestsViewModel
 import com.pragati.karuna.request.repository.RequestRepository
 
 class ViewModelFactory : ViewModelProvider.Factory {
@@ -23,6 +24,11 @@ class ViewModelFactory : ViewModelProvider.Factory {
         }
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(
+                repository = RequestRepository(FirebaseAuth.getInstance(), Firebase.firestore)
+            ) as T
+        }
+        if (modelClass.isAssignableFrom(MyRequestsViewModel::class.java)) {
+            return MyRequestsViewModel(
                 repository = RequestRepository(FirebaseAuth.getInstance(), Firebase.firestore)
             ) as T
         }

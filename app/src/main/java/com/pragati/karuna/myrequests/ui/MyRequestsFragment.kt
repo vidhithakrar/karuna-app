@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
+import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.myrequests.adapter.MyRequestsAdapter
 import com.pragati.karuna.myrequests.adapter.OnItemClickListener
 import com.pragati.karuna.myrequests.adapter.VerticalSpaceItemDecoration
@@ -26,7 +27,7 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         requestsViewModel =
-            ViewModelProviders.of(this).get(MyRequestsViewModel::class.java)
+            ViewModelProviders.of(this, ViewModelFactory()).get(MyRequestsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_my_requests, container, false)
 
         setRequestsObserver()
@@ -38,7 +39,7 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRequestAdapter()
-
+        requestsViewModel.loadRequests()
         fab.setOnClickListener {
             navigate(R.id.action_home, 4)
         }
@@ -81,11 +82,10 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
             addItemDecoration(VerticalSpaceItemDecoration(60))
             adapter = myRequestsAdapter
         }
-        requestsViewModel.loadRequests()
     }
 
     override fun onItemClick(position: Int) {
         var bundle = bundleOf("request" to requestsViewModel.requests.value?.get(position))
-        navigate(R.id.action_home, bundle,4)
+        navigate(R.id.action_home, bundle, 4)
     }
 }
