@@ -22,7 +22,7 @@ class RequestRepository(private val auth: FirebaseAuth, private val db: Firebase
 
     fun loadRequests(loadRequestsListener: LoadRequestsListener) {
         var requests = mutableListOf<Request>()
-        db.collection("requests").whereEqualTo("uid", auth.currentUser!!.uid).get()
+        db.collection("requests").whereEqualTo("uid", auth.currentUser!!.uid).whereEqualTo("status", Status.CREATED).get()
             .addOnSuccessListener { result ->
                 result.forEach { document ->
                     Log.d("Request", "${document.data}")
