@@ -9,5 +9,6 @@ import kotlinx.android.parcel.Parcelize
 data class Request(
     var location: Location = Location(),
     var families: MutableList<Family> = mutableListOf(),
-    var kit: Kit = Kit()
+    var kit: Kit = Kit(),
+    var supplierId: String = ""
 ) : Parcelable
