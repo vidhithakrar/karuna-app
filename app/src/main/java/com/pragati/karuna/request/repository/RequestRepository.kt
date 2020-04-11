@@ -28,7 +28,7 @@ enum class Status {
     CREATED, CLOSED
 }
 
-fun Request.transform(uid: String): RequestDao {
+private fun Request.transform(uid: String): RequestDao {
     return RequestDao(
         this.location,
         this.families,
@@ -40,7 +40,7 @@ fun Request.transform(uid: String): RequestDao {
     )
 }
 
-fun currentTime() : Long {
+private fun currentTime() : Long {
     val instance = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
     return instance.timeInMillis
 }
