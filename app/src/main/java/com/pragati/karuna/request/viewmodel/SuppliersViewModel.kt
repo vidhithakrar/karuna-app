@@ -17,6 +17,7 @@ class SuppliersViewModel : ViewModel() {
             }
 
             override fun onError() {
+
             }
         })
      }

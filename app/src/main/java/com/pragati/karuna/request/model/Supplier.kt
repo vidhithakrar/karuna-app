@@ -7,26 +7,13 @@ import androidx.annotation.Keep
 @Keep
 class Supplier(
     var name: String,
-    var supplierType: String,
+    var id: String,
     var locality: String,
-    var street_name: String,
-    var landmark: String,
     var city: String,
     var state: String,
-    var pincode: String,
-    var mobile_number: String,
-    var name_in_bank_accoutn: String,
-    var bank_account_number: String,
-    var account_type: String,
-    var ifsc: String
-): Parcelable {
+    var supplier_type: String,
+    var mobile_number: String): Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -39,18 +26,12 @@ class Supplier(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeString(supplierType)
+        parcel.writeString(id)
         parcel.writeString(locality)
-        parcel.writeString(street_name)
-        parcel.writeString(landmark)
         parcel.writeString(city)
         parcel.writeString(state)
-        parcel.writeString(pincode)
+        parcel.writeString(supplier_type)
         parcel.writeString(mobile_number)
-        parcel.writeString(name_in_bank_accoutn)
-        parcel.writeString(bank_account_number)
-        parcel.writeString(account_type)
-        parcel.writeString(ifsc)
     }
 
     override fun describeContents(): Int {
