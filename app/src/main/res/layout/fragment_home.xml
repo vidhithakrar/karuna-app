@@ -67,4 +67,12 @@
         android:layout_marginTop="16dp"
         android:text="Add Request"
         app:layout_constraintTop_toBottomOf="@id/btn3" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Suppliers"
+        app:layout_constraintTop_toBottomOf="@id/btn4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
