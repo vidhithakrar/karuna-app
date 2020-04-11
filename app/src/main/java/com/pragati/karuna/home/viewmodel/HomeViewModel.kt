@@ -12,6 +12,7 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
     var families = MutableLiveData<MutableList<Family>>()
     var location = MutableLiveData<Location>()
     var supplier = MutableLiveData<Supplier>()
+    var volunteer = MutableLiveData<Volunteer>()
     val requestState = MutableLiveData<RequestState>()
 
     init {
@@ -35,13 +36,18 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
         this.supplier.value = supplier
     }
 
+    fun addVolunteers(volunteer: Volunteer) {
+        this.volunteer.value = volunteer
+    }
+
     fun addOrUpdateRequest() {
         val request = Request(
             requestId = requestId.value,
             location = location.value!!,
             families = families.value!!,
             kit = kit.value!!,
-            supplierId = supplier.value?.id ?: ""
+            supplierId = supplier.value?.id ?: "",
+            volunteerId = volunteer.value?.id ?: ""
         )
         if (request.requestId.isNullOrEmpty()) {
             repository.addRequest(request, {

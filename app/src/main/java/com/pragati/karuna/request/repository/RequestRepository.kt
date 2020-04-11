@@ -95,6 +95,7 @@ private fun Request.transform(uid: String): RequestDao {
         this.families,
         this.kit,
         this.supplierId,
+        this.volunteerId,
         uid,
         Status.CREATED,
         if (requestId.isNullOrEmpty()) currentTime() else this.createdTimestamp,

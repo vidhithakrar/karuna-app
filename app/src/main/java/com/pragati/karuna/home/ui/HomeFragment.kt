@@ -69,6 +69,10 @@ class HomeFragment : BundleFragment() {
             suppliersView.bindExpandedState(RequestItem.SupplierItem(supplier = supplier))
         })
 
+        homeViewModel.volunteer.observe(viewLifecycleOwner, Observer { volunteer ->
+            volunteersView.bindExpandedState(RequestItem.VolunteerItem(volunteer = volunteer))
+        })
+
         homeViewModel.requestState.observe(viewLifecycleOwner, Observer { request ->
             loading.gone()
             Toast.makeText(activity, getString(request.message), Toast.LENGTH_SHORT).show()
@@ -121,6 +125,11 @@ class HomeFragment : BundleFragment() {
             3 -> {
                 val supplier = bundle.get("supplier") as Supplier?
                 supplier?.let { homeViewModel.addSuppliers(supplier) }
+            }
+
+            4 -> {
+                val volunteer = bundle.get("volunteer") as Volunteer?
+                volunteer?.let { homeViewModel.addVolunteers(volunteer) }
             }
         }
     }
