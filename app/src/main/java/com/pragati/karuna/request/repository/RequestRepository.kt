@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pragati.karuna.request.model.Request
+import java.util.*
 
 class RequestRepository(private val auth: FirebaseAuth, private val db : FirebaseFirestore) {
 
@@ -33,7 +34,14 @@ fun Request.transform(uid: String): RequestDao {
         this.families,
         this.kit,
         uid,
-        Status.CREATED
+        Status.CREATED,
+        currentTime(),
+        currentTime()
     )
+}
+
+fun currentTime() : Long {
+    val instance = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    return instance.timeInMillis
 }
 

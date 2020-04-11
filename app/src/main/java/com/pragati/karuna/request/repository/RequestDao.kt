@@ -9,5 +9,7 @@ data class RequestDao(
     val families: MutableList<Family>,
     val kit: Kit,
     val uid: String,
-    val status: Status
+    val status: Status,
+    val createdTimestamp: Long,
+    val modifiedTimestamp: Long
 )
