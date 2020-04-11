@@ -11,6 +11,8 @@
     <string name="prompt_username">Username <font fgcolor="#FF0000">*</font></string>
     <string name="prompt_password">Password <font fgcolor="#FF0000">*</font></string>
     <string name="action_login">Login</string>
+    <string name="action_create_request">Create Request</string>
+    <string name="action_close_request">Close Request</string>
     <string name="action_add">Add</string>
     <string name="invalid_email">Invalid Username</string>
     <string name="invalid_password">Password must be greater than 6 characters</string>
