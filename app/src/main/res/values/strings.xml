@@ -57,4 +57,7 @@
     </string-array>
 
     <string name="save">Save</string>
+
+    <!--My Requests-->
+    <string name="my_requests">My Requests</string>
 </resources>
