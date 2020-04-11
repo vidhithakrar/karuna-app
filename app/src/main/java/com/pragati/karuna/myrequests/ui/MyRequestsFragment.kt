@@ -15,6 +15,7 @@ import com.pragati.karuna.myrequests.adapter.MyRequestsAdapter
 import com.pragati.karuna.myrequests.adapter.OnItemClickListener
 import com.pragati.karuna.myrequests.adapter.VerticalSpaceItemDecoration
 import com.pragati.karuna.myrequests.viewmodel.MyRequestsViewModel
+import com.pragati.karuna.request.model.Request
 import kotlinx.android.synthetic.main.fragment_my_requests.*
 
 class MyRequestsFragment : BundleFragment(), OnItemClickListener {
@@ -30,8 +31,13 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
             ViewModelProviders.of(this, ViewModelFactory()).get(MyRequestsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_my_requests, container, false)
 
-        setRequestsObserver()
-        setErrorObserver()
+        requestsViewModel.requests.observe(viewLifecycleOwner, Observer { myRequests ->
+            setRequests(myRequests)
+        })
+
+        requestsViewModel.error.observe(viewLifecycleOwner, Observer { error ->
+            setErrorObserver(error)
+        })
 
         return root
     }
@@ -45,24 +51,20 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
         }
     }
 
-    private fun setRequestsObserver() {
-        requestsViewModel.requests.observe(viewLifecycleOwner, Observer { myRequests ->
-            myRequestsAdapter.myRequests = myRequests
-            if (!myRequests.isEmpty()) {
-                setEmptyView(false)
-                myRequestsAdapter.notifyDataSetChanged()
-            } else {
-                setEmptyView(true)
-            }
-            progress_circular.visibility = View.GONE
-        })
+    private fun setRequests(myRequests: List<Request>) {
+        myRequestsAdapter.myRequests = myRequests
+        if (!myRequests.isEmpty()) {
+            setEmptyView(false)
+            myRequestsAdapter.notifyDataSetChanged()
+        } else {
+            setEmptyView(true)
+        }
+        progress_circular.visibility = View.GONE
     }
 
-    private fun setErrorObserver() {
-        requestsViewModel.error.observe(viewLifecycleOwner, Observer { error ->
-            setEmptyView(true)
-            progress_circular.visibility = View.GONE
-        })
+    private fun setErrorObserver(error: String?) {
+        setEmptyView(true)
+        progress_circular.visibility = View.GONE
     }
 
     private fun setEmptyView(isVisible: Boolean) {
