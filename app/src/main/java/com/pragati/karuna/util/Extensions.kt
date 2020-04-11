@@ -24,27 +24,18 @@ fun View.disable() {
     this.isEnabled = false
 }
 
-/**
- * Extension method to provide show keyboard for View.
- */
 fun View.gone() {
     if (visibility != View.GONE) {
         visibility = View.GONE
     }
 }
 
-/**
- * Extension method to provide show keyboard for View.
- */
 fun View.invisible() {
     if (visibility != View.INVISIBLE) {
         visibility = View.INVISIBLE
     }
 }
 
-/**
- * Extension method to provide show keyboard for View.
- */
 fun View.visible() {
     if (visibility != View.VISIBLE) {
         visibility = View.VISIBLE
