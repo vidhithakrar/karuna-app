@@ -51,12 +51,14 @@ class MyRequestsFragment : BundleFragment() {
             } else {
                 setEmptyView(true)
             }
+            progress_circular.visibility = View.GONE
         })
     }
 
     private fun setErrorObserver() {
         requestsViewModel.error.observe(viewLifecycleOwner, Observer { error ->
             setEmptyView(true)
+            progress_circular.visibility = View.GONE
         })
     }
 
@@ -71,6 +73,7 @@ class MyRequestsFragment : BundleFragment() {
     }
 
     private fun setRequestAdapter() {
+        progress_circular.visibility = View.VISIBLE
         rv_my_requests.apply {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(VerticalSpaceItemDecoration(60))
