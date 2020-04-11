@@ -25,21 +25,15 @@ fun View.disable() {
 }
 
 fun View.gone() {
-    if (visibility != View.GONE) {
-        visibility = View.GONE
-    }
+    visibility = View.GONE
 }
 
 fun View.invisible() {
-    if (visibility != View.INVISIBLE) {
-        visibility = View.INVISIBLE
-    }
+    visibility = View.INVISIBLE
 }
 
 fun View.visible() {
-    if (visibility != View.VISIBLE) {
-        visibility = View.VISIBLE
-    }
+    visibility = View.VISIBLE
 }
 
 fun View.visibleIf(isVisible: Boolean) {
