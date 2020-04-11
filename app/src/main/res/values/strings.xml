@@ -58,4 +58,11 @@
     </string-array>
 
     <string name="save">Save</string>
+    <string name="request_location_details">Location Details</string>
+    <string name="action_edit">Edit Details</string>
+    <string name="request_kill_details">Kit Details</string>
+    <string name="request_families">Families</string>
+    <string name="action_modify">Modify</string>
+    <string name="request_supplier_details">Supplier Details</string>
+    <string name="request_volunteers">Volunteers</string>
 </resources>
