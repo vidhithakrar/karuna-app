@@ -54,6 +54,7 @@ private fun Request.transform(uid: String): RequestDao {
         this.location,
         this.families,
         this.kit,
+        this.supplierId,
         uid,
         Status.CREATED,
         currentTime(),

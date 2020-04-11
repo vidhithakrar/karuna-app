@@ -27,6 +27,7 @@ class SupplierAdapter(val context: Context) : RecyclerView.Adapter<SupplierAdapt
 
     fun setSuppliers(suppliers: List<Supplier>){
         this.suppliers = suppliers
+        this.notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SupplierCell {

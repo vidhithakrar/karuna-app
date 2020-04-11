@@ -11,10 +11,7 @@ import com.pragati.karuna.R
 import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.core.models.RequestItem
 import com.pragati.karuna.home.viewmodel.HomeViewModel
-import com.pragati.karuna.request.model.Family
-import com.pragati.karuna.request.model.Kit
-import com.pragati.karuna.request.model.Location
-import com.pragati.karuna.request.model.Request
+import com.pragati.karuna.request.model.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
 import kotlinx.android.synthetic.main.view_request_summary_expand.view.*
@@ -46,6 +43,10 @@ class HomeFragment : BundleFragment() {
         homeViewModel.kit.observe(viewLifecycleOwner, Observer { kit ->
             kitDetailView.bindExpandedState(RequestItem.KitItem(kit = kit))
             validateRequestData()
+        })
+
+        homeViewModel.supplier.observe(viewLifecycleOwner, Observer { supplier ->
+            suppliersView.bindExpandedState(RequestItem.SupplierItem(supplier = supplier))
         })
 
         return root
@@ -84,6 +85,11 @@ class HomeFragment : BundleFragment() {
             2 -> {
                 val kit = bundle?.get("kit") as Kit?
                 kit?.let { homeViewModel.addKit(it) }
+            }
+
+            3 -> {
+                val supplier = bundle.get("supplier") as Supplier?
+                supplier?.let { homeViewModel.addSuppliers(supplier) }
             }
         }
     }
