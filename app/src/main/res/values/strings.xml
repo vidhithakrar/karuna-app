@@ -60,6 +60,12 @@
     </string-array>
 
     <string name="save">Save</string>
+
+    <!--My Requests-->
+    <string name="my_requests">My Requests</string>
+    <string name="no_requests">There are no food \nrequests at the moment</string>
+    <string name="create_new_request">Click on \"+\" to create a new request</string>
+
     <string name="request_location_details">Location Details</string>
     <string name="action_edit">Edit Details</string>
     <string name="request_kill_details">Kit Details</string>

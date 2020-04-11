@@ -6,8 +6,8 @@ import androidx.annotation.Keep
 
 @Keep
 class Family(
-    var familyLeader: String?,
-    var contact: String,
+    var familyLeader: String?="",
+    var contact: String = "",
     var noOfAdults: Int = 0,
     var noOfChildren: Int = 0,
     var noOfKits: Int = 0
