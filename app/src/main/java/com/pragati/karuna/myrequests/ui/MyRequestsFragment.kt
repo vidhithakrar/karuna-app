@@ -4,20 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
 import com.pragati.karuna.myrequests.adapter.MyRequestsAdapter
+import com.pragati.karuna.myrequests.adapter.OnItemClickListener
 import com.pragati.karuna.myrequests.adapter.VerticalSpaceItemDecoration
 import com.pragati.karuna.myrequests.viewmodel.MyRequestsViewModel
 import kotlinx.android.synthetic.main.fragment_my_requests.*
 
-class MyRequestsFragment : BundleFragment() {
+class MyRequestsFragment : BundleFragment(), OnItemClickListener {
 
     private lateinit var requestsViewModel: MyRequestsViewModel
-    private var myRequestsAdapter: MyRequestsAdapter = MyRequestsAdapter(mutableListOf())
+    private var myRequestsAdapter: MyRequestsAdapter = MyRequestsAdapter(mutableListOf(), this)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -80,5 +82,10 @@ class MyRequestsFragment : BundleFragment() {
             adapter = myRequestsAdapter
         }
         requestsViewModel.loadRequests()
+    }
+
+    override fun onItemClick(position: Int) {
+        var bundle = bundleOf("request" to requestsViewModel.requests.value?.get(position))
+        navigate(R.id.action_home, bundle,4)
     }
 }

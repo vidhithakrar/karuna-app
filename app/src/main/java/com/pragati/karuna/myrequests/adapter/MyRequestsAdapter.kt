@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Request
 
-class MyRequestsAdapter(var myRequests: List<Request>) :
+class MyRequestsAdapter(var myRequests: List<Request>, var itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<MyRequestsAdapter.MyRequestsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRequestsViewHolder {
         var view =
@@ -25,9 +25,13 @@ class MyRequestsAdapter(var myRequests: List<Request>) :
         holder.subTitle.text = myRequests.get(position).location.landmark
         holder.accessory.text = "${myRequests.get(position).families.count()} Families"
         holder.subAccessory.text = myRequests.get(position).kit.type
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(position)
+        }
     }
 
-    companion object class MyRequestsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    companion object
+    class MyRequestsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var title: TextView = itemView.findViewById(R.id.tv_title)
         var subTitle: TextView = itemView.findViewById(R.id.tv_sub_title)
         var accessory: TextView = itemView.findViewById(R.id.tv_accessory)
@@ -35,3 +39,6 @@ class MyRequestsAdapter(var myRequests: List<Request>) :
     }
 }
 
+interface OnItemClickListener {
+    fun onItemClick(position: Int)
+}
