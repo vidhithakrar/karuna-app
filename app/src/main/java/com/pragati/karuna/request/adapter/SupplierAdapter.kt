@@ -32,9 +32,26 @@ class SupplierAdapter(val context: Context) : RecyclerView.Adapter<SupplierAdapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SupplierCell {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.supplier_details_cell, parent, false)
-        return SupplierCell(
-            view
-        )
+        val holder =  SupplierCell(view)
+        holder.checkBox.setOnClickListener {
+            val checkedPosition = holder.adapterPosition
+
+            taggedSuppliers.clear()
+            taggedSuppliers.add(suppliers[checkedPosition])
+
+            //Todo: Use notifyItemChanged instead
+            notifyDataSetChanged()
+        }
+
+        // call suppliers
+        holder.makePhoneCall.setOnClickListener {
+            val phoneNumber = suppliers[holder.adapterPosition].mobile_number
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:$phoneNumber")
+            startActivity(holder.itemView.context, intent, bundleOf())
+        }
+
+        return holder
     }
 
     override fun getItemCount(): Int {
@@ -44,29 +61,7 @@ class SupplierAdapter(val context: Context) : RecyclerView.Adapter<SupplierAdapt
     override fun onBindViewHolder(holder: SupplierCell, position: Int) {
         holder.name.text = suppliers[position].name
         holder.address.text = suppliers[position].getAddress()
-
-        // tag, un-tag suppliers
-        holder.checkBox.tag = position
-        holder.checkBox.setOnClickListener {
-            val checkedPosition = holder.checkBox.tag as Int
-            if (holder.checkBox.isChecked) {
-                // supplier tagged
-                taggedSuppliers.add(suppliers[checkedPosition])
-            } else {
-                // supplier untagged
-                taggedSuppliers.remove(suppliers[checkedPosition])
-            }
-        }
-
-        // call suppliers
-        holder.makePhoneCall.tag = position
-        holder.makePhoneCall.setOnClickListener {
-            val tappedPosition = holder.makePhoneCall.tag as Int
-            val phoneNumber = suppliers[tappedPosition].mobile_number
-            val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse("tel:$phoneNumber")
-            startActivity(context, intent, bundleOf())
-        }
+        holder.checkBox.isChecked = taggedSuppliers.contains(suppliers[position])
     }
 
      companion object class SupplierCell(itemView: View) : RecyclerView.ViewHolder(itemView) {
