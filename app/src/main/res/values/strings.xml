@@ -44,7 +44,7 @@
     <string name="no_of_children">Number of Children</string>
     <string name="no_of_adults">Number of Adults</string>
 
-    <string name="welcome_message">Welcome to</string>
+    <string name="welcome_message">Welcome %1$s!</string>
     <string name="karuna_relief">Karuna Relief</string>
     <string name="login_message">Karuna Relief Login</string>
     <string name="secondary_line">Compassionate Volunteers are working together efficiently to bring food/relief to the distressed in PUNE City and surrounding villages.</string>

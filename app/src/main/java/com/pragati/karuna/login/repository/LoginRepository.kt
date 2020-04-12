@@ -13,7 +13,7 @@ class LoginRepository(private val auth: FirebaseAuth) {
                 completionListener.onComplete(result.user?.let {
                     LoggedInUser(
                         it.uid,
-                        it.email
+                        it.email!!
                     )
                 })
             }.addOnFailureListener {

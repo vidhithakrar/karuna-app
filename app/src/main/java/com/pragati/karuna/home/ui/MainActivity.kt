@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProviders
@@ -34,7 +35,6 @@ class MainActivity : FragmentResultActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         navController.setGraph(R.navigation.mobile_navigation, intent.extras)
@@ -46,7 +46,7 @@ class MainActivity : FragmentResultActivity() {
                 R.id.nav_my_requests,
                 R.id.nav_gallery,
                 R.id.nav_slideshow
-            ), drawerLayout
+            )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -86,6 +86,6 @@ class MainActivity : FragmentResultActivity() {
     }
 
     companion object {
-        const val UidExtra = "com.pragati.karuna.home.ui..MainActivity.UID_EXTRA"
+        const val UserExtra = "com.pragati.karuna.home.ui..MainActivity.User_EXTRA"
     }
 }

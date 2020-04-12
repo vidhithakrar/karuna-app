@@ -12,6 +12,7 @@ import com.phelat.navigationresult.BundleFragment
 import com.pragati.karuna.R
 import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.home.ui.MainActivity
+import com.pragati.karuna.login.model.LoggedInUser
 import com.pragati.karuna.myrequests.adapter.MyRequestsAdapter
 import com.pragati.karuna.myrequests.adapter.OnItemClickListener
 import com.pragati.karuna.myrequests.adapter.VerticalSpaceItemDecoration
@@ -31,7 +32,7 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
         requestsViewModel =
             ViewModelProviders.of(
                 this,
-                ViewModelFactory(arguments?.getString(MainActivity.UidExtra)!!)
+                ViewModelFactory(arguments?.getParcelable(MainActivity.UserExtra))
             ).get(MyRequestsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_my_requests, container, false)
 
@@ -48,14 +49,20 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setWelcomeMessage()
         setRequestAdapter()
         requestsViewModel.loadRequests()
         fab.setOnClickListener {
             val bundle = bundleOf(
-                MainActivity.UidExtra to arguments?.getString(MainActivity.UidExtra)
+                MainActivity.UserExtra to arguments?.getParcelable<LoggedInUser>(MainActivity.UserExtra)
             )
             navigate(R.id.action_home, bundle, 4)
         }
+    }
+
+    private fun setWelcomeMessage() {
+        val username = requestsViewModel.loggedInUser.email.split("@").first()
+        welcome.text = resources.getString(R.string.welcome_message, username)
     }
 
     private fun setRequests(myRequests: List<Request>) {
@@ -76,9 +83,11 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
 
     private fun setEmptyView(isVisible: Boolean) {
         if (isVisible) {
+            welcome.setTextColor(resources.getColor(R.color.text_color))
             rv_my_requests.visibility = View.GONE
             cl_container_empty_view.visibility = View.VISIBLE
         } else {
+            welcome.setTextColor(resources.getColor(R.color.colorPrimary))
             rv_my_requests.visibility = View.VISIBLE
             cl_container_empty_view.visibility = View.GONE
         }
@@ -96,7 +105,7 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
     override fun onItemClick(position: Int) {
         val bundle = bundleOf(
             "request" to requestsViewModel.requests.value?.get(position),
-            MainActivity.UidExtra to arguments?.getString(MainActivity.UidExtra)
+            MainActivity.UserExtra to arguments?.getParcelable<LoggedInUser>(MainActivity.UserExtra)
         )
         navigate(R.id.action_home, bundle, 4)
     }
