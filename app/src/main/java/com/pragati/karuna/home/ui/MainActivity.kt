@@ -80,7 +80,7 @@ class MainActivity : FragmentResultActivity() {
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     .also {
                         startActivity(it)
-                        logoutViewModel.signOut()
+                        logoutViewModel.logOut()
                         finish()
                     }
             }
