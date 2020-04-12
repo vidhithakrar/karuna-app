@@ -24,11 +24,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/actionButton"
+            app:layout_constraintEnd_toStartOf="@id/editDetails"
             tools:text="Location Details" />
 
         <TextView
-            android:id="@+id/actionButton"
+            android:id="@+id/editDetails"
             style="@style/RequestActionText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

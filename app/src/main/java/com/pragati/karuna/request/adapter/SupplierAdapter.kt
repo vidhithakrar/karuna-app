@@ -69,7 +69,7 @@ class SupplierAdapter(
     override fun onBindViewHolder(holder: SupplierCell, position: Int) {
         holder.name.text = suppliers[position].name
         holder.address.text = suppliers[position].getAddress()
-        holder.supplierType.text = "Supplier type: ${suppliers[position].supplier_type}"
+        holder.supplierType.text = suppliers[position].supplier_type
         holder.checkBox.isChecked = taggedSuppliers.contains(suppliers[position])
     }
 
