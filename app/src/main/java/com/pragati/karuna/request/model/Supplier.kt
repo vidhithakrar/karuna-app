@@ -9,11 +9,11 @@ import kotlinx.android.parcel.Parcelize
 class Supplier(
     var name: String,
     var id: String,
-    var locality: String,
+    var locality: String?,
     var city: String,
-    var state: String,
+    var state: String?,
     var supplier_type: String,
-    var mobile_number: String
+    var mobile_number: String?
 ) : Parcelable {
     fun getAddress(): String {
         return "$locality, $city, $state."

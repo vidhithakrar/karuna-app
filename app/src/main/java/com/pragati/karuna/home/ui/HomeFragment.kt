@@ -19,6 +19,7 @@ import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.home.viewmodel.RequestState
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.ui.AddFamilyFragment
+import com.pragati.karuna.request.ui.AddSuppliersFragment
 import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.visible
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -127,7 +128,7 @@ class HomeFragment : BundleFragment() {
             }
 
             3 -> {
-                val supplier = bundle.get("supplier") as Supplier?
+                val supplier = bundle.get(AddSuppliersFragment.SUPPLIER) as Supplier?
                 supplier?.let { homeViewModel.addSuppliers(supplier) }
             }
 

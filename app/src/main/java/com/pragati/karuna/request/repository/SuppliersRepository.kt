@@ -41,10 +41,10 @@ class SuppliersRepository {
         val name = data["name"] as String
         val id = data["id"] as String
         val supplierType = data["supplier_type"] as String
-        val locality = data["locality"] as String
+        val locality = data["locality"] as? String
         val city = data["city"] as String
-        val state = data["state"] as String
-        val mobileNumber = data["mobile_number"] as String
+        val state = data["state"] as? String
+        val mobileNumber = data["mobile_number"] as? String
 
         return Supplier(name, id, locality, city, state, supplierType, mobileNumber)
     }
