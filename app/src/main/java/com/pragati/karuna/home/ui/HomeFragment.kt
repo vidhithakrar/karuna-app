@@ -171,7 +171,7 @@ class HomeFragment : BundleFragment() {
             navigateToLocationDetails()
         }
 
-        locationDetailView.actionButton.setOnClickListener {
+        locationDetailView.editDetails.setOnClickListener {
             navigateToLocationDetails()
         }
 
@@ -187,7 +187,7 @@ class HomeFragment : BundleFragment() {
             navigateToFamilyDetails()
         }
 
-        familiesView.actionButton.setOnClickListener {
+        familiesView.editDetails.setOnClickListener {
             navigateToFamilyDetails()
         }
 
@@ -195,7 +195,7 @@ class HomeFragment : BundleFragment() {
             navigateToKitDetails()
         }
 
-        kitDetailView.actionButton.setOnClickListener {
+        kitDetailView.editDetails.setOnClickListener {
             navigateToKitDetails()
         }
 
@@ -203,7 +203,7 @@ class HomeFragment : BundleFragment() {
             navigateToSupplierDetails()
         }
 
-        suppliersView.actionButton.setOnClickListener {
+        suppliersView.editDetails.setOnClickListener {
             navigateToSupplierDetails()
         }
 
@@ -211,7 +211,7 @@ class HomeFragment : BundleFragment() {
             navigateToVolunteersView()
         }
 
-        volunteersView.actionButton.setOnClickListener {
+        volunteersView.editDetails.setOnClickListener {
             navigateToVolunteersView()
         }
     }
@@ -231,15 +231,22 @@ class HomeFragment : BundleFragment() {
     }
 
     private fun navigateToSupplierDetails() {
+        val supplier = homeViewModel.supplier.value
+        val bundle = bundleOf("supplier" to supplier)
+
         navigate(
             R.id.action_add_suppliers,
+            bundle,
             3
         )
     }
 
     private fun navigateToVolunteersView() {
+        val volunteer = homeViewModel.volunteer.value
+        val bundle = bundleOf("volunteer" to volunteer)
         navigate(
             R.id.action_add_volunteers,
+            bundle,
             10
         )
     }
