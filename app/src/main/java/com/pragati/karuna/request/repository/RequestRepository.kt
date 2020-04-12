@@ -110,6 +110,7 @@ private fun RequestDao.transform(id: String): Request {
         location = this.location,
         families = this.families,
         kit = this.kit,
+        numberOfKits = this.numberOfKits,
         supplierId = this.supplierId,
         volunteerId = this.volunteerId,
         createdTimestamp = this.createdTimestamp,
