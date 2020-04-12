@@ -113,7 +113,6 @@ private fun RequestDao.transform(id: String): Request {
         supplierId = this.supplierId,
         volunteerId = this.volunteerId,
         createdTimestamp = this.createdTimestamp,
-        modifiedTimestamp = this.modifiedTimestamp,
         uid = this.uid
     )
 }

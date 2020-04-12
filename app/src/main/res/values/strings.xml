@@ -47,7 +47,7 @@
     <string name="welcome_message">Welcome to</string>
     <string name="karuna_relief">Karuna Relief</string>
     <string name="login_message">Karuna Relief Login</string>
-    <string name="secondary_line">Secondary line text to give some kind of info to the user. It should be some multiline text</string>
+    <string name="secondary_line">\u2764 Compassionate Volunteers \u2764 working together efficiently to bring food/relief to the distressed in PUNE City and surrounding villages.</string>
     <string name="get_started">Let\'s Get Started</string>
     <string name="is_first_time_installation">IS_FIRST_TIME_INSTALLATION</string>
     <string name="action_logout">Logout</string>
