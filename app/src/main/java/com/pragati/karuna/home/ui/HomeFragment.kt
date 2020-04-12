@@ -19,6 +19,7 @@ import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.home.viewmodel.RequestState
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.ui.AddFamilyFragment
+import com.pragati.karuna.request.ui.AddSuppliersFragment
 import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.hideKeyboard
 import com.pragati.karuna.util.visible
@@ -35,7 +36,7 @@ class HomeFragment : BundleFragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-            ViewModelProviders.of(this, ViewModelFactory()).get(HomeViewModel::class.java)
+            ViewModelProviders.of(this, ViewModelFactory(arguments?.getString(MainActivity.UidExtra))).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.requestId.observe(viewLifecycleOwner, Observer { id ->
@@ -94,6 +95,7 @@ class HomeFragment : BundleFragment() {
     private fun setRequestData(request: Request) {
         homeViewModel.requestId.value = request.requestId
         homeViewModel.supplierId = request.supplierId
+        homeViewModel.volunteerId = request.volunteerId
         homeViewModel.families.value = request.families
         homeViewModel.location.value = request.location
         homeViewModel.kit.value = request.kit
@@ -128,7 +130,7 @@ class HomeFragment : BundleFragment() {
             }
 
             3 -> {
-                val supplier = bundle.get("supplier") as Supplier?
+                val supplier = bundle.get(AddSuppliersFragment.SUPPLIER) as Supplier?
                 supplier?.let { homeViewModel.addSuppliers(supplier) }
             }
 

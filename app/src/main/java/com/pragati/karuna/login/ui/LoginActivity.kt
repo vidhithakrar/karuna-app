@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel =
             ViewModelProviders.of(
                 this,
-                ViewModelFactory()
+                ViewModelFactory("")
             ).get(LoginViewModel::class.java)
 
         observeLoginCredentialState(username, password)
@@ -91,8 +91,9 @@ class LoginActivity : AppCompatActivity() {
         )
     }
 
-    private fun goToHomeActivity(model: LoggedInUser) {
+    private fun goToHomeActivity(user: LoggedInUser) {
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra(MainActivity.UidExtra, user.userId)
         startActivity(intent)
     }
 

@@ -19,6 +19,10 @@ import kotlinx.android.synthetic.main.fragment_add_suppliers.*
 
 class AddSuppliersFragment : BundleFragment() {
 
+    companion object {
+        const val SUPPLIER = "supplier"
+    }
+
     private lateinit var suppliersViewModel: SuppliersViewModel
 
     override fun onCreateView(
@@ -44,7 +48,7 @@ class AddSuppliersFragment : BundleFragment() {
 
         confirm_suppliers_button?.setOnClickListener(View.OnClickListener {
             val taggedSupplier = (suppliers_list_container?.adapter as SupplierAdapter).getTaggedSuppliers()[0]
-            val bundle = bundleOf("supplier" to taggedSupplier)
+            val bundle = bundleOf(SUPPLIER to taggedSupplier)
             navigateUp(3, bundle)
         })
 
@@ -54,7 +58,6 @@ class AddSuppliersFragment : BundleFragment() {
 
         suppliersViewModel.fetchSuppliers()
     }
-
 
     interface OnSupplierSelected {
         fun onSelected()

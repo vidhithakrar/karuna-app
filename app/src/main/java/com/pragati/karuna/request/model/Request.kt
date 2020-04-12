@@ -15,5 +15,5 @@ data class Request(
     val supplierId: String? = null,
     val volunteerId: String? = null,
     val createdTimestamp: Long = 0,
-    val modifiedTimestamp: Long = 0
+    val uid: String
 ) : Parcelable

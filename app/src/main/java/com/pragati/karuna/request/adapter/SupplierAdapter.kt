@@ -69,12 +69,14 @@ class SupplierAdapter(
     override fun onBindViewHolder(holder: SupplierCell, position: Int) {
         holder.name.text = suppliers[position].name
         holder.address.text = suppliers[position].getAddress()
+        holder.supplierType.text = "Supplier type: ${suppliers[position].supplier_type}"
         holder.checkBox.isChecked = taggedSuppliers.contains(suppliers[position])
     }
 
      companion object class SupplierCell(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.supplier_name
         var address: TextView = itemView.supplier_address
+        var supplierType: TextView = itemView.supplier_type
         var checkBox: CheckBox = itemView.supplier_checkBox
         var makePhoneCall: ImageButton = itemView.supplier_call
     }
