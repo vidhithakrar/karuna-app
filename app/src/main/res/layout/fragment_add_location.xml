@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/address"
             android:inputType="textPostalAddress|textCapSentences"
-            app:layout_constraintTop_toBottomOf="@+id/tv_address_header" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_address_header">
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

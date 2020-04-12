@@ -30,7 +30,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/description"
             android:inputType="text|textCapSentences"
-            app:layout_constraintTop_toBottomOf="@+id/et_area" />
+            app:layout_constraintTop_toBottomOf="@+id/et_area">
+
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

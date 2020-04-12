@@ -16,6 +16,7 @@ import com.pragati.karuna.request.model.Family
 import com.pragati.karuna.request.ui.AddFamilyFragment.ScreenType.FAMILY_DETAILS
 import com.pragati.karuna.request.ui.AddFamilyFragment.ScreenType.HOME
 import com.pragati.karuna.request.viewmodel.FamilyViewModel
+import com.pragati.karuna.util.showKeyboard
 import kotlinx.android.synthetic.main.fragment_add_family.*
 
 class AddFamilyFragment : BundleFragment() {
@@ -23,7 +24,7 @@ class AddFamilyFragment : BundleFragment() {
     private lateinit var familyViewModel: FamilyViewModel
     private var fromScreen = HOME
     private var position = -1
-    private var family: Family?= null
+    private var family: Family? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,9 +43,10 @@ class AddFamilyFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showKeyboard()
         family = arguments?.getParcelable("defaultFamilyValues")
-        fromScreen = arguments?.getInt("fromScreen")?: HOME
-        position = arguments?.getInt("position")?: -1
+        fromScreen = arguments?.getInt("fromScreen") ?: HOME
+        position = arguments?.getInt("position") ?: -1
         setEditTextValue()
         et_contact_number.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {

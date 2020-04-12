@@ -21,7 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/family_owner_name"
-            android:inputType="textPersonName|textCapWords" />
+            android:inputType="textPersonName|textCapWords">
+
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

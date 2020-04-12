@@ -15,7 +15,7 @@ import com.pragati.karuna.ViewModelFactory
 import com.pragati.karuna.home.ui.MainActivity
 import com.pragati.karuna.login.model.LoggedInUser
 import com.pragati.karuna.login.viewmodel.LoginViewModel
-import com.pragati.karuna.util.KeyboardUtil
+import com.pragati.karuna.util.hideKeyboard
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(username: EditText, password: EditText) {
-        KeyboardUtil.hideKeyboard(this)
+        hideKeyboard()
         loading.visibility = View.VISIBLE
         loginViewModel.login(
             username.text.toString(),
