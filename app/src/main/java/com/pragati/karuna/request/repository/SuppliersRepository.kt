@@ -50,12 +50,13 @@ class SuppliersRepository {
         return parsedSupplier
     }
 
-    fun fetchSupplier(id: String, listener: SuppliersCompletionListener) {
+    fun fetchSupplier(id: String, onSuccess: (Supplier) -> Unit, onFailure: (Exception) -> Unit) {
         val documentRef = db.collection("suppliers").document(id)
-        documentRef.get().addOnSuccessListener { documentSnapshot ->
-            val supplier = deserializeSupplier(documentSnapshot)
-            listener.onComplete(listOf(supplier!!))
-        }
+        documentRef
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                onSuccess(deserializeSupplier(documentSnapshot))
+            }.addOnFailureListener(onFailure)
     }
 }
 

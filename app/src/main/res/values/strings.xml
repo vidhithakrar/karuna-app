@@ -114,6 +114,7 @@
     <string name="request_create_failure">There is an error occurred while creating the request.</string>
     <string name="request_update_failure">There is an error occurred while updating the request.</string>
     <string name="request_close_failure">There is an error occurred while closing the request.</string>
+    <string name="supplier_retrieve_failure">There is an error occurred while retrieving the supplier.</string>
     <string name="request_create_success">Request created successfully</string>
     <string name="request_update_success">Request updated successfully</string>
     <string name="request_close_success">Request closed successfully</string>
