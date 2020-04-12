@@ -11,7 +11,7 @@ class HomeViewModel(
     private val repository: RequestRepository,
     private val supplierRepository: SuppliersRepository
 ) : ViewModel() {
-    lateinit var supplierId: String
+    var supplierId: String? = null
     var requestId = MutableLiveData<String?>()
     var kit = MutableLiveData<Kit>()
     var families = MutableLiveData<MutableList<Family>>()
@@ -56,8 +56,8 @@ class HomeViewModel(
             location = location.value!!,
             families = families.value!!,
             kit = kit.value!!,
-            supplierId = supplier.value?.id ?: "",
-            volunteerId = volunteer.value?.id ?: ""
+            supplierId = supplier.value?.id,
+            volunteerId = volunteer.value?.id
         )
         if (request.requestId.isNullOrEmpty()) {
             repository.addRequest(request, {
@@ -93,15 +93,17 @@ class HomeViewModel(
     }
 
     fun fetchSupplier() {
-        supplierRepository.fetchSupplier(
-            id = supplierId,
-            onSuccess = {
-                supplier.value = it
-            },
-            onFailure = {
-                requestState.value =
-                    RequestState(RequestState.FAILED, R.string.request_close_failure)
-            }
-        )
+        supplierId?.let { id ->
+            supplierRepository.fetchSupplier(
+                id = id,
+                onSuccess = {
+                    supplier.value = it
+                },
+                onFailure = {
+                    requestState.value =
+                        RequestState(RequestState.FAILED, R.string.request_close_failure)
+                }
+            )
+        }
     }
 }

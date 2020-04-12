@@ -8,11 +8,11 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Request(
     var requestId: String? = null,
-    var location: Location = Location(),
-    var families: MutableList<Family> = mutableListOf(),
-    var kit: Kit = Kit(),
-    var supplierId: String = "",
-    var volunteerId: String = "",
+    val location: Location = Location(),
+    val families: MutableList<Family> = mutableListOf(),
+    val kit: Kit = Kit(),
+    val supplierId: String? = null,
+    val volunteerId: String? = null,
     val createdTimestamp: Long = 0,
     val modifiedTimestamp: Long = 0
 ) : Parcelable
