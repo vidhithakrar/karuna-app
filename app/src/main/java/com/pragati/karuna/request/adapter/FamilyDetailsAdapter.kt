@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Family
 
-class FamilyDetailsAdapter(var onFamilyItemClickListener: OnFamilyItemClickListener) :
+class FamilyDetailsAdapter(private var onFamilyItemClickListener: OnFamilyItemClickListener) :
     RecyclerView.Adapter<FamilyDetailsAdapter.MyRequestsViewHolder>() {
 
     private val families: ArrayList<Family> = arrayListOf()
@@ -31,7 +31,7 @@ class FamilyDetailsAdapter(var onFamilyItemClickListener: OnFamilyItemClickListe
     }
 
     override fun onBindViewHolder(holder: MyRequestsViewHolder, position: Int) {
-        val family = families.get(position)
+        val family = families[position]
         holder.title.text = family.familyLeader
         val count = family.noOfAdults + family.noOfChildren
         holder.subTitle.text = "$count members"

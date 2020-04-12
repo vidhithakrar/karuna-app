@@ -18,7 +18,7 @@
             android:text="Test"
             android:textColor="#2F1345"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_accessory"
+            app:layout_constraintEnd_toStartOf="@+id/delete_family"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
             android:text="Test"
             android:textColor="#2F1345"
             android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_accessory"
+            app:layout_constraintEnd_toStartOf="@+id/delete_family"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
