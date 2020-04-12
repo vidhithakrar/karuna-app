@@ -16,7 +16,7 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
     val requestState = MutableLiveData<RequestState>()
 
     init {
-        families.value = mutableListOf();
+        families.value = mutableListOf()
     }
 
     fun addLocation(location: Location) {
@@ -53,7 +53,7 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
             repository.addRequest(request, {
                 requestState.value =
                     RequestState(RequestState.CREATED, R.string.request_create_success)
-            }, { error ->
+            }, {
                 requestState.value =
                     RequestState(RequestState.FAILED, R.string.request_create_failure)
             })

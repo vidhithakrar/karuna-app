@@ -78,7 +78,7 @@ class HomeFragment : BundleFragment() {
             Toast.makeText(activity, getString(request.message), Toast.LENGTH_SHORT).show()
             when (request.state) {
                 RequestState.CREATED, RequestState.UPDATED, RequestState.CLOSED -> {
-                    var bundle = bundleOf("requestId" to homeViewModel.requestId.value)
+                    val bundle = bundleOf("requestId" to homeViewModel.requestId.value)
                     navigateUp(R.id.action_home, bundle)
                 }
             }
@@ -104,21 +104,21 @@ class HomeFragment : BundleFragment() {
 
         when (requestCode) {
             0 -> {
-                val location = bundle?.get("location") as Location?
+                val location = bundle.get("location") as Location?
                 location?.let {
                     homeViewModel.addLocation(it)
                 }
             }
 
             1 -> {
-                val family = bundle?.get("family") as Family?
+                val family = bundle.get("family") as Family?
                 family?.let {
                     homeViewModel.addFamily(it)
                 }
             }
 
             2 -> {
-                val kit = bundle?.get("kit") as Kit?
+                val kit = bundle.get("kit") as Kit?
                 kit?.let { homeViewModel.addKit(it) }
             }
 

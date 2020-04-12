@@ -43,7 +43,7 @@ class RequestRepository(private val auth: FirebaseAuth, private val db: Firebase
     }
 
     fun loadRequests(onSuccess: (MutableList<Request>) -> Unit, onFailure: (Exception) -> Unit) {
-        var requests = mutableListOf<Request>()
+        val requests = mutableListOf<Request>()
         db.collection("requests").whereEqualTo("uid", auth.currentUser!!.uid)
             .whereEqualTo("status", Status.CREATED).get()
             .addOnSuccessListener { result ->
@@ -56,7 +56,7 @@ class RequestRepository(private val auth: FirebaseAuth, private val db: Firebase
                 }
                 onSuccess(requests)
             }.addOnFailureListener { error ->
-                Log.d("Error", "${error}")
+                Log.d("Error", "$error")
                 onFailure(error)
             }
     }
