@@ -160,6 +160,11 @@ class HomeFragment : BundleFragment() {
             navigateToLocationDetails()
         }
 
+        familiesView.nameExpandState.setOnClickListener {
+            val bundle = bundleOf("families" to homeViewModel.families.value)
+            navigate(R.id.action_family_details, bundle, 4)
+        }
+
         familiesView.addDetails.setOnClickListener {
             navigateToFamilyDetails()
         }

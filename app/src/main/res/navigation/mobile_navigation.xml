@@ -56,6 +56,12 @@
         <argument
             android:name="volunteers"
             app:argType="com.pragati.karuna.request.model.Volunteer" />
+        <action
+            android:id="@+id/action_family_details"
+            app:destination="@id/nav_family_details" />
+        <argument
+            android:name="families"
+            app:argType="com.pragati.karuna.request.model.Family" />
     </fragment>
 
     <fragment
@@ -101,4 +107,10 @@
         android:name="com.pragati.karuna.home.ui.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_family_details"
+        android:name="com.pragati.karuna.request.ui.FamilyDetailsFragment"
+        android:label="@string/menu_family_details"
+        tools:layout="@layout/fragment_family_details" />
 </navigation>
