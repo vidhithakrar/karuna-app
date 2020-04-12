@@ -12,6 +12,7 @@ import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.request.adapter.VolunteersAdapter
+import com.pragati.karuna.request.model.Volunteer
 import com.pragati.karuna.request.viewmodel.VolunteerViewModel
 import com.pragati.karuna.util.disable
 import com.pragati.karuna.util.enable
@@ -20,6 +21,10 @@ import kotlinx.android.synthetic.main.fragment_add_volunteer.*
 class AddVolunteerFragment : BundleFragment() {
 
     private lateinit var volunteerViewModel: VolunteerViewModel
+
+    companion object {
+        const val VOLUNTEER = "volunteer"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +40,7 @@ class AddVolunteerFragment : BundleFragment() {
 
         confirm_volunteers_button?.disable()
         volunteers_list_container?.layoutManager = LinearLayoutManager(context)
-        volunteers_list_container?.adapter = VolunteersAdapter(context!!, object:
+        volunteers_list_container?.adapter = VolunteersAdapter(context!!, object :
             AddSuppliersFragment.OnSupplierSelected {
             override fun onSelected() {
                 confirm_volunteers_button.enable()
@@ -43,13 +48,22 @@ class AddVolunteerFragment : BundleFragment() {
         })
 
         confirm_volunteers_button?.setOnClickListener(View.OnClickListener {
-            val taggedVolunteer = (volunteers_list_container?.adapter as VolunteersAdapter).getTaggedVolunteers()[0]
-            val bundle = bundleOf("volunteer" to taggedVolunteer)
+            val taggedVolunteer =
+                (volunteers_list_container?.adapter as VolunteersAdapter).getTaggedVolunteers()[0]
+            val bundle = bundleOf(VOLUNTEER to taggedVolunteer)
             navigateUp(10, bundle)
         })
 
         volunteerViewModel.volunteers.observe(viewLifecycleOwner, Observer {
-            (volunteers_list_container?.adapter as VolunteersAdapter).setVolunteers(volunteerViewModel.volunteers.value!!)
+            val selectedVolunteer = arguments?.get(VOLUNTEER) as? Volunteer
+            (volunteers_list_container?.adapter as VolunteersAdapter).setVolunteers(
+                volunteerViewModel.volunteers.value!!, selectedVolunteer
+            )
+            if (selectedVolunteer != null) {
+                confirm_volunteers_button.enable()
+            } else {
+                confirm_volunteers_button.disable()
+            }
         })
 
         volunteerViewModel.fetchVolunteers()

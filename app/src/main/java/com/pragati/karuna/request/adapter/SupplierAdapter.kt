@@ -29,8 +29,10 @@ class SupplierAdapter(
         return taggedSuppliers
     }
 
-    fun setSuppliers(suppliers: List<Supplier>){
+    fun setSuppliers(suppliers: List<Supplier>, selectedSupplier: Supplier?){
         this.suppliers = suppliers
+        taggedSuppliers.clear()
+        selectedSupplier?.let { taggedSuppliers.add(it) }
         this.notifyDataSetChanged()
     }
 
@@ -40,13 +42,10 @@ class SupplierAdapter(
         holder.checkBox.setOnClickListener {
             val checkedPosition = holder.adapterPosition
 
-            if(taggedSuppliers.isEmpty()) {
-                supplierSelectedListener.onSelected()
-            }
-
             taggedSuppliers.clear()
             taggedSuppliers.add(suppliers[checkedPosition])
 
+            supplierSelectedListener.onSelected()
             //Todo: Use notifyItemChanged instead
             notifyDataSetChanged()
         }
