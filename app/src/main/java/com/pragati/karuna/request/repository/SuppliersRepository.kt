@@ -1,6 +1,7 @@
 package com.pragati.karuna.request.repository
 
 import android.util.Log
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.pragati.karuna.request.model.Supplier
@@ -23,15 +24,7 @@ class SuppliersRepository {
 //                    }
 
                     // to be removed once DB gets fix
-                    val name = data["name"] as String
-                    val id = data["id"] as String
-                    val supplierType = data["supplier_type"] as String
-                    val locality = data["locality"] as String
-                    val city = data["city"] as String
-                    val state = data["state"] as String
-                    val mobileNumber = data["mobile_number"] as Long
-
-                    val parsedSupplier = Supplier(name, id, locality, city, state, supplierType, mobileNumber)
+                    val parsedSupplier = deserializeSupplier(data)
                     suppliers.add(parsedSupplier)
                 }
                 completionListener.onComplete(suppliers)
@@ -41,6 +34,27 @@ class SuppliersRepository {
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
             completionListener.onError()
+        }
+    }
+
+    private fun deserializeSupplier(data: DocumentSnapshot): Supplier {
+        val name = data["name"] as String
+        val id = data["id"] as String
+        val supplierType = data["supplier_type"] as String
+        val locality = data["locality"] as String
+        val city = data["city"] as String
+        val state = data["state"] as String
+        val mobileNumber = data["mobile_number"] as Long
+
+        val parsedSupplier = Supplier(name, id, locality, city, state, supplierType, mobileNumber)
+        return parsedSupplier
+    }
+
+    fun fetchSupplier(id: String, listener: SuppliersCompletionListener) {
+        val documentRef = db.collection("suppliers").document(id)
+        documentRef.get().addOnSuccessListener { documentSnapshot ->
+            val supplier = deserializeSupplier(documentSnapshot)
+            listener.onComplete(listOf(supplier!!))
         }
     }
 }

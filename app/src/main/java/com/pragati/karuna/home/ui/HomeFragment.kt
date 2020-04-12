@@ -91,6 +91,7 @@ class HomeFragment : BundleFragment() {
 
     private fun setRequestData(request: Request) {
         homeViewModel.requestId.value = request.requestId
+        homeViewModel.supplierId = request.supplierId
         homeViewModel.families.value = request.families
         homeViewModel.location.value = request.location
         homeViewModel.kit.value = request.kit
@@ -146,6 +147,7 @@ class HomeFragment : BundleFragment() {
 
         arguments?.get("request")?.let { request ->
             setRequestData(request as Request)
+            homeViewModel.fetchSupplier()
         }
 
         createRequestButton.setOnClickListener {
