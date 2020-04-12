@@ -38,7 +38,7 @@
     <string name="no_of_families">Number of Families</string>
     <string name="family_owner_name">Family Owner Name</string>
     <string name="contact_number">Contact Number<sup>*</sup></string>
-    <string name="no_of_kits">Number of Food Kits</string>
+    <string name="no_of_kits">Number of Food Kits<sup>*</sup></string>
     <string name="contact_name">Local Contact Name</string>
     <string name="local_contact_number">Local Contact Phone</string>
     <string name="no_of_children">Number of Children</string>
@@ -122,6 +122,9 @@
     <string name="no">No</string>
     <string name="confirm">Confirm</string>
     <string name="request_close_confirmation_message">Are you sure you want to close this request?</string>
+    <string name="no_of_kits_error">Please enter number of food kit required</string>
+    <string name="invalid_contact_no_error">Please enter valid contact number</string>
+    <string name="contact_no_empty_error">Please enter contact number</string>
 
     <plurals name="no_of_families">
         <item quantity="one">%d Family</item>
