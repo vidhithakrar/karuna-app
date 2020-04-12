@@ -62,6 +62,10 @@
         <argument
             android:name="families"
             app:argType="com.pragati.karuna.request.model.Family" />
+
+        <argument
+            android:name="fromScreen"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -112,5 +116,22 @@
         android:id="@+id/nav_family_details"
         android:name="com.pragati.karuna.request.ui.FamilyDetailsFragment"
         android:label="@string/menu_family_details"
-        tools:layout="@layout/fragment_family_details" />
+        tools:layout="@layout/fragment_family_details">
+
+        <action
+            android:id="@+id/action_add_family"
+            app:destination="@id/nav_add_family" />
+
+        <argument
+            android:name="family"
+            app:argType="com.pragati.karuna.request.model.Family" />
+
+        <argument
+            android:name="fromScreen"
+            app:argType="integer" />
+
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
 </navigation>

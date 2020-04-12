@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".request.ui.AboutUsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_about_us_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_padding"
+            android:text="@string/action_about_us_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textview_about_us_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/view_padding"
+            android:paddingRight="@dimen/view_padding"
+            android:text="@string/about_us_description"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/textview_about_us_app_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/view_padding"
+            android:paddingTop="10dp"
+            android:paddingRight="@dimen/view_padding"
+            android:text="@string/about_us_app_description"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/textview_about_us_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_padding"
+            android:text="@string/about_us_heading"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textview_about_us_donation_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/view_padding"
+            android:paddingRight="@dimen/view_padding"
+            android:paddingBottom="@dimen/view_padding"
+            android:text="@string/about_us_donation_from_india"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:id="@+id/donation_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_account_name" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_india_account_name_value" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_bank_name" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_india_bank_name_value" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_ac_no" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_india_ac_no_value" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_ifsc" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_india_ifsc_value" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textview_about_us_international_donation_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_padding"
+            android:text="@string/about_us_donation_international_heading"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:id="@+id/donation_info_international"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_account_name" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_india_account_name_value" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_bank_name" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_abroad_bank_name_value" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_ac_no" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_abroad_ac_no_value" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_ifsc" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_abroad_ifsc_value" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_abroad_swift_code" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_donation_from_abroad_swift_code_value" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textview_about_us_contact_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_padding"
+            android:text="@string/about_us_contact"
+            android:textSize="@dimen/text_size_small" />
+
+        <TableLayout
+            android:id="@+id/contact_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_contact_person_1" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_contact_person_1_number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_contact_person_2" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_contact_person_2_number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/view_padding"
+                android:paddingEnd="@dimen/view_padding">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_contact_person_3" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="0.5"
+                    android:text="@string/about_us_contact_person_3_number" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textview_about_us_donation_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_padding"
+            android:text="@string/about_us_donation_request"
+            android:textSize="@dimen/text_size_small" />
+
+    </LinearLayout>
+</ScrollView>
+

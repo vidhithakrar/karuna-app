@@ -18,6 +18,7 @@ import com.pragati.karuna.core.models.RequestItem
 import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.home.viewmodel.RequestState
 import com.pragati.karuna.request.model.*
+import com.pragati.karuna.request.ui.AddFamilyFragment
 import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.visible
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -91,6 +92,7 @@ class HomeFragment : BundleFragment() {
 
     private fun setRequestData(request: Request) {
         homeViewModel.requestId.value = request.requestId
+        homeViewModel.supplierId = request.supplierId
         homeViewModel.families.value = request.families
         homeViewModel.location.value = request.location
         homeViewModel.kit.value = request.kit
@@ -146,9 +148,11 @@ class HomeFragment : BundleFragment() {
 
         arguments?.get("request")?.let { request ->
             setRequestData(request as Request)
+            homeViewModel.fetchSupplier()
         }
 
         createRequestButton.setOnClickListener {
+            loading.visible()
             homeViewModel.addOrUpdateRequest()
         }
 
@@ -243,6 +247,7 @@ class HomeFragment : BundleFragment() {
     private fun navigateToFamilyDetails() {
         navigate(
             R.id.action_add_family,
+            bundleOf("fromScreen" to AddFamilyFragment.ScreenType.HOME),
             1
         )
     }

@@ -18,6 +18,10 @@ class LoginRepository(private val auth: FirebaseAuth) {
                 completionListener.onComplete(null)
             }
     }
+
+    fun logOut() {
+        auth.signOut()
+    }
 }
 
 interface LoginCompletionListener {

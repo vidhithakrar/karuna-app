@@ -13,12 +13,16 @@ import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Family
+import com.pragati.karuna.request.ui.AddFamilyFragment.ScreenType.FAMILY_DETAILS
+import com.pragati.karuna.request.ui.AddFamilyFragment.ScreenType.HOME
 import com.pragati.karuna.request.viewmodel.FamilyViewModel
 import kotlinx.android.synthetic.main.fragment_add_family.*
 
 class AddFamilyFragment : BundleFragment() {
 
     private lateinit var familyViewModel: FamilyViewModel
+    private var fromScreen = HOME
+    private var position = -1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +41,8 @@ class AddFamilyFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fromScreen = arguments?.getInt("fromScreen")?: HOME
+        position = arguments?.getInt("position")?: -1
         et_contact_number.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 var contactNumber = s.toString()
@@ -61,7 +67,7 @@ class AddFamilyFragment : BundleFragment() {
         }
 
         btn_save.setOnClickListener(View.OnClickListener {
-            var family = Family(
+            val family = Family(
                 et_family_leader.text.toString(),
                 et_contact_number.text.toString(),
                 if (!et_no_of_adults.text.toString().isEmpty()) et_no_of_adults.text.toString().toInt() else 0,
@@ -69,8 +75,13 @@ class AddFamilyFragment : BundleFragment() {
                 if (!et_no_of_kits.text.toString().isEmpty()) et_no_of_kits.text.toString().toInt() else 0
             )
 
-            var bundle = bundleOf("family" to family)
-            navigateUp(1, bundle)
+            if (fromScreen == FAMILY_DETAILS) {
+                val bundle = bundleOf("family" to family, "position" to position)
+                navigateUp(6, bundle)
+            } else {
+                val bundle = bundleOf("family" to family)
+                navigateUp(1, bundle)
+            }
         })
     }
 
@@ -81,5 +92,10 @@ class AddFamilyFragment : BundleFragment() {
             et_contact_number.error = "Contact Number is not valid"
         else
             et_contact_number.error = null
+    }
+
+    object ScreenType {
+        const val HOME = 1
+        const val FAMILY_DETAILS = 2
     }
 }

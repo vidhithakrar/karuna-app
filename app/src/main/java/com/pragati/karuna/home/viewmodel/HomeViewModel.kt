@@ -5,8 +5,14 @@ import androidx.lifecycle.ViewModel
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.repository.RequestRepository
+import com.pragati.karuna.request.repository.SuppliersCompletionListener
+import com.pragati.karuna.request.repository.SuppliersRepository
 
-class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
+class HomeViewModel(
+    private val repository: RequestRepository,
+    private val supplierRepository: SuppliersRepository
+) : ViewModel() {
+    lateinit var supplierId: String
     var requestId = MutableLiveData<String?>()
     var kit = MutableLiveData<Kit>()
     var families = MutableLiveData<MutableList<Family>>()
@@ -88,5 +94,20 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
                     RequestState(RequestState.FAILED, R.string.request_close_failure)
             }
         )
+    }
+
+    fun fetchSupplier() {
+        supplierRepository.fetchSupplier(supplierId, object :
+            SuppliersCompletionListener {
+            override fun onComplete(suppliers: List<Supplier>) {
+                supplier.value = suppliers.first()
+            }
+
+            override fun onError() {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        })
+
     }
 }

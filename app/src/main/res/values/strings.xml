@@ -50,6 +50,40 @@
     <string name="secondary_line">Secondary line text to give some kind of info to the user. It should be some multiline text</string>
     <string name="get_started">Let\'s Get Started</string>
     <string name="is_first_time_installation">IS_FIRST_TIME_INSTALLATION</string>
+    <string name="action_logout">Logout</string>
+
+    <string name="action_about_us">About us</string>
+    <string name="action_about_us_title">Pragati Foundation</string>
+    <string name="about_us_description">Many landless, migrant labourers and their families in and around Pune, unemployed people, the elderly and sick have been hit hard by the lockdown caused by
+        COVID Health Crisis. Pragati Foundation, along with a Network of other NGOs and Volunteers is currently focusing on distributing relief FOOD KITS to distressed families. Just
+        Rs. 500 could help feed a family of 4 for around 10 days.
+    </string>
+    <string name="about_us_heading">Please Donate to help supply food kits to the urban and rural poor around Pune and help them get through the COVID Crisis</string>
+    <string name="about_us_donation_from_india">Donation from India</string>
+    <string name="about_us_donation_account_name">Account Name</string>
+    <string name="about_us_donation_from_india_account_name_value">Pragati Foundation</string>
+    <string name="about_us_donation_from_bank_name">Bank Name</string>
+    <string name="about_us_donation_from_india_bank_name_value">ICICI Bank, \nAundh Branch</string>
+    <string name="about_us_donation_ac_no">Account Number</string>
+    <string name="about_us_donation_from_india_ac_no_value">007301023669</string>
+    <string name="about_us_donation_ifsc">IFSC</string>
+    <string name="about_us_donation_from_india_ifsc_value">ICIC0000073</string>
+
+    <string name="about_us_donation_international_heading">For Overseas Contribution</string>
+    <string name="about_us_donation_from_abroad_bank_name_value">State Bank of India, \nAundh Branch, \nPune, Maharashtra, \nIndia</string>
+    <string name="about_us_donation_from_abroad_ac_no_value">10146130326</string>
+    <string name="about_us_donation_from_abroad_ifsc_value">SBIN0008784</string>
+    <string name="about_us_donation_from_abroad_swift_code">Swift Code</string>
+    <string name="about_us_donation_from_abroad_swift_code_value">SBIN INBB \n218(DG Pune)</string>
+    <string name="about_us_contact">Contact Details</string>
+    <string name="about_us_contact_person_1">Ranjan Sah</string>
+    <string name="about_us_contact_person_1_number">9226787919</string>
+    <string name="about_us_contact_person_2">Mohan Kandekar</string>
+    <string name="about_us_contact_person_2_number">7798072322</string>
+    <string name="about_us_contact_person_3">Deepak Ghatwilkar</string>
+    <string name="about_us_contact_person_3_number">9130784702</string>
+    <string name="about_us_donation_request">Your kind donation will be exempted from Tax under section 80G of the IT Act. We will provide you with relevant references and receipts.</string>
+    <string name="about_us_app_description">Karuna app is designed to help distribute the FOOD KITS to the people in need.</string>
 
     <!--Kit-->
     <string name="kit_type_prompt">Kit Type<sup>*</sup></string>
