@@ -12,7 +12,7 @@ class Volunteer(
     var locality: String?,
     var city: String?,
     var state: String?,
-    var mobile_number: Long?
+    var mobile_number: String?
 ) : Parcelable {
     fun getAddress(): String {
         return "$locality, $city, $state."

@@ -45,14 +45,14 @@ class AddVolunteerFragment : BundleFragment() {
         confirm_volunteers_button?.setOnClickListener(View.OnClickListener {
             val taggedVolunteer = (volunteers_list_container?.adapter as VolunteersAdapter).getTaggedVolunteers()[0]
             val bundle = bundleOf("volunteer" to taggedVolunteer)
-            navigateUp(4, bundle)
+            navigateUp(10, bundle)
         })
 
         volunteerViewModel.volunteers.observe(viewLifecycleOwner, Observer {
             (volunteers_list_container?.adapter as VolunteersAdapter).setVolunteers(volunteerViewModel.volunteers.value!!)
         })
 
-        volunteerViewModel.fetchSuppliers()
+        volunteerViewModel.fetchVolunteers()
     }
 
 }

@@ -74,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:collapsedName="@string/request_volunteers"
-                app:contentVisible="false"
                 app:expandedActionDrawable="@drawable/ic_edit"
                 app:expandedName="@string/request_volunteers"
                 app:expendedActionName="@string/action_edit"

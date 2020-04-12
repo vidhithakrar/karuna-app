@@ -11,6 +11,7 @@ import com.pragati.karuna.login.viewmodel.LoginViewModel
 import com.pragati.karuna.myrequests.viewmodel.MyRequestsViewModel
 import com.pragati.karuna.request.repository.RequestRepository
 import com.pragati.karuna.request.repository.SuppliersRepository
+import com.pragati.karuna.request.repository.VolunteerRepository
 
 class ViewModelFactory : ViewModelProvider.Factory {
 
@@ -26,7 +27,8 @@ class ViewModelFactory : ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(
                 repository = RequestRepository(FirebaseAuth.getInstance(), Firebase.firestore),
-                supplierRepository = SuppliersRepository()
+                supplierRepository = SuppliersRepository(),
+                volunteerRepository = VolunteerRepository()
             ) as T
         }
         if (modelClass.isAssignableFrom(MyRequestsViewModel::class.java)) {

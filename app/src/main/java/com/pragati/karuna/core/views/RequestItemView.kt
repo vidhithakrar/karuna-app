@@ -5,10 +5,7 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.pragati.karuna.R
 import com.pragati.karuna.core.models.RequestItem
-import com.pragati.karuna.request.model.Family
-import com.pragati.karuna.request.model.Kit
-import com.pragati.karuna.request.model.Location
-import com.pragati.karuna.request.model.Supplier
+import com.pragati.karuna.request.model.*
 import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.setLeftDrawable
 import com.pragati.karuna.util.visible
@@ -44,12 +41,18 @@ class RequestItemView(context: Context, attrs: AttributeSet) : LinearLayout(cont
              is RequestItem.KitItem -> { bindKitDetails(requestItem.kit) }
              is RequestItem.FamilyItem -> { bindFamilyDetails(requestItem.families) }
              is RequestItem.SupplierItem -> { bindSupplierDetails(requestItem.supplier) }
+             is RequestItem.VolunteerItem -> { bindVolunteerDetails(requestItem.volunteer) }
         }
     }
 
     private fun bindSupplierDetails(supplier: Supplier) {
         content1.text = supplier.name
-        content2.text = "${supplier.locality} ${supplier.city}"
+        content2.text = supplier.getAddress()
+    }
+
+    private fun bindVolunteerDetails(volunteer: Volunteer) {
+        content1.text = volunteer.name
+        content2.text = volunteer.getAddress()
     }
 
     private fun bindFamilyDetails(families: List<Family>) {

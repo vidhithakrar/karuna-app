@@ -131,7 +131,7 @@ class HomeFragment : BundleFragment() {
                 supplier?.let { homeViewModel.addSuppliers(supplier) }
             }
 
-            4 -> {
+            10 -> {
                 val volunteer = bundle.get("volunteer") as Volunteer?
                 volunteer?.let { homeViewModel.addVolunteers(volunteer) }
             }
@@ -149,6 +149,7 @@ class HomeFragment : BundleFragment() {
         arguments?.get("request")?.let { request ->
             setRequestData(request as Request)
             homeViewModel.fetchSupplier()
+            homeViewModel.fetchVolunteer()
         }
 
         createRequestButton.setOnClickListener {
@@ -236,7 +237,7 @@ class HomeFragment : BundleFragment() {
     private fun navigateToVolunteersView() {
         navigate(
             R.id.action_add_volunteers,
-            4
+            10
         )
     }
 

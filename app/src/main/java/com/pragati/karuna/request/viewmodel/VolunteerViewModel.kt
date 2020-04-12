@@ -9,7 +9,7 @@ import com.pragati.karuna.request.repository.VolunteerRepository
 class VolunteerViewModel : ViewModel() {
     var volunteers = MutableLiveData<List<Volunteer>>()
 
-     fun fetchSuppliers() {
+     fun fetchVolunteers() {
         VolunteerRepository().fetchVolunteer(object :
             VolunteerCompletionListener {
             override fun onComplete(volunteer: List<Volunteer>) {

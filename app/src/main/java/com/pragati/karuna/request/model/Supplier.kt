@@ -13,7 +13,7 @@ class Supplier(
     var city: String,
     var state: String,
     var supplier_type: String,
-    var mobile_number: Long
+    var mobile_number: String
 ) : Parcelable {
     fun getAddress(): String {
         return "$locality, $city, $state."
