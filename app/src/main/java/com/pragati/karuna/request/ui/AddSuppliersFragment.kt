@@ -12,6 +12,7 @@ import com.phelat.navigationresult.BundleFragment
 import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.request.adapter.SupplierAdapter
+import com.pragati.karuna.request.model.Supplier
 import com.pragati.karuna.request.viewmodel.SuppliersViewModel
 import com.pragati.karuna.util.disable
 import com.pragati.karuna.util.enable
@@ -43,7 +44,6 @@ class AddSuppliersFragment : BundleFragment() {
             override fun onSelected() {
                 confirm_suppliers_button.enable()
             }
-
         })
 
         confirm_suppliers_button?.setOnClickListener(View.OnClickListener {
@@ -53,7 +53,16 @@ class AddSuppliersFragment : BundleFragment() {
         })
 
         suppliersViewModel.suppliers.observe(viewLifecycleOwner, Observer {
-            (suppliers_list_container?.adapter as SupplierAdapter).setSuppliers(suppliersViewModel.suppliers.value!!)
+            val selectedSupplier = arguments?.get(SUPPLIER) as? Supplier
+
+            (suppliers_list_container?.adapter as SupplierAdapter).setSuppliers(
+                suppliersViewModel.suppliers.value!!, selectedSupplier
+            )
+            if (selectedSupplier != null) {
+                confirm_suppliers_button.enable()
+            } else {
+                confirm_suppliers_button.disable()
+            }
         })
 
         suppliersViewModel.fetchSuppliers()

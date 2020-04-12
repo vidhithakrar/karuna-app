@@ -24,8 +24,10 @@ class VolunteersAdapter(
         return taggedVolunteers
     }
 
-    fun setVolunteers(volunteers: List<Volunteer>){
+    fun setVolunteers(volunteers: List<Volunteer>, selectedVolunteer: Volunteer?){
         this.volunteers = volunteers
+        taggedVolunteers.clear()
+        selectedVolunteer?.let { taggedVolunteers.add(it) }
         this.notifyDataSetChanged()
     }
 
@@ -35,13 +37,10 @@ class VolunteersAdapter(
         holder.checkBox.setOnClickListener {
             val checkedPosition = holder.adapterPosition
 
-            if(taggedVolunteers.isEmpty()) {
-                supplierSelectedListener.onSelected()
-            }
-
             taggedVolunteers.clear()
             taggedVolunteers.add(volunteers[checkedPosition])
 
+            supplierSelectedListener.onSelected()
             //Todo: Use notifyItemChanged instead
             notifyDataSetChanged()
         }

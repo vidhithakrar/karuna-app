@@ -19,7 +19,8 @@ import com.pragati.karuna.home.viewmodel.HomeViewModel
 import com.pragati.karuna.home.viewmodel.RequestState
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.ui.AddFamilyFragment
-import com.pragati.karuna.request.ui.AddSuppliersFragment
+import com.pragati.karuna.request.ui.AddSuppliersFragment.Companion.SUPPLIER
+import com.pragati.karuna.request.ui.AddVolunteerFragment.Companion.VOLUNTEER
 import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.hideKeyboard
 import com.pragati.karuna.util.visible
@@ -130,12 +131,12 @@ class HomeFragment : BundleFragment() {
             }
 
             3 -> {
-                val supplier = bundle.get(AddSuppliersFragment.SUPPLIER) as Supplier?
+                val supplier = bundle.get(SUPPLIER) as Supplier?
                 supplier?.let { homeViewModel.addSuppliers(supplier) }
             }
 
             10 -> {
-                val volunteer = bundle.get("volunteer") as Volunteer?
+                val volunteer = bundle.get(VOLUNTEER) as Volunteer?
                 volunteer?.let { homeViewModel.addVolunteers(volunteer) }
             }
 
@@ -232,7 +233,7 @@ class HomeFragment : BundleFragment() {
 
     private fun navigateToSupplierDetails() {
         val supplier = homeViewModel.supplier.value
-        val bundle = bundleOf("supplier" to supplier)
+        val bundle = bundleOf(SUPPLIER to supplier)
 
         navigate(
             R.id.action_add_suppliers,
@@ -243,7 +244,7 @@ class HomeFragment : BundleFragment() {
 
     private fun navigateToVolunteersView() {
         val volunteer = homeViewModel.volunteer.value
-        val bundle = bundleOf("volunteer" to volunteer)
+        val bundle = bundleOf(VOLUNTEER to volunteer)
         navigate(
             R.id.action_add_volunteers,
             bundle,
