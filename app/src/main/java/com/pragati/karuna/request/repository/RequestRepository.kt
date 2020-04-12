@@ -1,22 +1,19 @@
 package com.pragati.karuna.request.repository
 
 import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.pragati.karuna.request.model.Request
 import java.util.*
 
-class RequestRepository(private val auth: FirebaseAuth, private val db: FirebaseFirestore) {
+class RequestRepository(private val db: FirebaseFirestore) {
 
     fun addRequest(
         request: Request,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        if (auth.currentUser == null)
-            Log.e(Tag, "User is not logged in")
-        val requestDao = request.transform(auth.currentUser!!.uid)
+        val requestDao = request.transform(request.uid)
         db.collection(CollectionName).add(requestDao).addOnSuccessListener { result ->
             Log.d(Tag, "Request created with id : ${result.id}")
             onSuccess()
@@ -31,7 +28,7 @@ class RequestRepository(private val auth: FirebaseAuth, private val db: Firebase
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        val requestDao = request.transform(auth.currentUser!!.uid)
+        val requestDao = request.transform(request.uid)
         db.collection("requests").document(request.requestId!!).set(requestDao)
             .addOnSuccessListener {
                 Log.d(Tag, "Request with id updated : ${request.requestId!!}")
@@ -42,16 +39,19 @@ class RequestRepository(private val auth: FirebaseAuth, private val db: Firebase
             }
     }
 
-    fun loadRequests(onSuccess: (MutableList<Request>) -> Unit, onFailure: (Exception) -> Unit) {
+    fun loadRequests(
+        uid: String,
+        onSuccess: (MutableList<Request>) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
         val requests = mutableListOf<Request>()
-        db.collection("requests").whereEqualTo("uid", auth.currentUser!!.uid)
+        db.collection("requests").whereEqualTo("uid", uid)
             .whereEqualTo("status", Status.CREATED).get()
             .addOnSuccessListener { result ->
                 result.forEach { document ->
                     Log.d("Request", "${document.data}")
-                    document.toObject<Request>().also { request ->
-                        request.requestId = document.id
-                        requests.add(request)
+                    document.toObject<RequestDao>().also { requestDao ->
+                        requests.add(requestDao.transform(document.id))
                     }
                 }
                 onSuccess(requests)
@@ -100,6 +100,20 @@ private fun Request.transform(uid: String): RequestDao {
         Status.CREATED,
         if (requestId.isNullOrEmpty()) currentTime() else this.createdTimestamp,
         currentTime()
+    )
+}
+
+private fun RequestDao.transform(id: String): Request {
+    return Request(
+        requestId = id,
+        location = this.location,
+        families = this.families,
+        kit = this.kit,
+        supplierId = this.supplierId,
+        volunteerId = this.volunteerId,
+        createdTimestamp = this.createdTimestamp,
+        modifiedTimestamp = this.modifiedTimestamp,
+        uid = this.uid
     )
 }
 

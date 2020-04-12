@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModel
 import com.pragati.karuna.request.model.Request
 import com.pragati.karuna.request.repository.RequestRepository
 
-class MyRequestsViewModel(private val repository: RequestRepository) : ViewModel() {
+class MyRequestsViewModel(private val uid: String, private val repository: RequestRepository) : ViewModel() {
     val requests = MutableLiveData<List<Request>>()
     val error = MutableLiveData<String?>()
 
     fun loadRequests() {
-        repository.loadRequests({ requests ->
+        repository.loadRequests(uid, { requests ->
             this.requests.value = requests
         }, { error ->
             this.error.value = error.message

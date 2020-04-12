@@ -13,7 +13,7 @@ import com.pragati.karuna.request.repository.RequestRepository
 import com.pragati.karuna.request.repository.SuppliersRepository
 import com.pragati.karuna.request.repository.VolunteerRepository
 
-class ViewModelFactory : ViewModelProvider.Factory {
+class ViewModelFactory(private val uid: String) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -26,14 +26,16 @@ class ViewModelFactory : ViewModelProvider.Factory {
         }
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(
-                repository = RequestRepository(FirebaseAuth.getInstance(), Firebase.firestore),
+                repository = RequestRepository(Firebase.firestore),
                 supplierRepository = SuppliersRepository(),
-                volunteerRepository = VolunteerRepository()
+                volunteerRepository = VolunteerRepository(),
+                uid = uid
             ) as T
         }
         if (modelClass.isAssignableFrom(MyRequestsViewModel::class.java)) {
             return MyRequestsViewModel(
-                repository = RequestRepository(FirebaseAuth.getInstance(), Firebase.firestore)
+                uid = uid,
+                repository = RequestRepository(Firebase.firestore)
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

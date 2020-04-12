@@ -11,7 +11,8 @@ import com.pragati.karuna.request.repository.VolunteerRepository
 class HomeViewModel(
     private val repository: RequestRepository,
     private val supplierRepository: SuppliersRepository,
-    private val volunteerRepository: VolunteerRepository
+    private val volunteerRepository: VolunteerRepository,
+    private val uid: String
 ) : ViewModel() {
     var supplierId: String? = null
     var volunteerId: String? = null
@@ -60,7 +61,8 @@ class HomeViewModel(
             families = families.value!!,
             kit = kit.value!!,
             supplierId = supplier.value?.id,
-            volunteerId = volunteer.value?.id
+            volunteerId = volunteer.value?.id,
+            uid = uid
         )
         if (request.requestId.isNullOrEmpty()) {
             repository.addRequest(request, {

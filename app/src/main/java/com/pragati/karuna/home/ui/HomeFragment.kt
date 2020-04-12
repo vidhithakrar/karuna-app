@@ -35,7 +35,7 @@ class HomeFragment : BundleFragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-            ViewModelProviders.of(this, ViewModelFactory()).get(HomeViewModel::class.java)
+            ViewModelProviders.of(this, ViewModelFactory(arguments?.getString(MainActivity.UidExtra))).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.requestId.observe(viewLifecycleOwner, Observer { id ->

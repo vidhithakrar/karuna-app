@@ -14,4 +14,8 @@ data class RequestDao(
     val status: Status,
     val createdTimestamp: Long,
     val modifiedTimestamp: Long
-)
+) {
+    //Only needed by firebase to de-serialize this data
+    constructor() : this(Location(), mutableListOf(), Kit(), null, null, "", Status.CREATED, 0, 0)
+}
+
