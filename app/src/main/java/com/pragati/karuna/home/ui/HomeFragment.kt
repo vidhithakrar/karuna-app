@@ -146,6 +146,7 @@ class HomeFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        hideKeyboard()
         arguments?.get("request")?.let { request ->
             setRequestData(request as Request)
             homeViewModel.fetchSupplier()
