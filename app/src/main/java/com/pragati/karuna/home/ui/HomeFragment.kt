@@ -94,6 +94,7 @@ class HomeFragment : BundleFragment() {
     private fun setRequestData(request: Request) {
         homeViewModel.requestId.value = request.requestId
         homeViewModel.supplierId = request.supplierId
+        homeViewModel.volunteerId = request.volunteerId
         homeViewModel.families.value = request.families
         homeViewModel.location.value = request.location
         homeViewModel.kit.value = request.kit
