@@ -42,7 +42,10 @@ class HomeFragment : BundleFragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-            ViewModelProviders.of(this, ViewModelFactory(arguments?.getParcelable(MainActivity.UserExtra))).get(HomeViewModel::class.java)
+            ViewModelProviders.of(
+                this,
+                ViewModelFactory(arguments?.getParcelable(MainActivity.UserExtra))
+            ).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.requestId.observe(viewLifecycleOwner, Observer { id ->
@@ -100,15 +103,22 @@ class HomeFragment : BundleFragment() {
     }
 
     private fun setFlaggedFamilyCount(families: List<Family>) {
-        val flaggedFamilyCount = families.sumBy { family -> if(family.isFlagged()) 1 else 0  }
-        if(flaggedFamilyCount == 0) {
+        val flaggedFamilyCount = families.sumBy { family -> if (family.isFlagged()) 1 else 0 }
+        if (flaggedFamilyCount == 0) {
             flaggedFamilyCountView.invisible()
         } else {
-            val flaggedFamilyCountSpan = SpannableString(context?.resources?.getQuantityString(
-                R.plurals.families, flaggedFamilyCount, flaggedFamilyCount
-            ))
+            val flaggedFamilyCountSpan = SpannableString(
+                context?.resources?.getQuantityString(
+                    R.plurals.families, flaggedFamilyCount, flaggedFamilyCount
+                )
+            )
             val backgroundColorSpan = BackgroundColorSpan(Color.RED)
-            flaggedFamilyCountSpan.setSpan(backgroundColorSpan, 0, flaggedFamilyCountSpan.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+            flaggedFamilyCountSpan.setSpan(
+                backgroundColorSpan,
+                0,
+                flaggedFamilyCountSpan.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            )
             flaggedFamilyCountView.text = flaggedFamilyCountSpan
             flaggedFamilyCountView.visible()
         }
@@ -274,7 +284,7 @@ class HomeFragment : BundleFragment() {
     }
 
     private fun navigateToKitDetails() {
-        navigate(R.id.action_add_kit, 2)
+        navigate(R.id.action_add_kit, bundleOf("defaultKitValues" to homeViewModel.kit.value), 2)
     }
 
     private fun navigateToFamilyDetails() {
@@ -288,6 +298,7 @@ class HomeFragment : BundleFragment() {
     private fun navigateToLocationDetails() {
         navigate(
             R.id.action_add_location,
+            bundleOf("defaultLocationValues" to homeViewModel.location.value),
             0
         )
     }

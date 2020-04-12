@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_add_location.*
 class AddLocationFragment : BundleFragment() {
 
     private lateinit var addLocationViewModel: LocationViewModel
+    private var location: Location ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +37,8 @@ class AddLocationFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        location = arguments?.getParcelable("defaultLocationValues")
+        setEditTextValue()
         showKeyboard()
         btn_save.setOnClickListener(View.OnClickListener {
             if (!validateAddress()) {
@@ -55,6 +58,16 @@ class AddLocationFragment : BundleFragment() {
                 navigateUp(0, bundle)
             }
         })
+    }
+
+    private fun setEditTextValue() {
+        location?.let {
+            et_address.setText(it.address)
+            et_landmark.setText(it.landmark)
+            et_pin.setText(it.pin)
+            et_contact_name.setText(it.contactName)
+            et_contact_phone.setText(it.phone)
+        }
     }
 
     private fun validateLandmark(): Boolean {
