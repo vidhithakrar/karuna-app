@@ -72,5 +72,19 @@
             app:layout_constraintStart_toStartOf="@+id/tv_accessory"
             app:layout_constraintTop_toBottomOf="@+id/tv_sub_title" />
 
+
+        <TextView
+            android:id="@+id/tv_flagged_family_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="14"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:drawablePadding="2dp"
+            android:textColor="@color/text_view_white"
+            android:drawableEnd="@drawable/ic_warning_red"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

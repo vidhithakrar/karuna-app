@@ -136,4 +136,14 @@
         <item quantity="other">%d Kits</item>
     </plurals>
 
+    <plurals name="families">
+        <item quantity="one">\ \ %d family \ \ </item>
+        <item quantity="other">\ \ %d families \ \ </item>
+    </plurals>
+
+    <plurals name="served_days_ago">
+        <item quantity="one">\ \ Served %d day ago \ \ </item>
+        <item quantity="other">\ \ Served %d days ago \ \ </item>
+    </plurals>
+
 </resources>
