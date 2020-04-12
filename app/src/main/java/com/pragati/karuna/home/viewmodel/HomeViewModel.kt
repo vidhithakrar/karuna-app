@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.repository.RequestRepository
-import com.pragati.karuna.request.repository.SuppliersCompletionListener
 import com.pragati.karuna.request.repository.SuppliersRepository
 
 class HomeViewModel(
@@ -94,17 +93,15 @@ class HomeViewModel(
     }
 
     fun fetchSupplier() {
-        supplierRepository.fetchSupplier(supplierId, object :
-            SuppliersCompletionListener {
-            override fun onComplete(suppliers: List<Supplier>) {
-                supplier.value = suppliers.first()
+        supplierRepository.fetchSupplier(
+            id = supplierId,
+            onSuccess = {
+                supplier.value = it
+            },
+            onFailure = {
+                requestState.value =
+                    RequestState(RequestState.FAILED, R.string.request_close_failure)
             }
-
-            override fun onError() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-        })
-
+        )
     }
 }
