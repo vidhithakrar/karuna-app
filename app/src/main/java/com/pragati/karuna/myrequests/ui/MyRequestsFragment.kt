@@ -31,7 +31,7 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
         requestsViewModel =
             ViewModelProviders.of(
                 this,
-                ViewModelFactory(arguments?.getString(MainActivity.UidExtra))
+                ViewModelFactory(arguments?.getString(MainActivity.UidExtra)!!)
             ).get(MyRequestsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_my_requests, container, false)
 
