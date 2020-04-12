@@ -46,11 +46,14 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
     }
 
     fun addOrUpdateRequest() {
+        var noOfKits =
+            families.value?.map { family -> family.noOfKits }?.reduce { sum, kits -> sum + kits }
         val request = Request(
             requestId = requestId.value,
             location = location.value!!,
             families = families.value!!,
             kit = kit.value!!,
+            numberOfKits = noOfKits ?: 0,
             supplierId = supplier.value?.id ?: "",
             volunteerId = volunteer.value?.id ?: ""
         )

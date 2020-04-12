@@ -93,4 +93,9 @@
         <item quantity="other">%d Families</item>
     </plurals>
 
+    <plurals name="no_of_kits">
+        <item quantity="one">%d Kit</item>
+        <item quantity="other">%d Kits</item>
+    </plurals>
+
 </resources>

@@ -8,6 +8,7 @@ data class RequestDao(
     val location: Location,
     val families: MutableList<Family>,
     val kit: Kit,
+    val numberOfKits: Int,
     val supplierId: String,
     val volunteerId: String,
     val uid: String,

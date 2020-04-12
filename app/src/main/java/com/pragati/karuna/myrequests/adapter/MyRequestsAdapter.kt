@@ -30,6 +30,11 @@ class MyRequestsAdapter(var myRequests: List<Request>, var itemClickListener: On
             R.plurals.no_of_families,
             myRequests.get(position).families.count(), myRequests.get(position).families.count()
         )
+        
+        holder.hint.text = holder.itemView.context.resources.getQuantityString(
+            R.plurals.no_of_kits,
+            myRequests.get(position).numberOfKits, myRequests.get(position).numberOfKits
+        )
         holder.subAccessory.text = dateFromTimeStamp(myRequests.get(position).createdTimestamp)
         holder.itemView.setOnClickListener {
             itemClickListener.onItemClick(position)
@@ -49,6 +54,8 @@ class MyRequestsAdapter(var myRequests: List<Request>, var itemClickListener: On
         var subTitle: TextView = itemView.findViewById(R.id.tv_sub_title)
         var accessory: TextView = itemView.findViewById(R.id.tv_accessory)
         var subAccessory: TextView = itemView.findViewById(R.id.tv_sub_accessory)
+        var hint: TextView = itemView.findViewById(R.id.tv_hint)
+
     }
 }
 

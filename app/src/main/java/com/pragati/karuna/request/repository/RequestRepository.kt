@@ -94,6 +94,7 @@ private fun Request.transform(uid: String): RequestDao {
         this.location,
         this.families,
         this.kit,
+        this.numberOfKits,
         this.supplierId,
         this.volunteerId,
         uid,

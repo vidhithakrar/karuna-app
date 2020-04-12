@@ -11,6 +11,7 @@ data class Request(
     var location: Location = Location(),
     var families: MutableList<Family> = mutableListOf(),
     var kit: Kit = Kit(),
+    var numberOfKits: Int = 0,
     var supplierId: String = "",
     var volunteerId: String = "",
     val createdTimestamp: Long = 0,
