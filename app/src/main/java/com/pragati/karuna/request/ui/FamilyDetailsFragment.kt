@@ -13,7 +13,7 @@ import com.pragati.karuna.R
 import com.pragati.karuna.myrequests.adapter.VerticalSpaceItemDecoration
 import com.pragati.karuna.request.adapter.FamilyDetailsAdapter
 import com.pragati.karuna.request.adapter.OnFamilyItemClickListener
-import com.pragati.karuna.request.model.Family
+import com.pragati.karuna.request.model.*
 import kotlinx.android.synthetic.main.fragment_family_details.*
 import java.util.ArrayList
 
@@ -58,8 +58,23 @@ class FamilyDetailsFragment : BundleFragment(), OnFamilyItemClickListener {
     }
 
     override fun onEditClick(position: Int) {
-//        var bundle = bundleOf("position" to position)
-//        navigate(R.id.action_add_family, bundle, 4)
+        var bundle = bundleOf("position" to position, "fromScreen" to AddFamilyFragment.ScreenType.FAMILY_DETAILS)
+        navigate(R.id.action_add_family, bundle, 6)
+    }
+
+    override fun onFragmentResult(requestCode: Int, bundle: Bundle) {
+        super.onFragmentResult(requestCode, bundle)
+
+        when (requestCode) {
+            6 -> {
+                val family = bundle.get("family") as Family?
+                val position = bundle.get("position") as Int?
+                if (family != null && position != null && position != -1) {
+                    families[position] = family
+                    familyAdapter.updateData(families)
+                }
+            }
+        }
     }
 
 }

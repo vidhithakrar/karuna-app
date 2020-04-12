@@ -38,6 +38,9 @@ class FamilyDetailsAdapter(private var onFamilyItemClickListener: OnFamilyItemCl
         holder.deleteFamily.setOnClickListener {
             onFamilyItemClickListener.onDeleteClick(position)
         }
+        holder.editFamily.setOnClickListener {
+            onFamilyItemClickListener.onEditClick(position)
+        }
     }
 
     companion object
@@ -45,6 +48,7 @@ class FamilyDetailsAdapter(private var onFamilyItemClickListener: OnFamilyItemCl
         var title: TextView = itemView.findViewById(R.id.tv_title)
         var subTitle: TextView = itemView.findViewById(R.id.tv_sub_title)
         var deleteFamily: ImageView = itemView.findViewById(R.id.delete_family)
+        var editFamily: ImageView = itemView.findViewById(R.id.edit_family)
     }
 }
 
