@@ -23,6 +23,7 @@ class AddFamilyFragment : BundleFragment() {
     private lateinit var familyViewModel: FamilyViewModel
     private var fromScreen = HOME
     private var position = -1
+    private var family: Family?= null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,8 +42,10 @@ class AddFamilyFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        family = arguments?.getParcelable("defaultFamilyValues")
         fromScreen = arguments?.getInt("fromScreen")?: HOME
         position = arguments?.getInt("position")?: -1
+        setEditTextValue()
         et_contact_number.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 var contactNumber = s.toString()
@@ -83,6 +86,16 @@ class AddFamilyFragment : BundleFragment() {
                 navigateUp(1, bundle)
             }
         })
+    }
+
+    private fun setEditTextValue() {
+        family?.let {
+            et_contact_number.setText(it.contact)
+            et_family_leader.setText(it.familyLeader)
+            et_no_of_adults.setText(it.noOfAdults.toString())
+            et_no_of_children.setText(it.noOfChildren.toString())
+            et_no_of_kits.setText(it.noOfKits.toString())
+        }
     }
 
     private fun validatePhone(contactNumber: String?) {

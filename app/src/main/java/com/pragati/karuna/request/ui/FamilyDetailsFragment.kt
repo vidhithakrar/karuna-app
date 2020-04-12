@@ -58,7 +58,7 @@ class FamilyDetailsFragment : BundleFragment(), OnFamilyItemClickListener {
     }
 
     override fun onEditClick(position: Int) {
-        var bundle = bundleOf("position" to position, "fromScreen" to AddFamilyFragment.ScreenType.FAMILY_DETAILS)
+        var bundle = bundleOf("position" to position, "fromScreen" to AddFamilyFragment.ScreenType.FAMILY_DETAILS, "defaultFamilyValues" to families[position])
         navigate(R.id.action_add_family, bundle, 6)
     }
 
