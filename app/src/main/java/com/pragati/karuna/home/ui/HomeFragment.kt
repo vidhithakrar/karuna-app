@@ -151,6 +151,7 @@ class HomeFragment : BundleFragment() {
         }
 
         createRequestButton.setOnClickListener {
+            loading.visible()
             homeViewModel.addOrUpdateRequest()
         }
 
