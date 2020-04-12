@@ -20,6 +20,7 @@ import com.pragati.karuna.home.viewmodel.RequestState
 import com.pragati.karuna.request.model.*
 import com.pragati.karuna.request.ui.AddFamilyFragment
 import com.pragati.karuna.util.gone
+import com.pragati.karuna.util.hideKeyboard
 import com.pragati.karuna.util.visible
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
@@ -131,7 +132,7 @@ class HomeFragment : BundleFragment() {
                 supplier?.let { homeViewModel.addSuppliers(supplier) }
             }
 
-            4 -> {
+            10 -> {
                 val volunteer = bundle.get("volunteer") as Volunteer?
                 volunteer?.let { homeViewModel.addVolunteers(volunteer) }
             }
@@ -145,10 +146,10 @@ class HomeFragment : BundleFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         arguments?.get("request")?.let { request ->
             setRequestData(request as Request)
             homeViewModel.fetchSupplier()
+            homeViewModel.fetchVolunteer()
         }
 
         createRequestButton.setOnClickListener {
@@ -236,7 +237,7 @@ class HomeFragment : BundleFragment() {
     private fun navigateToVolunteersView() {
         navigate(
             R.id.action_add_volunteers,
-            4
+            10
         )
     }
 

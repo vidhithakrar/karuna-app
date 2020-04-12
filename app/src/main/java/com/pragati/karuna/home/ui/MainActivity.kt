@@ -49,7 +49,6 @@ class MainActivity : FragmentResultActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
         logoutViewModel =
             ViewModelProviders.of(this, LogoutViewModelFactory()).get(LogoutViewModel::class.java)
     }

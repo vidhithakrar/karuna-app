@@ -44,10 +44,9 @@ class SuppliersRepository {
         val locality = data["locality"] as String
         val city = data["city"] as String
         val state = data["state"] as String
-        val mobileNumber = data["mobile_number"] as Long
+        val mobileNumber = data["mobile_number"] as String
 
-        val parsedSupplier = Supplier(name, id, locality, city, state, supplierType, mobileNumber)
-        return parsedSupplier
+        return Supplier(name, id, locality, city, state, supplierType, mobileNumber)
     }
 
     fun fetchSupplier(id: String, onSuccess: (Supplier) -> Unit, onFailure: (Exception) -> Unit) {
