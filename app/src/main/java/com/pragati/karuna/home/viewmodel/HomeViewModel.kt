@@ -23,6 +23,11 @@ class HomeViewModel(private val repository: RequestRepository) : ViewModel() {
         this.location.value = location
     }
 
+    fun updateFamilies(familyList: MutableList<Family>) {
+        families.value?.clear()
+        families.value = familyList
+    }
+
     fun addFamily(family: Family) {
         families.value?.add(family)
         families.value = families.value

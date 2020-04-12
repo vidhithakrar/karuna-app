@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.phelat.navigationresult.BundleFragment
+import com.phelat.navigationresult.navigateUp
 import com.pragati.karuna.R
 import com.pragati.karuna.myrequests.adapter.VerticalSpaceItemDecoration
 import com.pragati.karuna.request.adapter.FamilyDetailsAdapter
@@ -16,6 +19,8 @@ import java.util.ArrayList
 
 class FamilyDetailsFragment : BundleFragment(), OnFamilyItemClickListener {
 
+    val families = arrayListOf<Family>()
+    val familyAdapter = FamilyDetailsAdapter(this@FamilyDetailsFragment)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,24 +32,34 @@ class FamilyDetailsFragment : BundleFragment(), OnFamilyItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getParcelableArrayList<Family>("families")?.let { families ->
+        arguments?.getParcelableArrayList<Family>("families")?.let { familyList ->
+            families.clear()
+            families.addAll(familyList)
             setRequestAdapter(families)
+        }
+        confirmButton.setOnClickListener {
+            val bundle = bundleOf("families" to families)
+            navigateUp(5, bundle)
         }
     }
 
     private fun setRequestAdapter(families: ArrayList<Family>) {
-        familiesRecyclerView.apply {
+        familiesRecyclerView?.apply {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(VerticalSpaceItemDecoration(60))
-            adapter = FamilyDetailsAdapter(families, this@FamilyDetailsFragment)
+            adapter = familyAdapter
         }
+        familyAdapter.updateData(families)
     }
 
     override fun onDeleteClick(position: Int) {
+        families.removeAt(position)
+        familyAdapter.updateData(families)
     }
 
     override fun onEditClick(position: Int) {
 //        var bundle = bundleOf("position" to position)
 //        navigate(R.id.action_add_family, bundle, 4)
     }
+
 }

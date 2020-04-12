@@ -52,6 +52,8 @@ class HomeFragment : BundleFragment() {
             if (families.size > 0) {
                 familiesView.bindExpandedState(RequestItem.FamilyItem(families = families))
                 validateRequestData()
+            } else {
+                familiesView.bindCollapsedState()
             }
         })
 
@@ -131,6 +133,11 @@ class HomeFragment : BundleFragment() {
                 val volunteer = bundle.get("volunteer") as Volunteer?
                 volunteer?.let { homeViewModel.addVolunteers(volunteer) }
             }
+
+            5 -> {
+                val families = bundle.getParcelableArrayList<Family>("families")
+                families?.let { homeViewModel.updateFamilies(it) }
+            }
         }
     }
 
@@ -164,7 +171,7 @@ class HomeFragment : BundleFragment() {
             val families = homeViewModel.families.value
             if (!families.isNullOrEmpty()) {
                 val bundle = bundleOf("families" to families)
-                navigate(R.id.action_family_details, bundle, 4)
+                navigate(R.id.action_family_details, bundle, 5)
             }
         }
 
