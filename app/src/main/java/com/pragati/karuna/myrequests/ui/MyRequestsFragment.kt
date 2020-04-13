@@ -62,7 +62,7 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
 
     private fun setWelcomeMessage() {
         val username = requestsViewModel.loggedInUser.email.split("@").first()
-        welcome.text = resources.getString(R.string.welcome_message, username)
+        welcome.text = resources.getString(R.string.welcome_user, username)
     }
 
     private fun setRequests(myRequests: List<Request>) {
