@@ -185,6 +185,7 @@ class HomeFragment : BundleFragment() {
             setRequestData(request as Request)
             homeViewModel.fetchSupplier()
             homeViewModel.fetchVolunteer()
+            arguments?.clear()
         }
 
         createRequestButton.setOnClickListener {
