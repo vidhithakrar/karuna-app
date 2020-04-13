@@ -131,6 +131,7 @@ class HomeFragment : BundleFragment() {
         homeViewModel.families.value = request.families
         homeViewModel.location.value = request.location
         homeViewModel.kit.value = request.kit
+        homeViewModel.createdTimestamp = request.createdTimestamp
     }
 
     private fun validateRequestData() {

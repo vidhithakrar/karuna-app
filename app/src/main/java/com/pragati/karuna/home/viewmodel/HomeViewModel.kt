@@ -24,6 +24,7 @@ class HomeViewModel(
     var volunteer = MutableLiveData<Volunteer>()
     val requestState = MutableLiveData<RequestState>()
     var isInitialized = false
+    var createdTimestamp: Long = 0
 
     init {
         families.value = mutableListOf()
@@ -66,6 +67,7 @@ class HomeViewModel(
             numberOfKits = noOfKits ?: 0,
             supplierId = supplier.value?.id,
             volunteerId = volunteer.value?.id,
+            createdTimestamp = createdTimestamp,
             uid = uid
         )
         if (request.requestId.isNullOrEmpty()) {
