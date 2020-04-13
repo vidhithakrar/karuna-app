@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Volunteer
 import com.pragati.karuna.request.ui.AddSuppliersFragment
+import com.pragati.karuna.util.gone
 
 class VolunteersAdapter(
     val context: Context,
@@ -63,6 +64,7 @@ class VolunteersAdapter(
         holder.name.text = volunteers[position].name
         holder.address.text = volunteers[position].getAddress()
         holder.checkBox.isChecked = taggedVolunteers.contains(volunteers[position])
+        holder.supplierType.gone()
     }
 }
 
