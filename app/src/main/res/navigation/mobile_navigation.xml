@@ -91,13 +91,13 @@
     <fragment
         android:id="@+id/nav_add_suppliers"
         android:name="com.pragati.karuna.request.ui.AddSuppliersFragment"
-        android:label="Service Provider"
+        android:label="Suppliers"
         tools:layout="@layout/fragment_add_suppliers" />
 
     <fragment
         android:id="@+id/nav_add_volunteers"
         android:name="com.pragati.karuna.request.ui.AddVolunteerFragment"
-        android:label="Volunteer"
+        android:label="Volunteers"
         tools:layout="@layout/fragment_add_volunteer" />
 
     <fragment

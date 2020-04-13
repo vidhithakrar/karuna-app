@@ -108,8 +108,8 @@
     <string name="action_edit">Edit Details</string>
     <string name="request_kill_details">Kit Details</string>
     <string name="request_families">Families</string>
-    <string name="action_modify">Modify</string>
-    <string name="request_supplier_details">Supplier Details</string>
+    <string name="action_modify">Add</string>
+    <string name="request_supplier_details">Suppliers</string>
     <string name="request_volunteers">Volunteers</string>
 
     <string name="request_create_failure">There is an error occurred while creating the request.</string>
