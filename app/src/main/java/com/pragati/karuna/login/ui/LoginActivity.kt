@@ -32,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
                 ViewModelFactory(null)
             ).get(LoginViewModel::class.java)
 
+        loginViewModel.checkForLoginState()
+
         observeLoginCredentialState(username, password)
         observeLoginState(loading)
 

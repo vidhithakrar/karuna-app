@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pragati.karuna.R
+import com.pragati.karuna.login.model.LoggedInUser
 import com.pragati.karuna.login.repository.LoginCompletionListener
 import com.pragati.karuna.login.repository.LoginRepository
-import com.pragati.karuna.login.model.LoggedInUser
 
 class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
@@ -66,6 +66,15 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
     private fun isPasswordValid(password: String): Boolean {
         return !password.isBlank() && password.length > MaxPasswordLength
+    }
+
+    fun checkForLoginState() {
+        repository.loggedInUser()?.let {
+            _loginResult.value =
+                LoginUserState(
+                    success = it
+                )
+        }
     }
 
     companion object {

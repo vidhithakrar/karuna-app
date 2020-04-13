@@ -26,6 +26,15 @@ class LoginRepository(private val auth: FirebaseAuth) {
         auth.signOut()
     }
 
+    fun loggedInUser(): LoggedInUser? {
+        return auth.currentUser?.let {
+            LoggedInUser(
+                it.uid,
+                it.email!!
+            )
+        }
+    }
+
     companion object {
         val Tag = LoginRepository::class.java.name
     }
