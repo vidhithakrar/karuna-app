@@ -181,11 +181,14 @@ class HomeFragment : BundleFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideKeyboard()
-        arguments?.get("request")?.let { request ->
-            setRequestData(request as Request)
-            homeViewModel.fetchSupplier()
-            homeViewModel.fetchVolunteer()
-            arguments?.clear()
+        // checking this condition because, when user comes back on this page after edit, edited data is not persisting
+        if (!homeViewModel.isInitialized) {
+            arguments?.get("request")?.let { request ->
+                setRequestData(request as Request)
+                homeViewModel.fetchSupplier()
+                homeViewModel.fetchVolunteer()
+            }
+            homeViewModel.isInitialized = true
         }
 
         createRequestButton.setOnClickListener {

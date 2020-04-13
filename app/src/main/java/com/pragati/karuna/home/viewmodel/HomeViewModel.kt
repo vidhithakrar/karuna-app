@@ -23,6 +23,7 @@ class HomeViewModel(
     var supplier = MutableLiveData<Supplier>()
     var volunteer = MutableLiveData<Volunteer>()
     val requestState = MutableLiveData<RequestState>()
+    var isInitialized = false
 
     init {
         families.value = mutableListOf()
