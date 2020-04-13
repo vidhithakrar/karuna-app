@@ -1,103 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    tools:context=".request.ui.AddLocationFragment">
+    android:fillViewport="true">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_address"
-        style="@style/AppTheme.InputLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        tools:context=".request.ui.AddLocationFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_address"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_address"
+            style="@style/AppTheme.InputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/address"
-            android:inputType="textPostalAddress|textCapSentences"
-            app:layout_constraintTop_toBottomOf="@+id/tv_address_header">
-            <requestFocus />
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_landmark"
-        style="@style/AppTheme.InputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_address">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/address"
+                android:inputType="textPostalAddress|textCapSentences"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address_header">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_landmark"
+                <requestFocus />
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_landmark"
+            style="@style/AppTheme.InputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/area"
-            android:inputType="text|textCapSentences"
-            app:layout_constraintTop_toBottomOf="@+id/et_address" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/input_layout_address">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_pin"
-        style="@style/AppTheme.InputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_landmark">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_landmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/area"
+                android:inputType="text|textCapSentences"
+                app:layout_constraintTop_toBottomOf="@+id/et_address" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_pin"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_pin"
+            style="@style/AppTheme.InputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/pin"
-            android:inputType="number"
-            app:layout_constraintTop_toBottomOf="@+id/et_area" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/input_layout_landmark">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pin"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/et_area" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_contact_name"
-        style="@style/AppTheme.InputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_pin">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_contact_name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_contact_name"
+            style="@style/AppTheme.InputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/contact_name"
-            android:inputType="textPersonName|textCapWords"
-            app:layout_constraintTop_toBottomOf="@+id/et_pin" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/input_layout_pin">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_contact_phone"
-        style="@style/AppTheme.InputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_contact_name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_contact_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/contact_name"
+                android:inputType="textPersonName|textCapWords"
+                app:layout_constraintTop_toBottomOf="@+id/et_pin" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_contact_phone"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_contact_phone"
+            style="@style/AppTheme.InputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/local_contact_number"
-            android:inputType="phone"
-            app:layout_constraintTop_toBottomOf="@+id/et_pin" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/input_layout_contact_name">
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="89dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="22dp"
-        android:text="@string/save"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_contact_phone" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_contact_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/local_contact_number"
+                android:inputType="phone"
+                app:layout_constraintTop_toBottomOf="@+id/et_pin" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="89dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="22dp"
+            android:text="@string/save"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_layout_contact_phone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

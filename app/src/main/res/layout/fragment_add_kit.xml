@@ -1,47 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    tools:context=".request.ui.AddKitFragment">
+    android:fillViewport="true">
 
-    <Spinner
-        android:id="@+id/sp_kit_type"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:entries="@array/kit_types"
-        android:prompt="@string/kit_type_prompt"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        tools:context=".request.ui.AddKitFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_kit_description"
-        style="@style/AppTheme.InputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sp_kit_type">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_kit_description"
+        <Spinner
+            android:id="@+id/sp_kit_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/description"
-            android:inputType="text|textCapSentences"
-            app:layout_constraintTop_toBottomOf="@+id/et_area">
+            android:layout_marginTop="32dp"
+            android:entries="@array/kit_types"
+            android:prompt="@string/kit_type_prompt"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <requestFocus />
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_kit_description"
+            style="@style/AppTheme.InputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/sp_kit_type">
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="89dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="22dp"
-        android:text="@string/save"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_kit_description" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_kit_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/description"
+                android:inputType="text|textCapSentences"
+                app:layout_constraintTop_toBottomOf="@+id/et_area">
+
+                <requestFocus />
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="89dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="22dp"
+            android:text="@string/save"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_layout_kit_description" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
