@@ -1,7 +1,11 @@
 package com.pragati.karuna.home.ui
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.BackgroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +27,7 @@ import com.pragati.karuna.request.ui.AddSuppliersFragment.Companion.SUPPLIER
 import com.pragati.karuna.request.ui.AddVolunteerFragment.Companion.VOLUNTEER
 import com.pragati.karuna.util.gone
 import com.pragati.karuna.util.hideKeyboard
+import com.pragati.karuna.util.invisible
 import com.pragati.karuna.util.visible
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_request_summary_collapse.view.*
@@ -37,7 +42,10 @@ class HomeFragment : BundleFragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-            ViewModelProviders.of(this, ViewModelFactory(arguments?.getParcelable(MainActivity.UserExtra))).get(HomeViewModel::class.java)
+            ViewModelProviders.of(
+                this,
+                ViewModelFactory(arguments?.getParcelable(MainActivity.UserExtra))
+            ).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel.requestId.observe(viewLifecycleOwner, Observer { id ->
@@ -59,6 +67,7 @@ class HomeFragment : BundleFragment() {
             } else {
                 familiesView.bindCollapsedState()
             }
+            setFlaggedFamilyCount(families)
         })
 
         homeViewModel.location.observe(viewLifecycleOwner, Observer { location ->
@@ -91,6 +100,28 @@ class HomeFragment : BundleFragment() {
         })
 
         return root
+    }
+
+    private fun setFlaggedFamilyCount(families: List<Family>) {
+        val flaggedFamilyCount = families.sumBy { family -> if (family.isFlagged()) 1 else 0 }
+        if (flaggedFamilyCount == 0) {
+            flaggedFamilyCountView.invisible()
+        } else {
+            val flaggedFamilyCountSpan = SpannableString(
+                context?.resources?.getQuantityString(
+                    R.plurals.families, flaggedFamilyCount, flaggedFamilyCount
+                )
+            )
+            val backgroundColorSpan = BackgroundColorSpan(Color.RED)
+            flaggedFamilyCountSpan.setSpan(
+                backgroundColorSpan,
+                0,
+                flaggedFamilyCountSpan.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            )
+            flaggedFamilyCountView.text = flaggedFamilyCountSpan
+            flaggedFamilyCountView.visible()
+        }
     }
 
     private fun setRequestData(request: Request) {
@@ -253,7 +284,7 @@ class HomeFragment : BundleFragment() {
     }
 
     private fun navigateToKitDetails() {
-        navigate(R.id.action_add_kit, 2)
+        navigate(R.id.action_add_kit, bundleOf("defaultKitValues" to homeViewModel.kit.value), 2)
     }
 
     private fun navigateToFamilyDetails() {
@@ -267,6 +298,7 @@ class HomeFragment : BundleFragment() {
     private fun navigateToLocationDetails() {
         navigate(
             R.id.action_add_location,
+            bundleOf("defaultLocationValues" to homeViewModel.location.value),
             0
         )
     }

@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pragati.karuna.R
 import com.pragati.karuna.request.model.Family
+import com.pragati.karuna.util.gone
+import com.pragati.karuna.util.invisible
+import com.pragati.karuna.util.visible
 
 class FamilyDetailsAdapter(private var onFamilyItemClickListener: OnFamilyItemClickListener) :
     RecyclerView.Adapter<FamilyDetailsAdapter.MyRequestsViewHolder>() {
@@ -41,14 +44,26 @@ class FamilyDetailsAdapter(private var onFamilyItemClickListener: OnFamilyItemCl
         holder.editFamily.setOnClickListener {
             onFamilyItemClickListener.onEditClick(position)
         }
+
+        if(family.isFlagged()) {
+            holder.servedDaysAgoView.text = holder.itemView.context.resources.getQuantityString(
+                R.plurals.served_days_ago,
+                family.lastServedBeforeDays(),
+                family.lastServedBeforeDays()
+            )
+            holder.servedDaysAgoView.visible()
+        } else {
+            holder.servedDaysAgoView.gone()
+        }
     }
 
     companion object
     class MyRequestsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var title: TextView = itemView.findViewById(R.id.tv_title)
-        var subTitle: TextView = itemView.findViewById(R.id.tv_sub_title)
-        var deleteFamily: ImageView = itemView.findViewById(R.id.delete_family)
-        var editFamily: ImageView = itemView.findViewById(R.id.edit_family)
+        val title: TextView = itemView.findViewById(R.id.tv_title)
+        val subTitle: TextView = itemView.findViewById(R.id.tv_sub_title)
+        val deleteFamily: ImageView = itemView.findViewById(R.id.delete_family)
+        val editFamily: ImageView = itemView.findViewById(R.id.edit_family)
+        val servedDaysAgoView: TextView = itemView.findViewById(R.id.tv_served_days_ago)
     }
 }
 
