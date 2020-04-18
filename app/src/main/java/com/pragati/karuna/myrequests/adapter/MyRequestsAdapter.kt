@@ -1,9 +1,5 @@
 package com.pragati.karuna.myrequests.adapter
 
-import android.graphics.Color
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.BackgroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +15,6 @@ import java.util.*
 
 class MyRequestsAdapter(var myRequests: List<Request>, var itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<MyRequestsAdapter.MyRequestsViewHolder>() {
-
-    private val roundedRectangleSpan = BackgroundColorSpan(Color.RED)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRequestsViewHolder {
         var view =
@@ -45,10 +39,9 @@ class MyRequestsAdapter(var myRequests: List<Request>, var itemClickListener: On
         if(flaggedFamilyCount == 0) {
             holder.flaggedFamilyCount.invisible()
         } else {
-            val flaggedFamilyCountSpan = SpannableString(holder.itemView.context.resources.getQuantityString(
+            val flaggedFamilyCountSpan = holder.itemView.context.resources.getQuantityString(
                 R.plurals.families, flaggedFamilyCount, flaggedFamilyCount
-            ))
-            flaggedFamilyCountSpan.setSpan(roundedRectangleSpan, 0, flaggedFamilyCountSpan.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            )
             holder.flaggedFamilyCount.text = flaggedFamilyCountSpan
             holder.flaggedFamilyCount.visible()
         }

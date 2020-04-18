@@ -81,9 +81,8 @@
             android:text="14"
             android:textStyle="bold"
             android:gravity="center"
-            android:drawablePadding="2dp"
-            android:textColor="@color/text_view_white"
-            android:drawableEnd="@drawable/ic_warning_red"
+            android:textColor="?attr/colorPrimary"
+            android:drawableStart="@drawable/ic_warning_red"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

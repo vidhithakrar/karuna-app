@@ -107,18 +107,9 @@ class HomeFragment : BundleFragment() {
         if (flaggedFamilyCount == 0) {
             flaggedFamilyCountView.invisible()
         } else {
-            val flaggedFamilyCountSpan = SpannableString(
-                context?.resources?.getQuantityString(
+            val flaggedFamilyCountSpan = context?.resources?.getQuantityString(
                     R.plurals.families, flaggedFamilyCount, flaggedFamilyCount
                 )
-            )
-            val backgroundColorSpan = BackgroundColorSpan(Color.RED)
-            flaggedFamilyCountSpan.setSpan(
-                backgroundColorSpan,
-                0,
-                flaggedFamilyCountSpan.length,
-                Spannable.SPAN_INCLUSIVE_INCLUSIVE
-            )
             flaggedFamilyCountView.text = flaggedFamilyCountSpan
             flaggedFamilyCountView.visible()
         }
