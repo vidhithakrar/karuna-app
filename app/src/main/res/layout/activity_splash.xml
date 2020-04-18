@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/karuna_relief"
-                android:textColor="@color/button_bg"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/text_size_big"
                 android:textStyle="bold" />
 
@@ -93,7 +93,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="24dp"
-            android:background="@color/button_bg"
             android:text="@string/get_started"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

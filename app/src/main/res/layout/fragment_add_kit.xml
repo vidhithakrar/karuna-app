@@ -24,9 +24,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_kit_description"
-            style="@style/AppTheme.InputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/AppTheme.InputLayout"
+            app:hintTextAppearance="@style/AppTheme.InputLayoutTextAppearance"
             app:layout_constraintTop_toBottomOf="@+id/sp_kit_type">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -83,7 +83,7 @@ class MyRequestsFragment : BundleFragment(), OnItemClickListener {
 
     private fun setEmptyView(isVisible: Boolean) {
         if (isVisible) {
-            welcome.setTextColor(resources.getColor(R.color.text_color))
+            welcome.setTextColor(resources.getColor(R.color.colorAccent))
             rv_my_requests.visibility = View.GONE
             cl_container_empty_view.visibility = View.VISIBLE
         } else {

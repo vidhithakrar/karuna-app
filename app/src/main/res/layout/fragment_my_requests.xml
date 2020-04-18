@@ -40,7 +40,7 @@
                 android:lines="2"
                 android:text="@string/no_requests"
                 android:textAlignment="center"
-                android:textColor="@color/text_color"
+                android:textColor="@color/colorAccent"
                 android:textSize="28sp"
                 android:visibility="visible" />
 
