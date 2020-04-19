@@ -52,7 +52,9 @@ class FamilyDetailsAdapter(private var onFamilyItemClickListener: OnFamilyItemCl
                 family.lastServedBeforeDays()
             )
             holder.servedDaysAgoView.visible()
+            holder.title.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_warning_red_big, 0, 0, 0)
         } else {
+            holder.title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
             holder.servedDaysAgoView.gone()
         }
     }
