@@ -19,17 +19,24 @@ class RequestRepository(private val db: FirebaseFirestore) {
     ) {
         val collection = db.collection(RequestsCollectionName)
         val document = collection.document()
-        updateRequest(
-            request = request,
-            document = document,
-            onSuccess = {
-                Log.d(Tag, "Request created with id : ${document.id}")
-                onSuccess()
-            },
-            onFailure = { e ->
-                Log.e(Tag, "Request creation failed with exception: $e")
-                onFailure(e)
-            })
+        val requestDao = request.transform(request.uid)
+        db.runBatch { batch ->
+            batch.set(
+                document,
+                requestDao
+            )
+            request.families.forEach { family ->
+                val familiesSubCollection = document.collection(FamiliesCollectionName)
+                val familyDocument = familiesSubCollection.document()
+                batch.set(familyDocument, family)
+            }
+        }.addOnSuccessListener {
+            Log.d(Tag, "Request created with id : ${document.id}")
+            onSuccess()
+        }.addOnFailureListener { e ->
+            Log.e(Tag, "Request creation failed with exception: $e")
+            onFailure(e)
+        }
     }
 
     fun updateRequest(
@@ -38,28 +45,30 @@ class RequestRepository(private val db: FirebaseFirestore) {
         onFailure: (Exception) -> Unit
     ) {
         val document = db.collection("requests").document(request.requestId!!)
-        document.collection(FamiliesCollectionName).get()
-            .addOnSuccessListener { querySnapShot ->
-                db.runBatch {
-                    querySnapShot.documents.map { doc ->
-                        it.delete(doc.reference)
+        val familiesSubCollection = document.collection(FamiliesCollectionName)
+        familiesSubCollection.get()
+            .addOnSuccessListener { families ->
+                db.runBatch { batch ->
+                    families.documents.map { doc ->
+                        batch.delete(doc.reference)
+                    }
+                    val requestDao = request.transform(request.uid)
+                    batch.set(document, requestDao)
+                    request.families.forEach { family ->
+                        val familyDocument = familiesSubCollection.document()
+                        batch.set(familyDocument, family)
                     }
                 }.addOnSuccessListener {
-                    updateRequest(
-                        request = request,
-                        document = document,
-                        onSuccess = {
-                            Log.d(Tag, "Request updated with id : ${request.requestId!!}")
-                            onSuccess()
-                        },
-                        onFailure = { e ->
-                            Log.e(Tag, "Request update failed with exception: $e")
-                            onFailure(e)
-                        })
-                }.addOnFailureListener(onFailure)
+                    Log.d(Tag, "Request updated with id : ${request.requestId!!}")
+                    onSuccess()
+                }.addOnFailureListener { e ->
+                    Log.e(Tag, "Request update failed with exception: $e")
+                    onFailure(e)
+                }
             }
-            .addOnFailureListener {
-                onFailure(it)
+            .addOnFailureListener { e ->
+                Log.e(Tag, "Request update failed with exception: $e")
+                onFailure(e)
             }
     }
 
@@ -104,23 +113,6 @@ class RequestRepository(private val db: FirebaseFirestore) {
                 Log.e(Tag, "Request closing failed with exception: $error")
                 onFailure(error)
             }
-    }
-
-    private fun updateRequest(
-        request: Request,
-        document: DocumentReference,
-        onSuccess: () -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        val requestDao = request.transform(request.uid)
-        db.runBatch { batch ->
-            batch.set(document, requestDao)
-            request.families.forEach { family ->
-                val familiesSubCollection = document.collection(FamiliesCollectionName)
-                val familyDocument = familiesSubCollection.document()
-                batch.set(familyDocument, family)
-            }
-        }.addOnSuccessListener { onSuccess() }.addOnFailureListener { onFailure(it) }
     }
 
     private fun loadFamilies(
