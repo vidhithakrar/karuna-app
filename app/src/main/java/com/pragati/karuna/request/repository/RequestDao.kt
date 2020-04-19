@@ -1,12 +1,10 @@
 package com.pragati.karuna.request.repository
 
-import com.pragati.karuna.request.model.Family
 import com.pragati.karuna.request.model.Kit
 import com.pragati.karuna.request.model.Location
 
 data class RequestDao(
     val location: Location,
-    val families: MutableList<Family>,
     val kit: Kit,
     val numberOfKits: Int,
     val supplierId: String?,
@@ -17,6 +15,6 @@ data class RequestDao(
     val modifiedTimestamp: Long
 ) {
     //Only needed by firebase to de-serialize this data
-    constructor() : this(Location(), mutableListOf<Family>(), Kit(), 0,null, null, "", Status.CREATED, 0, 0)
+    constructor() : this(Location(), Kit(), 0, null, null, "", Status.CREATED, 0, 0)
 }
 
