@@ -4,7 +4,7 @@ import android.os.Parcelable
 import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 
-private const val SECONDS_IN_DAY = 86400
+private const val MILLIS_IN_DAY = 86400 * 1000
 private const val THRESHOLD_DAYS_FOR_FLAGGING = 10
 
 @Keep
@@ -19,14 +19,14 @@ class Family(
 ) : Parcelable {
 
     fun isFlagged(): Boolean {
-        val unixTimeStampToday = System.currentTimeMillis() / 1000L
+        val unixTimeStampToday = System.currentTimeMillis()
         val timeSinceLastServed = unixTimeStampToday - lastServedDate
-        return (timeSinceLastServed / SECONDS_IN_DAY) < THRESHOLD_DAYS_FOR_FLAGGING
+        return (timeSinceLastServed / MILLIS_IN_DAY) < THRESHOLD_DAYS_FOR_FLAGGING
     }
 
     fun lastServedBeforeDays(): Int {
-        val unixTimeStampToday = System.currentTimeMillis() / 1000L
+        val unixTimeStampToday = System.currentTimeMillis()
         val timeSinceLastServed = unixTimeStampToday - lastServedDate
-        return (timeSinceLastServed / SECONDS_IN_DAY).toInt()
+        return (timeSinceLastServed / MILLIS_IN_DAY).toInt()
     }
 }
